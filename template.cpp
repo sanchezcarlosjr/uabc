@@ -1,6 +1,7 @@
  
 #include <iostream>
 #include <vector>
+#include <functional>
 
 using namespace std;
 
@@ -56,10 +57,43 @@ public:
             for(int j = 0; j < COL; ++j){
                 cout << this->mat[i][j] << " ";
             }
-            cout << "
-";
+            cout << " ";
         }
     }
+
+    Matrix<T> reducer(function<T(T accumulator, T actualValue)> callback) {
+	T acc = 0;
+	 for(int i = 0; i < ROW; ++i){
+            for(int j = 0; j < COL; ++j){
+               acc = callback(acc, this->mat[i][j]);
+            }
+        }
+	Matrix <T>temp(1,1,acc);
+	return temp;
+    }
+
+   Matrix<T> map(function<T(T actual, int i, int j)> callback) {
+        for(int i = 0; i < ROW; ++i){
+            for(int j = 0; j < COL; ++j){
+               this->mat[i][j] = callback(this->mat[i][j],i,j);
+            }
+        }
+        return this;
+   }
+
+   Matrix<T> filter(function<T(T currentValue, int i, int j)> isValidValue) {
+	Matrix <T>temp(1, COL, 0);
+	int k = 0;
+	 for(int i = 0; i < ROW; ++i){
+            for(int j = 0; j < COL; ++j){
+		if (isValidValue(this->mat[i][j],i,j)) {
+			temp.mat[0][k] = this->mat[i][j];
+			k++;
+		}
+            }
+        }
+        return temp;
+   }
 
     T sum() {
       T auxiliar = 0;
@@ -115,6 +149,7 @@ Matrix<T> matrix(vector<vector<string>> tags, bool negative = 0) {
   return temp;
 }
 
+
 template<class T>
 Matrix<T> matrix(vector<vector<T>> init) {
   Matrix<T> temp(init);
@@ -141,6 +176,7 @@ T print(string tag) {
     cin>>var;
     return var;
 }
+
 
 int main() {
 	
