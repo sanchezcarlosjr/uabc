@@ -1,10 +1,7 @@
 # Prerequisites
 *.d
-**/CMakeFiles/*
-Makefile
 
 # Compiled Object files
-*.cmake
 *txt
 *.slo
 *.lo
@@ -33,7 +30,6 @@ Makefile
 
 
 # Executables
-runTests
 *.exe
 *.out
 *.app

@@ -1,0 +1,8 @@
+FROM cpp-docker:1.0.0 AS build
+
+WORKDIR /src
+
+ARG folderVariable=./example-docker
+COPY ${folderVariable} /src
+
+CMD cmake . && make && ls && ./helloworld

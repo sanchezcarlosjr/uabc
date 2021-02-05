@@ -15,10 +15,10 @@ usage() {
         SYNOPSIS
             $0 [-a|--alpha] [-b=val|--beta=val]
         DESCRIPTION
-           Download global dependencies.
+           Environment cpp
         OPTIONS
-            -a     -all Download all global dependencies
-            -gt    --google-test Download google test dependency.
+            -t     --test     tests.
+            -p     --production compile for production.
             -h     --help     Displays this usage message.
         RETURN CODES
             1 If error 1 occurs.
@@ -57,44 +57,32 @@ debug() {
   fi
 }
 
-docker_download() {
-    docker build ../cpp-docker/. -t cpp-docker:1.0.0;
-}
-
-all() {
-  sudo apt install build-essential;
-  sudo apt install 
-  google_test;
-}
-
-google_test() {
-   cd /usr/src/gtest
-   sudo cmake CMakeLists.txt
-   sudo make
-   sudo cp lib/*.a /usr/lib
+oop_test() {
+  name=$(ls -l src/object-oriented-programming | grep "^d" | awk  '{print $9}' | fzf);
+  cd src/object-oriented-programming;
+  docker build . -t hello-world:1.0.2 --build-arg folderVariable=./$name;
+  sudo docker run --rm -it hello-world:1.0.2;
 }
 
 params() {
-  if [ $# -eq 0 ];
-    then usage; exit 0;
+  if [ $# -eq 0 ]; then
+    usage
+    exit 0
   fi
   for param in "$@"; do
     case "${param}" in
-      -a|--all)
-        all
-        ;;
-      -gt|--google-test)
-        google_test
-        ;;
-      -h|--help)
-        usage
-        exit 0
-        ;;
-       *)
-        error "Unknown parameter ${param}"
-        usage
-        exit 1
-        ;;
+    -o | --oop_test)
+      oop_test
+      ;;
+    -h | --help)
+      usage
+      exit 0
+      ;;
+    *)
+      error "Unknown parameter ${param}"
+      usage
+      exit 1
+      ;;
     esac
   done
 }
