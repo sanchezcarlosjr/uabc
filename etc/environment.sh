@@ -58,7 +58,7 @@ debug() {
 }
 
 oop_test() {
-  name=$(ls -l src/object-oriented-programming | grep "^d" | awk  '{print $9}' | fzf);
+  name=$1;
   cd src/object-oriented-programming;
   sudo docker build . -t hello-world:1.0.5 --build-arg folderVariable=./"$name";
   sudo docker run -it hello-world:1.0.5;
@@ -71,8 +71,8 @@ params() {
   fi
   for param in "$@"; do
     case "${param}" in
-    -o | --oop_test)
-      oop_test
+    -o=* | --oop_test=*)
+      oop_test ${param#*=}
       ;;
     -h | --help)
       usage

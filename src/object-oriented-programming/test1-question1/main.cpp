@@ -23,7 +23,6 @@
 using namespace std;
 
 int main() {
-    cout "GFRR";
     string continueProgram;
     do {
         int a = print<int>("What is number A? ");
