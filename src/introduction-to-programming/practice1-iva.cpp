@@ -1,7 +1,7 @@
 /*
         Cuanto se pagará al comprar tres productos más el cobro del IVA. El
-   porcentaje de IVA deberá solicitarlo y aplica el mismo para todos los
-   productos (también solicitar el precio de cada producto).
+        porcentaje de IVA deberá solicitarlo y aplica el mismo para todos los
+        productos (también solicitar el precio de cada producto).
 
         Created by Carlos Sanchez
 
