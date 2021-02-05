@@ -1,7 +1,10 @@
 # Prerequisites
 *.d
+**/CMakeFiles/*
 
 # Compiled Object files
+*.cmake
+*txt
 *.slo
 *.lo
 *.o
@@ -26,7 +29,10 @@
 *.a
 *.lib
 
+
+
 # Executables
+runTests
 *.exe
 *.out
 *.app
