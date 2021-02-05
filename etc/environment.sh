@@ -61,7 +61,7 @@ oop_test() {
   name=$(ls -l src/object-oriented-programming | grep "^d" | awk  '{print $9}' | fzf);
   cd src/object-oriented-programming;
   sudo docker build . -t hello-world:1.0.5 --build-arg folderVariable=./"$name";
-  when-changed -1 -r $name -c sudo docker run -it -v "$name:/src" hello-world:1.0.5;
+  sudo docker run -it hello-world:1.0.5;
 }
 
 params() {

@@ -23,9 +23,10 @@
 using namespace std;
 
 int main() {
+    cout "GFRR";
     string continueProgram;
     do {
-        int a = print<int>("What is number A?");
+        int a = print<int>("What is number A? ");
         int b = print<int>("What is number B? ", "Please they should different", [a](int b) {
             return b == a;
         });
@@ -36,7 +37,6 @@ int main() {
         int distanceB = abs(b - numberBetweenBAndA);
         int closestNumber =  distanceA > distanceB ? b : a;
         int longestNumber =  distanceA > distanceB ? a : b;
-        //A is closer to B than C
         cout << numberBetweenBAndA << " is closer to " << closestNumber << " than " <<  longestNumber<< "\n";
         continueProgram = print<string>("Again? (y/n)");
     } while(continueProgram == "y");
