@@ -5,4 +5,4 @@ WORKDIR /src
 ARG folderVariable=./example-docker
 COPY ${folderVariable} /src
 
-CMD cmake . && make && ls && ./helloworld
+CMD cmake . && make && ./helloworld
