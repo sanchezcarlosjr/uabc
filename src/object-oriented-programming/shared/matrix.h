@@ -223,33 +223,3 @@ Matrix<T> matrix(size_t N = 1, size_t M = 1, string tag = "") {
     return temp;
 }
 
-
-
-template<class T>
-T print(string tag) {
-    T var;
-    cout << tag;
-    cin>>var;
-    return var;
-}
-
-template<class T>
-T print(string tag, string error, function<bool(T value)> isValidInput) {
-    T var;
-    int reps = 0;
-    do {
-        if (reps > 0) {
-            cout << error << endl;
-        }
-        cout << tag;
-        cin>>var;
-        reps++;
-    }while(isValidInput(var));
-    return var;
-}
-
-/* generate a number between a and b: */
-int generateRandomNumberBetween(int a, int b) {
-    srand(time(NULL));
-    return rand() % b + a;
-}
