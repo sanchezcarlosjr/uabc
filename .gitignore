@@ -2,8 +2,13 @@
 *.d
 
 # Compiled Object files
-*txt
+cmake_install.txt
+helloworld
+CMakeCache.txt
+Makefile
 *.slo
+**/CMakeFiles/**
+*.cmake
 *.lo
 *.o
 *.obj
