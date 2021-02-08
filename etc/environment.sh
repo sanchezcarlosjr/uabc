@@ -57,11 +57,20 @@ debug() {
   fi
 }
 
+compile() {
+  workspace=$HOME/Workspace/uabc/src/$1/;
+  name=$(ls -l "$workspace" | grep "^d" | awk  '{print $9}' | fzf);
+  project="$workspace/$name";
+  cd "$workspace";
+  when-changed -1 -r "$project" -c "$HOME/Workspace/uabc/etc/compiler.sh $name";
+}
+
+algorithm_prod() {
+  compile introduction-to-algorithms;
+}
+
 oop_test() {
-  name=$1;
-  cd src/object-oriented-programming;
-  sudo docker build . -t hello-world:1.0.5 --build-arg folderVariable=./"$name";
-  sudo docker run -it hello-world:1.0.5;
+  compile object-oriented-programming;
 }
 
 params() {
@@ -71,8 +80,11 @@ params() {
   fi
   for param in "$@"; do
     case "${param}" in
+    -ap | --algorithm_prod)
+      algorithm_prod
+      ;;
     -o=* | --oop_test=*)
-      oop_test ${param#*=}
+      oop_test "${param#*=}"
       ;;
     -h | --help)
       usage
