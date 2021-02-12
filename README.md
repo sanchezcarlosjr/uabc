@@ -1,5 +1,8 @@
 # UABC
 
+## Getting started
+
+
 ## Introduction to programming
 
 ## Introduction to algorithms
