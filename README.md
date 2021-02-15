@@ -1,7 +1,16 @@
 # UABC
 
 ## Getting started
+1. Install docker
+2. Compile cpp-docker
+``
+    sudo docker 
+``
 
+3. Help!
+``
+etc/environment.sh
+``
 
 ## Introduction to programming
 
