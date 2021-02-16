@@ -13,10 +13,11 @@ def length(number):
 def from_base_to_decimal(number, b):
     acc = 0
     for k in range(length(number)):
-        print(f'+{a(number, k)}*2^{k}', end=' ')
+        print(f'+{a(number, k)}*{b}^{k}', end=' ')
         acc += a(number, k) * math.pow(b, k)
     print("=", end="")
     return acc
 
 
-print(from_base_to_decimal(int(sys.argv[1]), int(sys.argv[2])))
+if __name__ == '__main__':
+    print(from_base_to_decimal(int(sys.argv[1]), int(sys.argv[2])))
