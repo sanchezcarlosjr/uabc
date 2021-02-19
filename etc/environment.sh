@@ -59,7 +59,7 @@ debug() {
 
 compile() {
   workspace=$HOME/Workspace/uabc/src/$1/;
-  name=$(ls -l "$workspace" | grep "^d" | awk  '{print $9}' | fzf);
+  name=$(ls -lt "$workspace" | grep "^d" | awk  '{print $9}' | fzf);
   project="$workspace/$name";
   cd "$workspace";
   when-changed -1 -r "$project" -c "$HOME/Workspace/uabc/etc/compiler.sh $name";
@@ -83,8 +83,8 @@ params() {
     -ap | --algorithm_prod)
       algorithm_prod
       ;;
-    -o=* | --oop_test=*)
-      oop_test "${param#*=}"
+    -o | --oop_test)
+      oop_test
       ;;
     -h | --help)
       usage

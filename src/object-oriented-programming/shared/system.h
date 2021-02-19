@@ -1,9 +1,5 @@
 #include <iostream>
-#include <vector>
 #include <functional>
-#include <stdlib.h>
-#include <time.h>
-#include <algorithm>
 using namespace std;
 
 template<class T>
