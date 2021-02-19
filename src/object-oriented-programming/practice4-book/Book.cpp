@@ -13,6 +13,26 @@ Book::Book(int year, string title) {
     Book(title, year);
 }
 
-bool Book::borrow() {
+bool Book::is(State state) {
+    return this->state == state;
+}
+
+bool Book::changeStateTo(State state) {
+    if (this->is(state) && !this->is(AVAILABLE)) {
+        return false;
+    }
+    this->state = state;
     return true;
-};
+}
+
+bool Book::borrow() {
+    return this->changeStateTo(LOAN);
+}
+
+bool Book::reserve() {
+    return this->changeStateTo(RESERVED);
+}
+
+bool Book::returnBook() {
+    return this->changeStateTo(AVAILABLE);
+}
