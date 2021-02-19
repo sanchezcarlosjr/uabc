@@ -38,5 +38,7 @@ bool Book::returnBook() {
 }
 
 string Book::toString() {
-    return "Book's name is A and it's published in 9";
+    stringstream s;
+    s << "Book's name is " << this->title << " and it's published in "<<this->year;
+    return s.str();
 }

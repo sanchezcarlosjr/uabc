@@ -2,7 +2,7 @@
 // Created by cest on 19/02/21.
 //
 #include <string>
-
+#include <sstream>
 using namespace std;
 
 #ifndef UABC_BOOK_H
