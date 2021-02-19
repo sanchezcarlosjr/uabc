@@ -23,6 +23,7 @@ public:
     bool borrow();
     bool reserve();
     bool returnBook();
+    string toString();
 };
 
 

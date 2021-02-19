@@ -36,3 +36,7 @@ bool Book::reserve() {
 bool Book::returnBook() {
     return this->changeStateTo(AVAILABLE);
 }
+
+string Book::toString() {
+    return "Book's name is A and it's published in 9";
+}

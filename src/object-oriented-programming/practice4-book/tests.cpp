@@ -34,6 +34,11 @@ TEST(Student, itShouldReturnTrueIfBookHasBeenTwoTimesReturn){
     EXPECT_TRUE(book->returnBook());
 }
 
+TEST(Student, itShouldShowHisData){
+    Book* book = new Book("A", 9);
+    ASSERT_EQ("Book's name is A and it's published in 9", book->toString());
+}
+
 
 int main(int argc, char **argv) {
     testing::InitGoogleTest(&argc, argv);
