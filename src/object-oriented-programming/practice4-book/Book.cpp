@@ -13,6 +13,10 @@ Book::Book(int year, string title) {
     Book(title, year);
 }
 
+Book::~Book() {
+    cout << this->toString() << " has removed.";
+}
+
 bool Book::is(State state) {
     return this->state == state;
 }

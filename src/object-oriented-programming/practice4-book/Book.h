@@ -3,6 +3,7 @@
 //
 #include <string>
 #include <sstream>
+#include <iostream>
 using namespace std;
 
 #ifndef UABC_BOOK_H
@@ -19,6 +20,7 @@ private:
     bool is(State state);
 public:
     Book(string, int);
+    ~Book();
     Book(int, string);
     bool borrow();
     bool reserve();
