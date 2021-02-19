@@ -8,5 +8,5 @@ find_package(GTest REQUIRED)
 include_directories(${GTEST_INCLUDE_DIRS})
 
 # Link runTests with what we want to test and the GTest and pthread library
-add_executable(helloworld tests.cpp Book.cpp)
+add_executable(helloworld main.cpp Book.cpp)
 target_link_libraries(helloworld ${GTEST_LIBRARIES} pthread)
