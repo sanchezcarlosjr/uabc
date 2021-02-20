@@ -11,11 +11,8 @@ bool Stack<T>::isEmpty() {
 
 template <class T>
 void Stack<T>::push(T element) {
+    this->top = new Node<T>(element, this->top);
     this->length++;
-    Node* node = new Node();
-    node->element = element;
-    node->next = this->top;
-    this->top = node;
 }
 
 template <class T>
@@ -29,11 +26,7 @@ T Stack<T>::pop() {
         return 0;
     }
     this->length--;
-    T element = this->top->element;
-    Node* formerTop = this->top;
-    this->top = this->top->next;
-    delete formerTop;
-    return element;
+    return Node<T>::moveToNext(*this->top);
 }
 
 template <class T>
