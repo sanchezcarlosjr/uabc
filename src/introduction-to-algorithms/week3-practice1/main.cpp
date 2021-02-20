@@ -10,8 +10,11 @@ using namespace DataStructure;
 
 int main() {
     Stack<int> stack;
+    // 1
     stack.push(1);
+    // 10 1
     stack.push(10);
+    // 100 10 1
     stack.push(100);
     // 100
     cout << stack.pop() << "\n";
