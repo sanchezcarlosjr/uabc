@@ -1,9 +1,6 @@
 //
 // Created by cest on 20/02/21.
 //
-#include <iostream>
-
-using namespace std;
 #ifndef UABC_NODE_H
 #define UABC_NODE_H
 
@@ -11,7 +8,7 @@ template <class T>
 class Node {
 public:
     T element;
-    Node<T>* next = NULL;
+    Node<T>* next = nullptr;
     Node(T element, Node<T>* next) {
         this->element = element;
         this->next = next;
