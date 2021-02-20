@@ -11,11 +11,11 @@ bool Stack<T>::isEmpty() {
 
 template <class T>
 void Stack<T>::push(T element) {
+    this->length++;
     Node* node = new Node();
     node->element = element;
-    node->node = this->head;
-    this->head = node;
-    this->length++;
+    node->next = this->top;
+    this->top = node;
 }
 
 template <class T>
@@ -25,5 +25,13 @@ int Stack<T>::size() {
 
 template <class T>
 T Stack<T>::pop() {
-    return 1;
+    if (this->isEmpty()) {
+        return 0;
+    }
+    this->length--;
+    T element = this->top->element;
+    Node* formerTop = this->top;
+    this->top = this->top->next;
+    delete formerTop;
+    return element;
 }

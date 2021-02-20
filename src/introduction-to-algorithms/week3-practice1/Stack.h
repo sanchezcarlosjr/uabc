@@ -3,6 +3,7 @@
 //
 #include <iostream>
 using namespace std;
+#include <typeinfo>
 
 #ifndef UABC_STACK_H
 #define UABC_STACK_H
@@ -13,9 +14,9 @@ private:
     int length = 0;
     struct Node {
         T element;
-        Node* node;
+        Node* next;
     };
-    Node* head = NULL;
+    Node* top = NULL;
 public:
     bool isEmpty();
     void push(T element);
