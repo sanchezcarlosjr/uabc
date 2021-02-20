@@ -3,3 +3,8 @@
 //
 
 #include "Stack.h"
+
+
+bool Stack::isEmpty() {
+    return true;
+}

@@ -8,9 +8,7 @@
 
 class Stack {
 public:
-    bool isEmpty() {
-        return true;
-    }
+    bool isEmpty();
 };
 
 
