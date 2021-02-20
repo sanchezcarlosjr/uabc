@@ -33,3 +33,8 @@ template <class T>
 T Stack<T>::peek() {
     return this->top->element;
 }
+
+template <class T>
+void Stack<T>::forEach() {
+
+}

@@ -19,6 +19,7 @@ public:
     T peek();
     T pop();
     int size();
+    void forEach();
 };
 
 #endif //UABC_STACK_H
