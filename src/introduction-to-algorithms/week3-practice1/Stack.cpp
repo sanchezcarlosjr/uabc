@@ -22,3 +22,8 @@ template <class T>
 int Stack<T>::size() {
     return this->length;
 }
+
+template <class T>
+T Stack<T>::pop() {
+    return 1;
+}
