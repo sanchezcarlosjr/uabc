@@ -1,9 +1,10 @@
-#include "Stack.h"
 #include <gtest/gtest.h>
+#include "DataStructure.h"
+using namespace DataStructure;
 
-TEST(StackTest, addToStack){
-    Stack* stack = new Stack();
-    EXPECT_TRUE(stack->isEmpty());
+TEST(StackTest, itShouldBeEmpty){
+    Stack<int> stack;
+    EXPECT_TRUE(stack.isEmpty());
 }
 
 int main(int argc, char **argv) {

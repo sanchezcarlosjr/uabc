@@ -4,7 +4,7 @@
 
 #include "Stack.h"
 
-
-bool Stack::isEmpty() {
+template <class T>
+bool Stack<T>::isEmpty() {
     return true;
 }

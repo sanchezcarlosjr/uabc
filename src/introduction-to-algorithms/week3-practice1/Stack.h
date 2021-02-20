@@ -5,11 +5,10 @@
 #ifndef UABC_STACK_H
 #define UABC_STACK_H
 
-
+template<class T>
 class Stack {
 public:
     bool isEmpty();
 };
-
 
 #endif //UABC_STACK_H
