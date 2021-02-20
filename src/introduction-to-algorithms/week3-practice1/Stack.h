@@ -3,7 +3,6 @@
 //
 #include <iostream>
 using namespace std;
-#include <typeinfo>
 
 #ifndef UABC_STACK_H
 #define UABC_STACK_H
