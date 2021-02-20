@@ -20,6 +20,7 @@ private:
 public:
     bool isEmpty();
     void push(T element);
+    T peek();
     T pop();
     int size();
 };

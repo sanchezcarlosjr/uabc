@@ -35,3 +35,8 @@ T Stack<T>::pop() {
     delete formerTop;
     return element;
 }
+
+template <class T>
+T Stack<T>::peek() {
+    return this->top->element;
+}

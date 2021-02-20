@@ -38,6 +38,13 @@ TEST(StackTest, itShouldPopElementsOfAStackWith3Elements){
     EXPECT_TRUE(stack.isEmpty());
 }
 
+TEST(StackTest, itShouldPeekStack){
+    Stack<int> stack;
+    stack.push(1);
+    int e1 = stack.peek();
+    EXPECT_EQ(e1, 1);
+    EXPECT_EQ(stack.size(), 1);
+}
 
 int main(int argc, char **argv) {
     testing::InitGoogleTest(&argc, argv);
