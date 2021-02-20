@@ -2,7 +2,6 @@
 // Created by cest on 20/02/21.
 //
 #include "Node.h"
-
 #ifndef UABC_STACK_H
 #define UABC_STACK_H
 
