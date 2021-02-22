@@ -22,12 +22,18 @@ int Stack<T>::size() {
 
 template <class T>
 T Stack<T>::pop() {
-    if (this->isEmpty()) {
-        return 0;
-    }
+    this->ensureIsNotEmpty();
     this->length--;
     return Node<T>::moveToNext(*this->top);
 }
+
+template <class T>
+void Stack<T>::ensureIsNotEmpty() {
+    if (this->isEmpty()) {
+        throw "Stack cannot pop.";
+    }
+}
+
 
 template <class T>
 T Stack<T>::peek() {

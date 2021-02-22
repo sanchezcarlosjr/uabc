@@ -10,6 +10,7 @@ class Stack {
 private:
     int length = 0;
     Node<T>* top = nullptr;
+    void ensureIsNotEmpty();
 public:
     bool isEmpty();
     void push(T element);
