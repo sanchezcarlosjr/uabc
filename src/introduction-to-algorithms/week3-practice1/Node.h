@@ -13,10 +13,10 @@ public:
         this->element = element;
         this->next = next;
     }
-    static T moveToNext(Node& top) {
-        T element = top.element;
-        if (top.next != 0) {
-            top = *top.next;
+    static T moveToNext(Node*& top) {
+        T element = top->element;
+        if (top->next != 0) {
+            top = top->next;
         }
         return element;
     }

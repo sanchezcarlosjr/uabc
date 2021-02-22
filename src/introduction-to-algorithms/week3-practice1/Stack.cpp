@@ -24,7 +24,7 @@ template <class T>
 T Stack<T>::pop() {
     this->ensureIsNotEmpty();
     this->length--;
-    return Node<T>::moveToNext(*this->top);
+    return Node<T>::moveToNext(this->top);
 }
 
 template <class T>
