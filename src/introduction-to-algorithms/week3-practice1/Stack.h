@@ -16,7 +16,8 @@ private:
 public:
     Stack() {}
     Stack(string x) {
-        for (int i=0; i<x.length(); i++) {
+        int middle = x.length()/2;
+        for (int i=middle; i<x.length(); i++) {
             this->push(x[i]);
         }
     }

@@ -65,6 +65,7 @@ TEST(StackTest, itShouldBeAPalindrome){
     EXPECT_TRUE(isPalindrome("ana"));
     EXPECT_TRUE(isPalindrome("Ana"));
     EXPECT_TRUE(isPalindrome("oso"));
+    EXPECT_TRUE(isPalindrome("solos"));
 }
 
 int main(int argc, char **argv) {
