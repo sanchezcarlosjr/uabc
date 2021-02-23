@@ -1,6 +1,8 @@
 #include <gtest/gtest.h>
+#include <iostream>
 #include "DataStructure.h"
 using namespace DataStructure;
+using namespace std;
 
 TEST(StackTest, itShouldBeEmpty){
     Stack<int> stack;
@@ -46,6 +48,24 @@ TEST(StackTest, itShouldPeekStack){
     EXPECT_EQ(stack.size(), 1);
 }
 
+bool isPalindrome(string x) {
+      Stack<char> stack(x);
+      int i = 0;
+      while (!stack.isEmpty()) {
+          if (toupper(x[i++]) != toupper(stack.pop())) {
+              return false;
+          }
+      }
+      return true;
+}
+
+TEST(StackTest, itShouldBeAPalindrome){
+    EXPECT_TRUE(isPalindrome("ANA"));
+    EXPECT_FALSE(isPalindrome("An"));
+    EXPECT_TRUE(isPalindrome("ana"));
+    EXPECT_TRUE(isPalindrome("Ana"));
+    EXPECT_TRUE(isPalindrome("oso"));
+}
 
 int main(int argc, char **argv) {
     testing::InitGoogleTest(&argc, argv);

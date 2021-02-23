@@ -2,6 +2,8 @@
 // Created by cest on 20/02/21.
 //
 #include "Node.h"
+#include <string>
+using namespace std;
 #ifndef UABC_STACK_H
 #define UABC_STACK_H
 
@@ -12,6 +14,12 @@ private:
     Node<T>* top = nullptr;
     void ensureIsNotEmpty();
 public:
+    Stack() {}
+    Stack(string x) {
+        for (int i=0; i<x.length(); i++) {
+            this->push(x[i]);
+        }
+    }
     bool isEmpty();
     void push(T element);
     T peek();
