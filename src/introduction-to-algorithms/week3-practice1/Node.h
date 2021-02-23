@@ -15,9 +15,11 @@ public:
     }
     static T moveToNext(Node*& top) {
         T element = top->element;
+        Node* formerTop = top;
         if (top->next != 0) {
             top = top->next;
         }
+        delete formerTop;
         return element;
     }
 };
