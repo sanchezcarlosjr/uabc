@@ -16,11 +16,8 @@ int main() {
     stack.push(10);
     // 100 10 1
     stack.push(100);
-    // 100
-    cout << stack.pop() << "\n";
-    // 10
-    cout << stack.pop() << "\n";
-    // 1
-    cout << stack.pop() << "\n";
+    while (!stack.isEmpty()) {
+        cout << stack.pop() << "\n";
+    }
     return 0;
 }
