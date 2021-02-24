@@ -2,17 +2,13 @@
 *.d
 
 # Compiled Object files
-cmake_install.txt
-helloworld
-CMakeCache.txt
-Makefile
 *.slo
 **/CMakeFiles/**
 *.cmake
 *.lo
 *.o
 *.obj
-
+**__pycache__/**
 # Precompiled Headers
 *.gch
 *.pch
