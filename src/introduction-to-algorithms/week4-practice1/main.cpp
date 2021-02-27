@@ -5,14 +5,11 @@
 */
 
 #include <iostream>
-#include "DataStructure/DataStructure.h"
+#include "Simulator.h"
 using namespace std;
 
 int main() {
-    Queue<int> queue;
-    queue.enqueue(2);
-    queue.forEach([](int element, int index) {
-        cout << element << "\n";
-    });
+    Simulator simulator;
+    simulator.simulate();
     return 0;
 }

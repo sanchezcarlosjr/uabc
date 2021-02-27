@@ -1,16 +1,9 @@
 #include <gtest/gtest.h>
-#include <typeinfo>
-#include <string>
-using namespace std;
-#include "Simulator.h"
+#include "PatientPrioritizer.h"
 
 TEST(SimulatorTest, itShouldCreateAnPatient){
-    string priorityPatient = Simulator::createPatient({
-        HIGH,
-        ELDERLY,
-        FEDERAL_GOVERNMENT
-    });
-    EXPECT_EQ(priorityPatient, "URGENT-IMPORTANT");
+    PatientPrioritizer patientPrioritizer;
+    patientPrioritizer.prioritize(new Patient());
 }
 
 int main(int argc, char **argv) {
