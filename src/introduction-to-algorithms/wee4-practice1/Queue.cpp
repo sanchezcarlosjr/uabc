@@ -15,3 +15,9 @@ template <class T>
 void Queue<T>::enqueue(T element) {
     this->increase();
 }
+
+template <class T>
+T Queue<T>::dequeue() {
+    this->decrease();
+    return 1;
+}

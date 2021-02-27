@@ -12,6 +12,7 @@ template<class T>
 class Queue: public Collection<T> {
 public:
     void enqueue(T element);
+    T dequeue();
     void forEach(function<void(int index)> callback);
 };
 
