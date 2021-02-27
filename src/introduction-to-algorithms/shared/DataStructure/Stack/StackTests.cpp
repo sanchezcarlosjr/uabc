@@ -1,7 +1,6 @@
 #include <gtest/gtest.h>
 #include <iostream>
-#include "DataStructure.h"
-using namespace DataStructure;
+#include "../DataStructure.h"
 using namespace std;
 
 TEST(StackTest, itShouldBeEmpty){
