@@ -10,14 +10,16 @@ TEST(Queue, itShouldBeEmpty){
 TEST(StackTest, itShouldEnqueue){
     Queue<int> queue;
     queue.enqueue(1);
+    EXPECT_EQ(queue.size(),1);
+    queue.enqueue(10);
+    EXPECT_EQ(queue.size(),2);
+    queue.enqueue(100);
+    EXPECT_EQ(queue.size(),3);
     EXPECT_FALSE(queue.isEmpty());
-}
-
-TEST(StackTest, itShouldDequeue){
-    Queue<int> queue;
-    queue.enqueue(1);
-    EXPECT_FALSE(queue.isEmpty());
-    queue.dequeue();
+    EXPECT_EQ(queue.size(),3);
+    EXPECT_EQ(queue.dequeue(),1);
+    EXPECT_EQ(queue.dequeue(),10);
+    EXPECT_EQ(queue.dequeue(),100);
     EXPECT_TRUE(queue.isEmpty());
 }
 
