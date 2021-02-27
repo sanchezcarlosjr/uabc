@@ -19,7 +19,7 @@ private:
 public:
     void enqueue(T element);
     T dequeue();
-    void forEach(function<void(int index)> callback);
+    void forEach(function<void(T element, int index)> callback);
 };
 
 

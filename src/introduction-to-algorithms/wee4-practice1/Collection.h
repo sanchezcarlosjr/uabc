@@ -19,7 +19,7 @@ protected:
         this->length--;
     }
 public:
-    virtual void forEach(function<void(int index)> callback);
+    void forEach(function<void(T element, int index)> callback);
     void ensureIsEmpty() {
         if (this->isEmpty()) {
             throw "This structure is empty";
