@@ -11,6 +11,9 @@ using namespace std;
 int main() {
     Stack<int> stack;
     stack.push(1);
-    cout << stack.pop();
+    stack.push(10);
+    stack.forEach([](int element, int index) {
+        cout << element << "\n";
+    });
     return 0;
 }

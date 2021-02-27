@@ -1,4 +1,4 @@
-#include "DataStructure.h"
+#include "../DataStructure.h"
 #include <gtest/gtest.h>
 
 TEST(Queue, itShouldBeEmpty){

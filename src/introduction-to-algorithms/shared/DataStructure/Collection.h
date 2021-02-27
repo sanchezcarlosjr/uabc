@@ -12,6 +12,7 @@ class Collection {
 private:
     int length = 0;
 protected:
+    Collection() {}
     void increase() {
         this->length++;
     }

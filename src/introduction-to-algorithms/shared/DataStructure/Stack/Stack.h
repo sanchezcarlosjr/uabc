@@ -2,17 +2,16 @@
 // Created by cest on 20/02/21.
 //
 #include "Node.h"
+#include "../Collection.h"
 #include <string>
 using namespace std;
 #ifndef UABC_STACK_H
 #define UABC_STACK_H
 
 template<class T>
-class Stack {
+class Stack: public Collection<T> {
 private:
-    int length = 0;
     Node<T>* top = nullptr;
-    void ensureIsNotEmpty();
 public:
     Stack() {}
     Stack(string x) {
@@ -21,11 +20,10 @@ public:
             this->push(x[i]);
         }
     }
-    bool isEmpty();
     void push(T element);
+    void forEach(function<void(T element, int index)> callback);
     T peek();
     T pop();
-    int size();
 };
 
 #endif //UABC_STACK_H

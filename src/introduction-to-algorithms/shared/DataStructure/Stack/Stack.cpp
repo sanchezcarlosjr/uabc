@@ -4,36 +4,27 @@
 
 #include "Stack.h"
 
-template <class T>
-bool Stack<T>::isEmpty() {
-    return this->length == 0;
+template<class T>
+void Stack<T>::forEach(function<void(T, int)> callback) {
+    int index = 0;
+    while(!this->isEmpty()) {
+        callback(this->pop(), index);
+        index++;
+    }
 }
 
 template <class T>
 void Stack<T>::push(T element) {
     this->top = new Node<T>(element, this->top);
-    this->length++;
-}
-
-template <class T>
-int Stack<T>::size() {
-    return this->length;
+    this->increase();
 }
 
 template <class T>
 T Stack<T>::pop() {
-    this->ensureIsNotEmpty();
-    this->length--;
+    this->ensureIsEmpty();
+    this->decrease();
     return Node<T>::moveToNext(this->top);
 }
-
-template <class T>
-void Stack<T>::ensureIsNotEmpty() {
-    if (this->isEmpty()) {
-        throw "Stack cannot pop.";
-    }
-}
-
 
 template <class T>
 T Stack<T>::peek() {
