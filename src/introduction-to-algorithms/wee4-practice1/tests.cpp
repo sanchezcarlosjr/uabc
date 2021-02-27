@@ -2,7 +2,8 @@
 #include "Queue.h"
 
 TEST(Queue, itShouldBeEmpty){
-
+    Queue<int> queue;
+    ASSERT_TRUE(queue.isEmpty());
 }
 
 int main(int argc, char **argv) {

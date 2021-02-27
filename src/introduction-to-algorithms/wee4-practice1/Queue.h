@@ -10,6 +10,7 @@ using namespace std;
 template<class T>
 class Queue {
 public:
+    bool isEmpty();
     void forEach(function<void(int index)> callback);
 };
 
