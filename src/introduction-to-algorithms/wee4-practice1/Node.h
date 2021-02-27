@@ -8,8 +8,8 @@
 template<class T>
 class Node {
 private:
-    Node* next;
     T data;
+    Node* next;
     Node* previous;
 public:
     Node(T data, Node* next) {

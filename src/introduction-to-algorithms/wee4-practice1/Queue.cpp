@@ -15,15 +15,14 @@ void Queue<T>::forEach(function<void(T, int)> callback) {
 
 template <class T>
 void Queue<T>::enqueue(T element) {
-    this->increase();
     this->tail = new Node<T>(element, this->tail);
     this->createHead();
+    this->increase();
 }
 
 template <class T>
 void Queue<T>::createHead() {
-    bool isANewHead = this->size()-1 == 0;
-    if (isANewHead) {
+    if (this->isEmpty()) {
         this->head = this->tail;
     }
 }

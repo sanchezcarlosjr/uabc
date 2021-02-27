@@ -21,6 +21,9 @@ TEST(StackTest, itShouldEnqueue){
     EXPECT_EQ(queue.dequeue(),10);
     EXPECT_EQ(queue.dequeue(),100);
     EXPECT_TRUE(queue.isEmpty());
+    queue.enqueue(1);
+    EXPECT_EQ(queue.size(),1);
+    EXPECT_EQ(queue.dequeue(),1);
 }
 
 int main(int argc, char **argv) {
