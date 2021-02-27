@@ -10,3 +10,8 @@ void Queue<T>::forEach(function<void(int)> callback) {
         callback(i+1);
     }
 }
+
+template <class T>
+void Queue<T>::enqueue(T element) {
+    this->increase();
+}

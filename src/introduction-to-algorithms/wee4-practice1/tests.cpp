@@ -2,9 +2,15 @@
 #include <gtest/gtest.h>
 
 TEST(Queue, itShouldBeEmpty){
-    Queue<bool> queue;
+    Queue<int> queue;
     ASSERT_TRUE(queue.isEmpty());
     ASSERT_EQ(queue.size(), 0);
+}
+
+TEST(StackTest, itShouldNotBeEmpty){
+    Queue<int> queue;
+    queue.enqueue(1);
+    EXPECT_FALSE(queue.isEmpty());
 }
 
 int main(int argc, char **argv) {
