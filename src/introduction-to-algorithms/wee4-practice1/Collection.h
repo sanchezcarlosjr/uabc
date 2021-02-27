@@ -11,6 +11,13 @@ template<class T>
 class Collection {
 private:
     int length = 0;
+protected:
+    void increase() {
+        this->length++;
+    }
+    void decrease() {
+        this->length--;
+    }
 public:
     virtual void forEach(function<void(int index)> callback);
     bool isEmpty() {
