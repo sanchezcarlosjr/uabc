@@ -1,13 +1,13 @@
 #include "../DataStructure.h"
 #include <gtest/gtest.h>
 
-TEST(Queue, itShouldBeEmpty){
+TEST(QueueTest, itShouldBeEmpty){
     Queue<int> queue;
     ASSERT_TRUE(queue.isEmpty());
     ASSERT_EQ(queue.size(), 0);
 }
 
-TEST(StackTest, itShouldEnqueue){
+TEST(QueueTest, itShouldEnqueue){
     Queue<int> queue;
     queue.enqueue(1);
     EXPECT_EQ(queue.size(),1);
@@ -24,6 +24,13 @@ TEST(StackTest, itShouldEnqueue){
     queue.enqueue(1);
     EXPECT_EQ(queue.size(),1);
     EXPECT_EQ(queue.dequeue(),1);
+}
+
+TEST(QueueTest, itShouldEnqueueWhenItHasOneElement) {
+    Queue<int> queue;
+    queue.enqueue(10);
+    EXPECT_EQ(queue.size(),1);
+    EXPECT_EQ(queue.dequeue(),10);
 }
 
 int main(int argc, char **argv) {

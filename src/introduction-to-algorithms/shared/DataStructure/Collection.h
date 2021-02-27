@@ -19,13 +19,13 @@ protected:
     void decrease() {
         this->length--;
     }
-public:
-    void forEach(function<void(T element, int index)> callback);
     void ensureIsEmpty() {
         if (this->isEmpty()) {
             throw "This structure is empty";
         }
     }
+public:
+    void forEach(function<void(T element, int index)> callback);
     bool isEmpty() {
         return this->length == 0;
     }

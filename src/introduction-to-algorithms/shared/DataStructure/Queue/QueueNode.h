@@ -22,8 +22,11 @@ public:
     T moveToPrevious() {
         T element = this->data;
         QueueNode* previous = this->previous;
-        this->next = previous->next;
+        if (previous == 0) {
+            return element;
+        }
         this->data = previous->data;
+        this->next = previous->next;
         if (previous->previous != 0) {
             this->previous = previous->previous;
             delete previous;
