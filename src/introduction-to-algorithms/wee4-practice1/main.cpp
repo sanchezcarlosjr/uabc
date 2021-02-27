@@ -10,8 +10,11 @@ using namespace std;
 
 int main() {
     Queue<int> queue;
-    queue.forEach([](int index) {
-        cout << index << "\n";
+    queue.enqueue(1);
+    queue.enqueue(10);
+    queue.enqueue(100);
+    queue.forEach([](int element, int index) {
+        cout << element << "\n";
     });
     return 0;
 }
