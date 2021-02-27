@@ -5,13 +5,13 @@
 */
 
 #include <iostream>
+#include "DataStructure.h"
 using namespace std;
-#include "Queue.h"
 
 int main() {
-    Queue queue;
-    queue.forEach([](int a) {
-        cout << a << "\n";
+    Queue<int> queue;
+    queue.forEach([](int index) {
+        cout << index << "\n";
     });
     return 0;
 }

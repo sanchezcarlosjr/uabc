@@ -1,8 +1,8 @@
+#include "DataStructure.h"
 #include <gtest/gtest.h>
-#include "Queue.h"
 
 TEST(Queue, itShouldBeEmpty){
-    Queue<int> queue;
+    Queue<bool> queue;
     ASSERT_TRUE(queue.isEmpty());
 }
 
