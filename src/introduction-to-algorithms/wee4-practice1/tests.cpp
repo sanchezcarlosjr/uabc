@@ -4,6 +4,7 @@
 TEST(Queue, itShouldBeEmpty){
     Queue<bool> queue;
     ASSERT_TRUE(queue.isEmpty());
+    ASSERT_EQ(queue.size(), 0);
 }
 
 int main(int argc, char **argv) {

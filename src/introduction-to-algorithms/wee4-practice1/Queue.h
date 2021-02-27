@@ -1,6 +1,7 @@
 //
 // Created by cest on 26/02/21.
 //
+#include "Collection.h"
 #include <functional>
 using namespace std;
 
@@ -8,9 +9,8 @@ using namespace std;
 #define UABC_QUEUE_H
 
 template<class T>
-class Queue {
+class Queue: public Collection<T> {
 public:
-    bool isEmpty();
     void forEach(function<void(int index)> callback);
 };
 
