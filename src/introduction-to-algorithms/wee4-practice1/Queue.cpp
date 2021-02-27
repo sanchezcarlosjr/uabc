@@ -15,7 +15,7 @@ void Queue<T>::forEach(function<void(T, int)> callback) {
 
 template <class T>
 void Queue<T>::enqueue(T element) {
-    this->tail = new Node<T>(element, this->tail);
+    this->tail = new QueueNode<T>(element, this->tail);
     this->createHead();
     this->increase();
 }

@@ -2,17 +2,17 @@
 // Created by cest on 26/02/21.
 //
 
-#ifndef UABC_NODE_H
-#define UABC_NODE_H
+#ifndef UABC_QUEUE_NODE_H
+#define UABC_QUEUE_NODE_H
 
 template<class T>
-class Node {
+class QueueNode {
 private:
     T data;
-    Node* next;
-    Node* previous;
+    QueueNode* next;
+    QueueNode* previous;
 public:
-    Node(T data, Node* next) {
+    QueueNode(T data, QueueNode* next) {
         this->data = data;
         this->next = next;
         if (this->next != 0) {
@@ -21,7 +21,7 @@ public:
     }
     T moveToPrevious() {
         T element = this->data;
-        Node* previous = this->previous;
+        QueueNode* previous = this->previous;
         this->next = previous->next;
         this->data = previous->data;
         if (previous->previous != 0) {
@@ -32,4 +32,4 @@ public:
     }
 };
 
-#endif //UABC_NODE_H
+#endif //UABC_QUEUE_NODE_H
