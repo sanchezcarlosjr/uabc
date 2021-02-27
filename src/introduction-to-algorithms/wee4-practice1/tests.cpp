@@ -1,7 +1,7 @@
 #include <gtest/gtest.h>
+#include "Queue.h"
 
-TEST(SUTTest, itShouldBeEmpty
-){
+TEST(Queue, itShouldBeEmpty){
 
 }
 

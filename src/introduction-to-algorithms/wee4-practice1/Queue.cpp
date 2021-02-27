@@ -4,7 +4,8 @@
 
 #include "Queue.h"
 
-void Queue::forEach(function<void(int)> callback) {
+template<class T>
+void Queue<T>::forEach(function<void(int)> callback) {
     for(int i=0; i<5; i++) {
         callback(i+1);
     }

@@ -7,9 +7,10 @@ using namespace std;
 #ifndef UABC_QUEUE_H
 #define UABC_QUEUE_H
 
+template<class T>
 class Queue {
 public:
-    void forEach(function<void(int value)> callback);
+    void forEach(function<void(int index)> callback);
 };
 
 
