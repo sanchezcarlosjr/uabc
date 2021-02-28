@@ -16,6 +16,8 @@ public:
     }
     void notify() {
         this->patientPrioritizer->prioritize(new Patient());
+        this->patientPrioritizer->prioritize(new Patient());
+        this->patientPrioritizer->prioritize(new Patient());
     }
 };
 

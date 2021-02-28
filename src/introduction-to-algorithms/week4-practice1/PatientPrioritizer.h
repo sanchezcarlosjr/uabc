@@ -11,24 +11,30 @@
 
 class PatientPrioritizer {
 private:
-    PatientQueue urgentImportantPatientQueue;
-    PatientQueue noUrgentImportantPatientQueue;
-    PatientQueue urgentNoImportantPatientQueue;
-    PatientQueue noUrgentNoImportantPatientQueue;
+    PatientQueue* urgentImportantPatientQueue;
+    PatientQueue* noUrgentImportantPatientQueue;
+    PatientQueue* urgentNoImportantPatientQueue;
+    PatientQueue* noUrgentNoImportantPatientQueue;
 public:
+    PatientPrioritizer() {
+        this->urgentNoImportantPatientQueue = new PatientQueue("Urgent  - Important");
+        this->noUrgentImportantPatientQueue = new PatientQueue("No Urgent - Important");
+        this->urgentNoImportantPatientQueue = new PatientQueue("Urgent - No Important");
+        this->noUrgentNoImportantPatientQueue = new PatientQueue("No Urgent - No Important");
+    }
     void prioritize(Patient* patient) {
         switch(patient->getPriority()) {
             case URGENT_IMPORTANT:
-                this->urgentImportantPatientQueue.attend(patient);
+                this->urgentImportantPatientQueue->attend(patient);
                 break;
             case NO_URGENT_IMPORTANT:
-                this->noUrgentImportantPatientQueue.attend(patient);
+                this->noUrgentImportantPatientQueue->attend(patient);
                 break;
             case URGENT_NO_IMPORTANT:
-                this->urgentNoImportantPatientQueue.attend(patient);
+                this->urgentNoImportantPatientQueue->attend(patient);
                 break;
             case NO_URGENT_NO_IMPORTANT:
-                this->noUrgentNoImportantPatientQueue.attend(patient);
+                this->noUrgentNoImportantPatientQueue->attend(patient);
                 break;
         }
     }
