@@ -1,9 +1,9 @@
 #include <gtest/gtest.h>
-#include "PatientPrioritizer.h"
+#include "Vaccines.h"
 
 TEST(SimulatorTest, itShouldCreateAnPatient){
-    PatientPrioritizer patientPrioritizer;
-    patientPrioritizer.prioritize(new Patient());
+    Vaccines::GetInstance()->increase();
+    Vaccines::GetInstance()->increase();
 }
 
 int main(int argc, char **argv) {

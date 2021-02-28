@@ -3,11 +3,11 @@
 //
 
 #include "Patient.h"
+#include "Vaccines.h"
 #include "PatientQueue.h"
 
 #ifndef UABC_PATIENTPRIORITIZER_H
 #define UABC_PATIENTPRIORITIZER_H
-
 
 class PatientPrioritizer {
 private:
@@ -17,12 +17,13 @@ private:
     PatientQueue* noUrgentNoImportantPatientQueue;
 public:
     PatientPrioritizer() {
-        this->urgentNoImportantPatientQueue = new PatientQueue("Urgent  - Important");
+        this->urgentImportantPatientQueue = new PatientQueue("Urgent  - Important");
         this->noUrgentImportantPatientQueue = new PatientQueue("No Urgent - Important");
         this->urgentNoImportantPatientQueue = new PatientQueue("Urgent - No Important");
         this->noUrgentNoImportantPatientQueue = new PatientQueue("No Urgent - No Important");
     }
     void prioritize(Patient* patient) {
+        Vaccines::GetInstance()->increase();
         switch(patient->getPriority()) {
             case URGENT_IMPORTANT:
                 this->urgentImportantPatientQueue->attend(patient);

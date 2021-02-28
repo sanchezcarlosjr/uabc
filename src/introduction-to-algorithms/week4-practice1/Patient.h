@@ -40,10 +40,18 @@ private:
     Age age;
     Power power;
 public:
+    Patient(Age age, Money money, Power power) {
+        this->money = money;
+        this->age = age;
+        this->power = power;
+    }
     Patient() {
         this->money = generateRandomEnumBetween<Money>(Money::LOW,Money::HIGH);
-        this->age = generateRandomEnumBetween<Age>(Age::CHILD,Money::HIGH);
+        this->age = generateRandomEnumBetween<Age>(Age::CHILD, Age::ELDERLY);
         this->power = generateRandomEnumBetween<Power>(Power::CITIZEN,Power::FEDERAL_GOVERNMENT);
+    }
+    void talk() {
+        cout << "Hi " << money << age << power << this->getPriority() <<"\n";
     }
     int getPriority() {
         if (
@@ -67,9 +75,6 @@ public:
             return URGENT_NO_IMPORTANT;
         }
         return NO_URGENT_NO_IMPORTANT;
-    }
-    void talk() {
-        cout << "Hi " << "\n";
     }
 };
 
