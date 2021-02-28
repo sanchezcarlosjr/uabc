@@ -51,7 +51,7 @@ public:
         this->power = generateRandomEnumBetween<Power>(Power::CITIZEN,Power::FEDERAL_GOVERNMENT);
     }
     void talk() {
-        cout << "Hi " << money << age << power << this->getPriority() <<"\n";
+        cout << "Hi, my is " << money << age << power << this->getPriority() <<"\n";
     }
     int getPriority() {
         if (

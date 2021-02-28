@@ -10,7 +10,7 @@ using namespace std;
 class Vaccines {
 private:
     static Vaccines* singleton;
-    int availableVaccines = 10;
+    int availableVaccines = 500;
     int usedVaccines = 0;
 public:
     static Vaccines *GetInstance();
