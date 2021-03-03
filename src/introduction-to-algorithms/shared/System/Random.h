@@ -19,4 +19,5 @@ T generateRandomEnumBetween(int a, int b) {
     return static_cast<T>(generateRandomNumberBetween(a,b));
 }
 
+
 #endif //UABC_RANDOM_H

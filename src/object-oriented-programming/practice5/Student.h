@@ -16,17 +16,14 @@ class Student
 private:
     string name;
     int age;
+    char gender;
+    static int total;
     const Date birthday;
-    Date degreeDate;
-    Degree degree;
 public:
-    Student(string, int, int, int, int, int, int, int);
     Student(string, int, int, int, int);
     Student(string, int);
     void show() const;
     ~Student();
-    void setDegreeDate(int,int,int);
-    void setDegreeDate(Date);
 };
 
 

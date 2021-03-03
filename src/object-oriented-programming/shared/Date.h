@@ -17,13 +17,14 @@ private:
     int year;
 public:
     Date() {
-       Date(0,0,0);
+        this->day = 0;
+        this->month = 0;
+        this->year = 0;
     }
     Date(int d, int m, int y) {
         day = d;
         month = m;
         year = y;
-        cout << "Date was built." << endl;
     }
 
     void show() const {
@@ -31,8 +32,6 @@ public:
     }
 
     ~Date() {
-        cout << "Date was destroyed." << endl;
-
     }
 };
 
