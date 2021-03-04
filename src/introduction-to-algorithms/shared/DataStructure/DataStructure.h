@@ -10,5 +10,6 @@
 #include "Stack/Stack.h"
 #include "Stack/Stack.cpp"
 #include "ChainOfResponsibility/ListHandler.h"
+#include "ChainOfResponsibility/NodeHandler.h"
 
 #endif //UABC_DATASTRUCTURE_H
