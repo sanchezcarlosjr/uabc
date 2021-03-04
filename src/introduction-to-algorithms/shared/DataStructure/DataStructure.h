@@ -9,5 +9,6 @@
 #include "Queue/Queue.cpp"
 #include "Stack/Stack.h"
 #include "Stack/Stack.cpp"
+#include "ChainOfResponsibility/ListHandler.h"
 
 #endif //UABC_DATASTRUCTURE_H
