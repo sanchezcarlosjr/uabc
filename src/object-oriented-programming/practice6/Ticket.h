@@ -21,7 +21,7 @@ private:
 public:
     Ticket();
     ~Ticket();
-    string sell(Person* person);
+    string sell();
     string toString();
     int getId();
     int static getAmountOfAvailableTickets();

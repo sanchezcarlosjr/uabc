@@ -3,6 +3,7 @@
 //
 
 #include <string>
+#include <iostream>
 using namespace std;
 #ifndef UABC_PERSON_H
 #define UABC_PERSON_H
@@ -15,6 +16,15 @@ public:
     Person(string name, string phone) {
         this->setName(name);
         this->setPhone(phone);
+    }
+    static Person* create() {
+        string name;
+        cout << "Person's name: ";
+        cin >> name;
+        string phone;
+        cout << "Phone's number: ";
+        cin >> phone;
+        return new Person(name, phone);
     }
     string getName() {
         return name;
