@@ -11,5 +11,7 @@
 #include "Stack/Stack.cpp"
 #include "ChainOfResponsibility/ListHandler.h"
 #include "ChainOfResponsibility/NodeHandler.h"
+#include "List/List.h"
+#include "List/List.cpp"
 
 #endif //UABC_DATASTRUCTURE_H
