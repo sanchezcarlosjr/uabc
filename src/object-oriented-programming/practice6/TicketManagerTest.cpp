@@ -19,9 +19,8 @@ TEST(TicketManagerTest, itShouldReturnAvailable)
 TEST(TicketManagerTest, itShouldReturnSoldWithPersonName)
 {
     Ticket ticket;
-    Person* person = new Person("A", "646");
     ASSERT_EQ(Ticket::getAmountOfAvailableTickets(), 1);
-    ticket.sell(person);
+    ticket.sell();
     ASSERT_EQ(Ticket::getAmountOfAvailableTickets(), 0);
     ASSERT_EQ(Ticket::getAmountOfSoldTickets(), 1);
     stringstream s;
