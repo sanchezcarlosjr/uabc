@@ -1,9 +1,7 @@
 //
 // Created by cest on 08/03/21.
 //
-#include <list>
-#include <iostream>
-using namespace std;
+#include "DataStructure/DataStructure.h"
 
 #ifndef UABC_SUMPRIMESALGORITHM_H
 #define UABC_SUMPRIMESALGORITHM_H
@@ -27,12 +25,11 @@ bool isPrime(int n) {
     return true;
 }
 
-int sumPrimes(list<int> numbers) {
-    if (numbers.empty()) {
+int sumPrimes(Stack<int> numbers) {
+    if (numbers.isEmpty()) {
         return 0;
     }
-    int acc = numbers.back();
-    numbers.pop_back();
+    int acc = numbers.pop();
     if (isPrime(acc)) {
         return acc + sumPrimes(numbers);
     }

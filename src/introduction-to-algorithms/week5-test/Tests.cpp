@@ -1,11 +1,10 @@
 #include <gtest/gtest.h>
 #include "SumPrimesAlgorithm.h"
-#include <list>
+#include "DataStructure/DataStructure.h"
 
 TEST(SumPrimesTest, itShouldCalculateSumPrimes){
-    int myints[] = {1,2,3,4,-1};
-    std::list<int> integers (myints, myints + sizeof(myints) / sizeof(int) );
-    ASSERT_EQ(5, sumPrimes(integers));
+    Stack<int> stack({1,2,3,4,6});
+    ASSERT_EQ(5, sumPrimes(stack));
 }
 
 int main(int argc, char **argv) {

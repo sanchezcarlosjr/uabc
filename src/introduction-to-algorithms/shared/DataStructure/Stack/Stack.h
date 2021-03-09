@@ -4,6 +4,7 @@
 #include "Node.h"
 #include "../Collection.h"
 #include <string>
+#include <vector>
 using namespace std;
 #ifndef UABC_STACK_H
 #define UABC_STACK_H
@@ -18,6 +19,11 @@ public:
         int middle = x.length()/2;
         for (int i=middle; i<x.length(); i++) {
             this->push(x[i]);
+        }
+    }
+    Stack(initializer_list<int> list) {
+        for (auto i = list.begin(); i != list.end(); i++) {
+            this->push(*i);
         }
     }
     void push(T element);
