@@ -18,6 +18,7 @@ public:
         this->setPhone(phone);
     }
     static Person* create() {
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
         string name;
         cout << "Person's name: ";
         getline (cin,name);
