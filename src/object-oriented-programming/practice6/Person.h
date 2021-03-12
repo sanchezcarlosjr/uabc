@@ -20,10 +20,10 @@ public:
     static Person* create() {
         string name;
         cout << "Person's name: ";
-        cin >> name;
+        getline (cin,name);
         string phone;
         cout << "Phone's number: ";
-        cin >> phone;
+        getline (cin,phone);
         return new Person(name, phone);
     }
     string getName() {
