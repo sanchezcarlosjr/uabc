@@ -1,6 +1,7 @@
 #include <gtest/gtest.h>
 #include "SumPrimesAlgorithm.h"
 #include "PermutationAlgorithm.h"
+#include "ArithmeticExpression.h"
 #include "DataStructure/DataStructure.h"
 
 TEST(SumPrimesTest, itShouldCalculateSumPrimes){
@@ -13,6 +14,15 @@ TEST(PermutationTest, itShouldShowPermutationWhenItIsHasMoreAElement){
    ASSERT_EQ("A\n", permute("A"));
    ASSERT_EQ("AB\nBA\n", permute("AB"));
    ASSERT_EQ("ABC\nACB\nBAC\nBCA\nCAB\nCBA\n", permute("ABC"));
+}
+
+TEST(ArithmeticTest, itShouldReturnItIsBalancedExpression) {
+    ASSERT_TRUE( isBalancedExpression("{}"));
+    ASSERT_FALSE( isBalancedExpression("{"));
+    ASSERT_FALSE( isBalancedExpression("}"));
+    ASSERT_TRUE( isBalancedExpression("()(()){([()])}"));
+    ASSERT_FALSE(isBalancedExpression("({[])}"));
+    ASSERT_TRUE(isBalancedExpression("[(5+x)-(y+z)]"));
 }
 
 int main(int argc, char **argv) {

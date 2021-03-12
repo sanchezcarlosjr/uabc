@@ -28,5 +28,8 @@ T Stack<T>::pop() {
 
 template <class T>
 T Stack<T>::peek() {
+    if (this->isEmpty()) {
+        return '\0';
+    }
     return this->top->element;
 }

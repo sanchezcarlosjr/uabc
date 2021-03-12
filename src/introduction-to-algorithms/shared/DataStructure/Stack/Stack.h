@@ -12,6 +12,7 @@ using namespace std;
 template<class T>
 class Stack: public Collection<T> {
 private:
+    T nullValue;
     Node<T>* top = nullptr;
 public:
     Stack() {}
