@@ -15,7 +15,7 @@ void Stack<T>::forEach(function<void(T, int)> callback) {
 
 template <class T>
 void Stack<T>::push(T element) {
-    this->top = new Node<T>(element, this->top);
+    this->setNext(new Node<T>(element));
     this->increase();
 }
 
@@ -23,7 +23,7 @@ template <class T>
 T Stack<T>::pop() {
     this->ensureIsEmpty();
     this->decrease();
-    return Node<T>::moveToNext(this->top);
+    return this->replaceRoot(this->root->next);
 }
 
 template <class T>
@@ -31,5 +31,5 @@ T Stack<T>::peek() {
     if (this->isEmpty()) {
         return '\0';
     }
-    return this->top->element;
+    return this->root->element;
 }

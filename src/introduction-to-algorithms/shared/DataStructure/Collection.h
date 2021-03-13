@@ -2,6 +2,8 @@
 // Created by cest on 26/02/21.
 //
 #include <functional>
+#include "CollectionState.h"
+#include "NullState.h"
 using namespace std;
 
 #ifndef UABC_COLLECTION_H
@@ -9,10 +11,18 @@ using namespace std;
 
 template<class T>
 class Collection {
+protected:
+    Node<T>* root = nullptr;
+    void setNext(Node<T>* node) {
+        this->collectionState->setNext(this, node);
+    }
 private:
     int length = 0;
+    CollectionState<T>* collectionState;
 protected:
-    Collection() {}
+    Collection() {
+        collectionState = new NullState<T>();
+    }
     void increase() {
         this->length++;
     }
@@ -32,7 +42,19 @@ public:
     int size() {
         return this->length;
     }
+    void setRoot(Node<T>* root) {
+        this->root = root;
+    }
+    T replaceRoot(Node<T>* newRoot) {
+        T element = this->root->element;
+        Node<T>* formerRoot = this->root;
+        this->setRoot(newRoot);
+        delete formerRoot;
+        return element;
+    }
+    void setCollectionState(CollectionState<T>* collectionState) {
+        this->collectionState = collectionState;
+    }
 };
-
 
 #endif //UABC_COLLECTION_H

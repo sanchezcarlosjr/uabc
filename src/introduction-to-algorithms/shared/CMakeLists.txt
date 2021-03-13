@@ -7,5 +7,5 @@ set (CMAKE_CXX_FLAGS "-D_GLIBCXX_USE_CXX17_ABI=0")
 find_package(GTest REQUIRED)
 include_directories(${GTEST_INCLUDE_DIRS})
 
-add_executable(helloworld DataStructure/List/ListTest.cpp DataStructure/List/List.cpp)
+add_executable(helloworld DataStructure/Stack/StackTests.cpp DataStructure/Stack/Stack.cpp)
 target_link_libraries(helloworld ${GTEST_LIBRARIES} pthread)

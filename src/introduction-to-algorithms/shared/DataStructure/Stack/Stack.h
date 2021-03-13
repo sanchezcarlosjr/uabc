@@ -1,19 +1,16 @@
 //
 // Created by cest on 20/02/21.
 //
-#include "Node.h"
 #include "../Collection.h"
 #include <string>
 #include <vector>
+#include <iostream>
 using namespace std;
 #ifndef UABC_STACK_H
 #define UABC_STACK_H
 
 template<class T>
 class Stack: public Collection<T> {
-private:
-    T nullValue;
-    Node<T>* top = nullptr;
 public:
     Stack() {}
     Stack(string x) {

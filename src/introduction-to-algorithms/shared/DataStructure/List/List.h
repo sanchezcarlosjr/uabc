@@ -3,7 +3,6 @@
 //
 
 #include "../Collection.h"
-
 #ifndef UABC_LIST_H
 #define UABC_LIST_H
 
@@ -12,6 +11,5 @@ class List: public Collection<T> {
 public:
     void push(T);
 };
-
 
 #endif //UABC_LIST_H
