@@ -3,8 +3,9 @@
 //
 
 #include <iostream>
-#include "Person.h"
+#include "Persons.h"
 #include <map>
+#include <vector>
 #include "Ticket.h"
 #include <stdlib.h>
 using namespace std;
@@ -15,6 +16,7 @@ using namespace std;
 class TicketManager {
 private:
     map <int,Ticket*> database;
+    Persons persons;
     void showAll();
     int ask();
 public:

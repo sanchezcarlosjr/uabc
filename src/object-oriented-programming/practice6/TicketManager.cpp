@@ -16,7 +16,7 @@ void TicketManager::start() {
         this->showAll();
         int id = this->ask();
         if (this->contains(id)) {
-            cout << this->database[id]->sell() << "\n";
+            cout << this->database[id]->sell(&persons) << "\n";
         } else {
             cout << id << " doesn't exist. "<< "\n";
         }

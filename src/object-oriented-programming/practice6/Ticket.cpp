@@ -19,11 +19,11 @@ string Ticket::toString() {
     return s.str();
 }
 
-string Ticket::sell() {
+string Ticket::sell(Persons* persons) {
     if (this->sold) {
         return "UNAVAILABLE TICKET!";
     }
-    this->person = Person::create();
+    this->person = persons->create();
     Ticket::amountOfSoldTickets++;
     Ticket::amountOfAvailableTickets--;
     this->sold = true;

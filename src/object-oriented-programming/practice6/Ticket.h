@@ -5,6 +5,7 @@
 #include <string>
 #include <sstream>
 #include "Person.h"
+#include "Persons.h"
 #include "Math/Random.h"
 using namespace std;
 
@@ -21,7 +22,7 @@ private:
 public:
     Ticket();
     ~Ticket();
-    string sell();
+    string sell(Persons* persons);
     string toString();
     int getId();
     int static getAmountOfAvailableTickets();
