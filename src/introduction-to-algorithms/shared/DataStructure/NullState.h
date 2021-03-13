@@ -7,14 +7,13 @@
 
 #include "CollectionState.h"
 #include "Node.h"
-#include "NonNullState.h"
 
 template <class T>
 class NullState: public CollectionState<T> {
 public:
     void setNext(Collection<T>* collection, Node<T>* root) {
         collection->setRoot(root);
-        collection->setCollectionState(new NonNullState<T>(root));
+        collection->toNonNullState();
     }
 };
 

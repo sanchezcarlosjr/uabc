@@ -11,6 +11,7 @@ class Node {
 public:
     T element;
     Node<T>* next = nullptr;
+    Node<T>* previous = nullptr;
     Node(T element) {
         this->element = element;
     }

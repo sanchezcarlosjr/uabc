@@ -21,7 +21,7 @@ private:
     CollectionState<T>* collectionState;
 protected:
     Collection() {
-        collectionState = new NullState<T>();
+        this->collectionState = new NullState<T>();
     }
     void increase() {
         this->length++;
@@ -55,6 +55,10 @@ public:
     void setCollectionState(CollectionState<T>* collectionState) {
         this->collectionState = collectionState;
     }
+    void toNonNullState() {
+        this->setCollectionState(this->instanceNonNullState());
+    }
+    virtual CollectionState<T>* instanceNonNullState() = 0;
 };
 
 #endif //UABC_COLLECTION_H

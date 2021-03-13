@@ -13,8 +13,6 @@ template<class T>
 class Queue: public Collection<T> {
 private:
     QueueNode<T>* tail = nullptr;
-    QueueNode<T>* head = nullptr;
-    void createHead();
 public:
     void enqueue(T element);
     T dequeue();

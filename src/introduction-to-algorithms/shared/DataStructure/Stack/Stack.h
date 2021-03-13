@@ -3,6 +3,7 @@
 //
 #include "../Collection.h"
 #include "../../Math/Random.h"
+#include "StackNonNullState.h"
 #include <string>
 #include <vector>
 using namespace std;
@@ -12,7 +13,8 @@ using namespace std;
 template<class T>
 class Stack: public Collection<T> {
 public:
-    Stack() {}
+    Stack() {
+    }
     Stack(string x) {
         int middle = x.length()/2;
         for (int i=middle; i<x.length(); i++) {
@@ -27,6 +29,9 @@ public:
     void push(T element);
     void forEach(function<void(T element, int index)> callback);
     T peek();
+    CollectionState<T>* instanceNonNullState() {
+        return new StackNonNullState<T>(this->root);
+    }
     T pop();
     static Stack* Factory(int size) {
         Stack<T>* stack = new Stack<T>();
