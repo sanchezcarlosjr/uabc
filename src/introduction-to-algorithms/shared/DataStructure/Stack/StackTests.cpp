@@ -67,6 +67,11 @@ TEST(StackTest, itShouldBeAPalindrome){
     EXPECT_TRUE(isPalindrome("solos"));
 }
 
+TEST(StackTest, itShouldCreateAnStackFactory) {
+    Stack<int>* stack = Stack<int>::Factory(10);
+    EXPECT_TRUE(!stack->isEmpty());
+}
+
 int main(int argc, char **argv) {
     testing::InitGoogleTest(&argc, argv);
     return RUN_ALL_TESTS();

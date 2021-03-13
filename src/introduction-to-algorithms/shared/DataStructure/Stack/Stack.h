@@ -2,9 +2,9 @@
 // Created by cest on 20/02/21.
 //
 #include "../Collection.h"
+#include "../../Math/Random.h"
 #include <string>
 #include <vector>
-#include <iostream>
 using namespace std;
 #ifndef UABC_STACK_H
 #define UABC_STACK_H
@@ -28,6 +28,13 @@ public:
     void forEach(function<void(T element, int index)> callback);
     T peek();
     T pop();
+    static Stack* Factory(int size) {
+        Stack<T>* stack = new Stack<T>();
+        for (int i = 0; i < size; i++) {
+            stack->push(Random::generateNumberBetween(10,100));
+        }
+        return stack;
+    }
 };
 
 #endif //UABC_STACK_H
