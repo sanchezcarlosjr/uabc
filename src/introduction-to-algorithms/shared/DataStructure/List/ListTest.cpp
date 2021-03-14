@@ -27,21 +27,6 @@ isEmpty()
 );
 }
 
-TEST(ListTest, itShouldMapList
-) {
-List<int> *list = List<int>::Factory(10);
-list->map([](
-int element,
-int index
-) {
-return element * 2;
-})->forEach([](
-int element,
-int index
-) {
-cout << element << "\n";
-});
-}
 
 
 int main(int argc, char **argv) {
