@@ -5,7 +5,6 @@
 #include "CollectionState.h"
 #include "NullState.h"
 #include "Iterator.h"
-#include <iostream>
 using namespace std;
 
 #ifndef UABC_COLLECTION_H
@@ -64,16 +63,23 @@ public:
             this->root = root;
         }
     }
-    T replaceRoot(K* newRoot) {
+
+    T replaceRoot(K *newRoot) {
         T element = this->root->element;
-        K* formerRoot = this->root;
+        K *formerRoot = this->root;
         this->setRoot(newRoot);
         delete formerRoot;
         return element;
     }
-    void setCollectionState(CollectionState<T, K>* collectionState) {
+
+    K *getRoot() {
+        return this->root;
+    }
+
+    void setCollectionState(CollectionState<T, K> *collectionState) {
         this->collectionState = collectionState;
     }
+
     void toNonNullState() {
         this->setCollectionState(this->instanceNonNullState());
     }

@@ -19,8 +19,6 @@ public:
 
     T dequeue();
 
-    void forEach(function<void(T element, int index)> callback);
-
     CollectionState<T, QueueNode<T>> *instanceNonNullState();
 
     Iterator<T> *createIterator();

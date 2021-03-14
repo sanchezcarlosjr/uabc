@@ -9,6 +9,7 @@
 #include "Queue/Queue.cpp"
 #include "Stack/Stack.h"
 #include "Stack/Stack.cpp"
-
+#include "List/List.h"
+#include "List/List.cpp"
 
 #endif //UABC_DATASTRUCTURE_H
