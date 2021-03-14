@@ -27,23 +27,31 @@ protected:
     void increase() {
         this->length++;
     }
+
     void decrease() {
         this->length--;
     }
+
     void ensureIsEmpty() {
         if (this->isEmpty()) {
             throw "This structure is empty";
         }
     }
+
+    virtual CollectionState<T, K> *instanceNonNullState() = 0;
+
 public:
     void forEach(function<void(T element, int index)> callback);
+
     bool isEmpty() {
         return this->length == 0;
     }
+
     int size() {
         return this->length;
     }
-    void setRoot(K* root) {
+
+    void setRoot(K *root) {
         if (root != nullptr) {
             this->root = root;
         }
@@ -61,7 +69,6 @@ public:
     void toNonNullState() {
         this->setCollectionState(this->instanceNonNullState());
     }
-    virtual CollectionState<T,K>* instanceNonNullState() = 0;
 };
 
 #endif //UABC_COLLECTION_H
