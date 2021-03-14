@@ -15,7 +15,7 @@ void Queue<T>::forEach(function<void(T, int)> callback) {
 
 template <class T>
 void Queue<T>::enqueue(T element) {
-    this->setNext(new QueueNode<T>(element));
+    this->setNext(nullptr);
     this->increase();
 }
 
@@ -26,7 +26,7 @@ T Queue<T>::dequeue() {
     return this->replaceRoot(nullptr);
 }
 
-template <class T>
-CollectionState<T, QueueNonNullState<T>>* Queue<T>::instanceNonNullState()  {
+template<class T>
+CollectionState<T, QueueNode<T>> *Queue<T>::instanceNonNullState() {
     return new QueueNonNullState<T>(this->root);
 }

@@ -7,7 +7,12 @@
 template<class T>
 class QueueNode {
 public:
-    QueueNode(){}
+    T element;
+    QueueNode<T> *next = nullptr;
+
+    QueueNode(T element) {
+        this->element = element;
+    }
 };
 
 #endif //UABC_QUEUE_NODE_H

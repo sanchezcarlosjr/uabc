@@ -4,7 +4,6 @@
 
 #ifndef UABC_NODE_H
 #define UABC_NODE_H
-#include <iostream>
 
 template <class T>
 class StackNode {

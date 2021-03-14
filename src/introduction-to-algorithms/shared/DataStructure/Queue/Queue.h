@@ -12,14 +12,17 @@ using namespace std;
 #define UABC_QUEUE_H
 
 template<class T>
-class Queue: public Collection<T, QueueNonNullState<T>> {
+class Queue : public Collection<T, QueueNode<T>> {
 private:
-    QueueNode<T>* tail = nullptr;
+    QueueNode<T> *tail = nullptr;
 public:
     void enqueue(T element);
+
     T dequeue();
+
     void forEach(function<void(T element, int index)> callback);
-    CollectionState<T, QueueNonNullState<T>>* instanceNonNullState();
+
+    CollectionState<T, QueueNode<T>> *instanceNonNullState();
 };
 
 

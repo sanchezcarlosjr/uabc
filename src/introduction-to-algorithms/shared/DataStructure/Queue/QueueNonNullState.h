@@ -1,22 +1,21 @@
 //
 // Created by cest on 13/03/21.
 //
-#include "../Stack/StackNode.h"
 #include "../CollectionState.h"
-#include <iostream>
-using namespace std;
+#include "QueueNode.h"
 #ifndef UABC_QUEUENONNULLSTATE_H
 #define UABC_QUEUENONNULLSTATE_H
 
 template <class T>
-class QueueNonNullState: public CollectionState<T, QueueNonNullState<T>> {
+class QueueNonNullState : public CollectionState<T, QueueNode<T>> {
 private:
-    QueueNonNullState<T>* actual;
+    QueueNode<T> *actual;
 public:
-    QueueNonNullState(QueueNonNullState<T>* root) {
+    QueueNonNullState(QueueNode<T> *root) {
         this->actual = root;
     }
-    void setNext(Collection<T, QueueNonNullState<T>>* collection, QueueNonNullState<T>* next) {
+
+    void setNext(Collection<T, QueueNode<T>> *collection, QueueNode<T> *next) {
         this->actual = next;
     }
 };
