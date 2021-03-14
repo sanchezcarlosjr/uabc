@@ -15,8 +15,9 @@ public:
         this->actual = root;
     }
 
-    void setNext(Collection<T, QueueNode<T>> *collection, QueueNode<T> *next) {
-        this->actual = next;
+    void setNext(Collection<T, QueueNode<T>> *collection, QueueNode<T> *newNode) {
+        newNode->setNext(this->actual);
+        this->actual = newNode;
     }
 };
 

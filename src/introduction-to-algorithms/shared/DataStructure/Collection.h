@@ -4,6 +4,7 @@
 #include <functional>
 #include "CollectionState.h"
 #include "NullState.h"
+#include <iostream>
 using namespace std;
 
 #ifndef UABC_COLLECTION_H
@@ -43,7 +44,9 @@ public:
         return this->length;
     }
     void setRoot(K* root) {
-        this->root = root;
+        if (root != nullptr) {
+            this->root = root;
+        }
     }
     T replaceRoot(K* newRoot) {
         T element = this->root->element;

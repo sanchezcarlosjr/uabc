@@ -8,10 +8,16 @@ template<class T>
 class QueueNode {
 public:
     T element;
-    QueueNode<T> *next = nullptr;
+    QueueNode *next;
+    QueueNode *previous;
 
-    QueueNode(T element) {
-        this->element = element;
+    QueueNode(T data) {
+        this->element = data;
+    }
+
+    void setNext(QueueNode<T> *next) {
+        this->next = next;
+        this->next->previous = this;
     }
 };
 
