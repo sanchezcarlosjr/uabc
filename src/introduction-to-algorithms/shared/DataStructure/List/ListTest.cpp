@@ -4,7 +4,7 @@
 
 using namespace std;
 
-TEST(SUTTest, itShouldBeEmpty
+TEST(ListTest, itShouldBeEmpty
 ) {
 List<int> list;
 ASSERT_TRUE(list
@@ -15,7 +15,7 @@ isEmpty()
 );
 }
 
-TEST(SUTTest, itShouldNotBeEmpty
+TEST(ListTest, itShouldNotBeEmpty
 ) {
 List<int> list;
 list.push(1);
@@ -27,26 +27,19 @@ isEmpty()
 );
 }
 
-TEST(SUTTest, itShouldForEachList
+TEST(ListTest, itShouldMapList
 ) {
 List<int> *list = List<int>::Factory(10);
-ASSERT_TRUE(!list->
-
-isEmpty()
-
-);
-ASSERT_EQ(list
-->
-
-size(),
-
-10);
-list->forEach([](
+list->map([](
 int element,
 int index
 ) {
-ASSERT_GE(element,
-10);
+return element * 2;
+})->forEach([](
+int element,
+int index
+) {
+cout << element << "\n";
 });
 }
 

@@ -3,7 +3,7 @@
 //
 
 #include "../Iterator.h"
-
+#include "QueueNode.h"
 template<class T>
 class Queue;
 
@@ -14,7 +14,7 @@ template<class T>
 class QueueIterator : public Iterator<T> {
 private:
     Queue<T> *queue;
-    T actual;
+    QueueNode<T> *node;
 
 public:
     QueueIterator(Queue<T> *queue) {
@@ -22,10 +22,11 @@ public:
     }
 
     void first() {
+        this->node = this->queue->getRoot();
     };
 
     bool isDone() {
-        return this->queue->isEmpty();
+        return this->node == nullptr;
     };
 
     T current() {
@@ -33,7 +34,7 @@ public:
     };
 
     void next() {
-        this->actual = this->queue->dequeue();
+        this->node = this->node->previous;
     };
 };
 

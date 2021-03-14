@@ -20,7 +20,6 @@ private:
 public:
     ListIterator(List<T> *list) {
         this->list = list;
-        this->first();
     }
 
     void first() {
