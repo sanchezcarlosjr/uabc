@@ -6,12 +6,11 @@
 #define UABC_NULLSTATE_H
 
 #include "CollectionState.h"
-#include "Node.h"
 
-template <class T>
-class NullState: public CollectionState<T> {
+template <class T, class K>
+class NullState: public CollectionState<T, K> {
 public:
-    void setNext(Collection<T>* collection, Node<T>* root) {
+    void setNext(Collection<T,K>* collection, K* root) {
         collection->setRoot(root);
         collection->toNonNullState();
     }

@@ -9,19 +9,19 @@ using namespace std;
 #ifndef UABC_COLLECTION_H
 #define UABC_COLLECTION_H
 
-template<class T>
+template<class T, class K>
 class Collection {
 protected:
-    Node<T>* root = nullptr;
-    void setNext(Node<T>* node) {
+    K* root = nullptr;
+    void setNext(K* node) {
         this->collectionState->setNext(this, node);
     }
 private:
     int length = 0;
-    CollectionState<T>* collectionState;
+    CollectionState<T,K>* collectionState;
 protected:
     Collection() {
-        this->collectionState = new NullState<T>();
+        this->collectionState = new NullState<T,K>();
     }
     void increase() {
         this->length++;
@@ -42,23 +42,23 @@ public:
     int size() {
         return this->length;
     }
-    void setRoot(Node<T>* root) {
+    void setRoot(K* root) {
         this->root = root;
     }
-    T replaceRoot(Node<T>* newRoot) {
+    T replaceRoot(K* newRoot) {
         T element = this->root->element;
-        Node<T>* formerRoot = this->root;
+        K* formerRoot = this->root;
         this->setRoot(newRoot);
         delete formerRoot;
         return element;
     }
-    void setCollectionState(CollectionState<T>* collectionState) {
+    void setCollectionState(CollectionState<T, K>* collectionState) {
         this->collectionState = collectionState;
     }
     void toNonNullState() {
         this->setCollectionState(this->instanceNonNullState());
     }
-    virtual CollectionState<T>* instanceNonNullState() = 0;
+    virtual CollectionState<T,K>* instanceNonNullState() = 0;
 };
 
 #endif //UABC_COLLECTION_H

@@ -7,12 +7,11 @@
 #include <iostream>
 
 template <class T>
-class Node {
+class StackNode {
 public:
     T element;
-    Node<T>* next = nullptr;
-    Node<T>* previous = nullptr;
-    Node(T element) {
+    StackNode<T>* next = nullptr;
+    StackNode(T element) {
         this->element = element;
     }
 };

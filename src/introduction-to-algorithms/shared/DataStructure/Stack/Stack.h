@@ -11,7 +11,7 @@ using namespace std;
 #define UABC_STACK_H
 
 template<class T>
-class Stack: public Collection<T> {
+class Stack: public Collection<T, StackNode<T>> {
 public:
     Stack() {
     }
@@ -29,7 +29,7 @@ public:
     void push(T element);
     void forEach(function<void(T element, int index)> callback);
     T peek();
-    CollectionState<T>* instanceNonNullState() {
+    CollectionState<T, StackNode<T>>* instanceNonNullState() {
         return new StackNonNullState<T>(this->root);
     }
     T pop();

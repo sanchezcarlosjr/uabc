@@ -1,20 +1,20 @@
 //
 // Created by cest on 13/03/21.
 //
-#include "../Node.h"
+#include "StackNode.h"
 #include "../CollectionState.h"
 #ifndef UABC_STACKNONNULLSTATE_H
 #define UABC_STACKNONNULLSTATE_H
 
 template <class T>
-class StackNonNullState: public CollectionState<T> {
+class StackNonNullState: public CollectionState<T, StackNode<T>> {
 private:
-    Node<T>* actual;
+    StackNode<T>* actual;
 public:
-    StackNonNullState(Node<T>* root) {
+    StackNonNullState(StackNode<T>* root) {
         this->actual = root;
     }
-    void setNext(Collection<T>* collection, Node<T>* node) {
+    void setNext(Collection<T,StackNode<T>>* collection, StackNode<T>* node) {
         node->next = this->actual;
         this->actual = node;
         collection->setRoot(node);

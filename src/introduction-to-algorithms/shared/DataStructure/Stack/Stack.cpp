@@ -15,7 +15,7 @@ void Stack<T>::forEach(function<void(T, int)> callback) {
 
 template <class T>
 void Stack<T>::push(T element) {
-    this->setNext(new Node<T>(element));
+    this->setNext(new StackNode<T>(element));
     this->increase();
 }
 
