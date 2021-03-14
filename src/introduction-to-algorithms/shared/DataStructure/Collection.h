@@ -4,6 +4,7 @@
 #include <functional>
 #include "CollectionState.h"
 #include "NullState.h"
+#include "Iterator.h"
 #include <iostream>
 using namespace std;
 
@@ -41,7 +42,14 @@ protected:
     virtual CollectionState<T, K> *instanceNonNullState() = 0;
 
 public:
-    void forEach(function<void(T element, int index)> callback);
+    void forEach(function<void(T element, int index)> callback) {
+        Iterator<T> *it = this.createIterator();
+        int i = 1;
+        for (it->first(); !it->isDone(); it->next()) {
+            callback(*it->current(), i);
+            i++;
+        }
+    }
 
     bool isEmpty() {
         return this->length == 0;
@@ -69,6 +77,8 @@ public:
     void toNonNullState() {
         this->setCollectionState(this->instanceNonNullState());
     }
+
+    virtual Iterator<T> *createIterator() = 0;
 };
 
 #endif //UABC_COLLECTION_H

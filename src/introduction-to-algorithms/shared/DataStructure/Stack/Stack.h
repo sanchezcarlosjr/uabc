@@ -4,6 +4,7 @@
 #include "../Collection.h"
 #include "../../Math/Random.h"
 #include "StackNonNullState.h"
+#include "StackIterator.h"
 #include <string>
 #include <vector>
 using namespace std;
@@ -11,35 +12,27 @@ using namespace std;
 #define UABC_STACK_H
 
 template<class T>
-class Stack: public Collection<T, StackNode<T>> {
+class Stack : public Collection<T, StackNode<T>> {
 public:
-    Stack() {
-    }
-    Stack(string x) {
-        int middle = x.length()/2;
-        for (int i=middle; i<x.length(); i++) {
-            this->push(x[i]);
-        }
-    }
-    Stack(initializer_list<int> list) {
-        for (auto i = list.begin(); i != list.end(); i++) {
-            this->push(*i);
-        }
-    }
+    Stack();
+
+    Stack(string x);
+
+    Stack(initializer_list<int> list);
+
     void push(T element);
+
     void forEach(function<void(T element, int index)> callback);
+
     T peek();
-    CollectionState<T, StackNode<T>>* instanceNonNullState() {
-        return new StackNonNullState<T>(this->root);
-    }
+
+    CollectionState<T, StackNode<T>> *instanceNonNullState();
+
     T pop();
-    static Stack* Factory(int size) {
-        Stack<T>* stack = new Stack<T>();
-        for (int i = 0; i < size; i++) {
-            stack->push(Random::generateNumberBetween(10,100));
-        }
-        return stack;
-    }
+
+    Iterator<T> *createIterator();
+
+    static Stack *Factory(int size);
 };
 
 #endif //UABC_STACK_H
