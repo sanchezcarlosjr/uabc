@@ -43,10 +43,10 @@ protected:
 
 public:
     void forEach(function<void(T element, int index)> callback) {
-        Iterator<T> *it = this.createIterator();
+        Iterator<T> *it = this->createIterator();
         int i = 1;
         for (it->first(); !it->isDone(); it->next()) {
-            callback(*it->current(), i);
+            callback(it->current(), i);
             i++;
         }
     }

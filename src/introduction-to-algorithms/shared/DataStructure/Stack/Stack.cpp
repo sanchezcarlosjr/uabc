@@ -23,14 +23,6 @@ Stack<T>::Stack(initializer_list<int> list) {
     }
 }
 
-template<class T>
-void Stack<T>::forEach(function<void(T, int)> callback) {
-    int index = 0;
-    while (!this->isEmpty()) {
-        callback(this->pop(), index);
-        index++;
-    }
-}
 
 template<class T>
 void Stack<T>::push(T element) {
@@ -60,7 +52,7 @@ CollectionState<T, StackNode<T>> *Stack<T>::instanceNonNullState() {
 
 template<class T>
 Iterator<T> *Stack<T>::createIterator() {
-    return new StackIterator<T>();
+    return new StackIterator<T>(this);
 }
 
 template<class T>

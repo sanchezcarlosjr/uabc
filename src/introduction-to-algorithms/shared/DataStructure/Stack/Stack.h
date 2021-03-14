@@ -13,6 +13,7 @@ using namespace std;
 
 template<class T>
 class Stack : public Collection<T, StackNode<T>> {
+    friend class StackIterator<T>;
 public:
     Stack();
 
@@ -22,7 +23,6 @@ public:
 
     void push(T element);
 
-    void forEach(function<void(T element, int index)> callback);
 
     T peek();
 

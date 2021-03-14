@@ -61,15 +61,41 @@ bool isPalindrome(string x) {
 TEST(StackTest, itShouldBeAPalindrome){
     EXPECT_TRUE(isPalindrome("ANA"));
     EXPECT_FALSE(isPalindrome("An"));
-    EXPECT_TRUE(isPalindrome("ana"));
-    EXPECT_TRUE(isPalindrome("Ana"));
-    EXPECT_TRUE(isPalindrome("oso"));
-    EXPECT_TRUE(isPalindrome("solos"));
+EXPECT_TRUE(isPalindrome("ana")
+);
+EXPECT_TRUE(isPalindrome("Ana")
+);
+EXPECT_TRUE(isPalindrome("oso")
+);
+EXPECT_TRUE(isPalindrome("solos")
+);
 }
 
-TEST(StackTest, itShouldCreateAnStackFactory) {
-    Stack<int>* stack = Stack<int>::Factory(10);
-    EXPECT_TRUE(!stack->isEmpty());
+TEST(StackTest, itShouldCreateAnStackFactory
+) {
+Stack<int> *stack = Stack<int>::Factory(10);
+EXPECT_TRUE(!stack->
+
+isEmpty()
+
+);
+}
+
+TEST(StackTest, itShouldForEach
+) {
+Stack<int> *stack = Stack<int>::Factory(10);
+stack->forEach([](
+int element,
+int index
+) {
+EXPECT_GE(element,
+10);
+});
+EXPECT_TRUE(!stack->
+
+isEmpty()
+
+);
 }
 
 int main(int argc, char **argv) {
