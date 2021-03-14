@@ -4,9 +4,8 @@
 #include "../Collection.h"
 #include "QueueNode.h"
 #include "QueueNonNullState.h"
+#include "QueueIterator.h"
 #include <functional>
-#include <iostream>
-using namespace std;
 
 #ifndef UABC_QUEUE_H
 #define UABC_QUEUE_H
@@ -23,6 +22,8 @@ public:
     void forEach(function<void(T element, int index)> callback);
 
     CollectionState<T, QueueNode<T>> *instanceNonNullState();
+
+    Iterator<T> *createIterator();
 };
 
 

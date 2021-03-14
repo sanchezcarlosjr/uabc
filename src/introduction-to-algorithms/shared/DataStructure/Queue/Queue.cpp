@@ -30,3 +30,8 @@ template<class T>
 CollectionState<T, QueueNode<T>> *Queue<T>::instanceNonNullState() {
     return new QueueNonNullState<T>(this->root);
 }
+
+template<class T>
+Iterator<T> *Queue<T>::createIterator() {
+    return new QueueIterator<T>(this);
+}
