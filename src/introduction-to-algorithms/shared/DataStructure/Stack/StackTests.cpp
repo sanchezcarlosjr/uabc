@@ -55,12 +55,15 @@ bool isPalindrome(string x) {
               return false;
           }
       }
-      return true;
+    return true;
 }
 
-TEST(StackTest, itShouldBeAPalindrome){
-    EXPECT_TRUE(isPalindrome("ANA"));
-    EXPECT_FALSE(isPalindrome("An"));
+TEST(StackTest, itShouldBeAPalindrome
+){
+EXPECT_TRUE(isPalindrome("ANA")
+);
+EXPECT_FALSE(isPalindrome("An")
+);
 EXPECT_TRUE(isPalindrome("ana")
 );
 EXPECT_TRUE(isPalindrome("Ana")
@@ -91,11 +94,6 @@ int index
 EXPECT_GE(element,
 10);
 });
-EXPECT_TRUE(!stack->
-
-isEmpty()
-
-);
 }
 
 int main(int argc, char **argv) {

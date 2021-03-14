@@ -3,7 +3,6 @@
 //
 #include "../Iterator.h"
 #include "StackNode.h"
-
 template<class T>
 class Stack;
 
