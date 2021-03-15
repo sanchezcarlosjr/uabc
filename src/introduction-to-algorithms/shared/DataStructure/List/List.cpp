@@ -5,6 +5,13 @@
 #include "List.h"
 
 template<class T>
+List<T>::List(initializer_list <T> list) {
+    for (int element : list) {
+        this->push(element);
+    }
+}
+
+template<class T>
 void List<T>::push(T element) {
     this->setNext(new ListNode<T>(element));
     this->increase();
@@ -39,10 +46,15 @@ List<T> *List<T>::Factory(int size) {
 }
 
 template<class T>
-List<T> *Factory(function<bool()> isTrue, function<T()> creator) {
+List<T> *List<T>::Factory(function<bool(T value)> isTrue, function<T()> creator) {
     List<T> *list = new List<T>();
+    T value;
     do {
-        list->push(creator());
-    } while (isTrue());
+        value = creator();
+        if (!isTrue(value)) {
+            return list;
+        }
+        list->push(value);
+    } while (isTrue(value));
     return list;
 }

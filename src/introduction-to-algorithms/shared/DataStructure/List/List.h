@@ -17,6 +17,11 @@ using namespace std;
 template<class T>
 class List : public Collection<T, ListNode<T>> {
 public:
+    List() {}
+
+    List(initializer_list <T> list);
+
+
     void push(T);
 
     CollectionState<T, ListNode<T>> *instanceNonNullState();
@@ -27,7 +32,7 @@ public:
 
     static List<T> *Factory(int size);
 
-    static List<T> *Factory(function<bool()> isTrue, function<T()> creator);
+    static List<T> *Factory(function<bool(T value)>, function<T()>);
 };
 
 #endif //UABC_LIST_H

@@ -15,7 +15,7 @@ isEmpty()
 );
 }
 
-TEST(ListTest, itShouldNotBeEmpty
+TEST(ListTest, itShouldNotBeEmptyWhenItPush
 ) {
 List<int> list;
 list.push(1);
@@ -27,7 +27,24 @@ isEmpty()
 );
 }
 
+TEST(ListTest, itShouldBuildWhenListPassByParameter
+) {
+int array[] = {1, 2, 3, 4, 5};
+List<int> list({1, 2, 3, 4, 5});
+ASSERT_FALSE(list
+.
 
+isEmpty()
+
+);
+list.forEach([array](
+int element,
+int index
+){
+ASSERT_EQ(array[index - 1], element
+);
+});
+}
 
 int main(int argc, char **argv) {
     testing::InitGoogleTest(&argc, argv);

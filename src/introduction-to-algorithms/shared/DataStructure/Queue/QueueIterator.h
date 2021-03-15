@@ -30,7 +30,7 @@ public:
     };
 
     T current() {
-        return this->actual;
+        return this->node->element;
     };
 
     void next() {
