@@ -1,12 +1,20 @@
+//
+// Created by cest on 17/03/21.
+//
 #include <iostream>
 #include <functional>
+
 using namespace std;
+
+#ifndef UABC_SYSTEM_H
+#define UABC_SYSTEM_H
 
 template<class T>
 T print(string tag) {
     T var;
     cout << tag;
-,    return var;
+    cin >> var;
+    return var;
 }
 
 template<class T>
@@ -18,8 +26,10 @@ T print(string tag, string error, function<bool(T value)> isValidInput) {
             cout << error << endl;
         }
         cout << tag;
-        cin>>var;
+        cin >> var;
         reps++;
-    }while(isValidInput(var));
+    } while (isValidInput(var));
     return var;
 }
+
+#endif //UABC_SYSTEM_H
