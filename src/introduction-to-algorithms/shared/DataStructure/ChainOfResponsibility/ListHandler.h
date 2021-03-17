@@ -2,6 +2,8 @@
 // Created by cest on 04/03/21.
 //
 #include "../Collection.h"
+#include "ListHandlerIterator.h"
+#include "ListHandlerNonNullState.h"
 #include "Handler.h"
 #include <vector>
 
@@ -9,7 +11,7 @@
 #define UABC_LISTHANDLER_H
 
 template <class T, class K>
-class ListHandler: public Collection<Handler<T, K>*> {
+class ListHandler: public Collection<Handler<T, K>*, Handler<T, K>*> {
 private:
     Handler<T, K>* head = nullptr;
     Handler<T, K>* actual = nullptr;
@@ -38,6 +40,14 @@ public:
         this->actual = element;
         this->createHead();
         this->increase();
+    }
+
+    CollectionState<Handler<T, K>*, Handler<T, K>*> *instanceNonNullState() {
+        return new ListHandlerNonNullState<T,K>(this->getRoot());
+    }
+
+    Iterator<T> *createIterator() {
+        return new ListHandlerIterator<T,K>();
     }
 
     void push(vector<Handler<T,K>*> handlers) {
