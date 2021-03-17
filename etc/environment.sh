@@ -57,6 +57,12 @@ debug() {
   fi
 }
 
+createEnvironment() {
+  mkdir images/tech
+  mkdir compiler/tech
+  sudo docker build . -t tech
+}
+
 compile() {
   workspace=$HOME/Workspace/uabc/src;
   cp "$HOME"/Workspace/uabc/etc/docker/compiler/"$2"/Dockerfile $workspace;
