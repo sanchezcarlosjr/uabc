@@ -6,8 +6,7 @@ template<class T>
 T print(string tag) {
     T var;
     cout << tag;
-    cin>>var;
-    return var;
+,    return var;
 }
 
 template<class T>

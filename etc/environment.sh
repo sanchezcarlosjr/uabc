@@ -58,19 +58,21 @@ debug() {
 }
 
 compile() {
-  workspace=$HOME/Workspace/uabc/src/$1/;
-  name=$(ls -lt "$workspace" | grep "^d" | awk  '{print $9}' | fzf);
+  workspace=$HOME/Workspace/uabc/src;
+  cp "$HOME"/Workspace/uabc/etc/docker/compiler/"$2"/Dockerfile $workspace;
+  name=$(ls -lt "$workspace" | grep "^d" | grep "$1" | awk  '{print $9}' | fzf);
   project="$workspace/$name";
   cd "$workspace";
+  "$HOME"/Workspace/uabc/etc/compiler.sh "$name"
   when-changed -1 -r "$project" -c "$HOME/Workspace/uabc/etc/compiler.sh $name";
 }
 
 algorithm_prod() {
-  compile introduction-to-algorithms;
+  compile datastructure cpp;
 }
 
 oop_test() {
-  compile object-oriented-programming;
+  compile oop cpp;
 }
 
 params() {
@@ -82,9 +84,11 @@ params() {
     case "${param}" in
     -ap | --algorithm_prod)
       algorithm_prod
+      exit 0
       ;;
     -o | --oop_test)
       oop_test
+      exit 0
       ;;
     -h | --help)
       usage
@@ -100,6 +104,7 @@ params() {
 }
 
 main() {
+  info "Loading..."
   params "$@"
 }
 
