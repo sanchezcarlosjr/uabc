@@ -15,10 +15,9 @@ usage() {
         SYNOPSIS
             $0 [-a|--alpha] [-b=val|--beta=val]
         DESCRIPTION
-           Environment cpp
+           UABC Environment. Please don't use sudo!
         OPTIONS
-            -t     --test     tests.
-            -p     --production compile for production.
+            -ap Datastructures environment
             -h     --help     Displays this usage message.
         RETURN CODES
             1 If error 1 occurs.
@@ -70,6 +69,7 @@ compile() {
   project="$workspace/$name";
   compiler="$(pwd)"/etc/compiler.sh
   cd "$workspace";
+  $compiler "$name"
   when-changed -1 -r "$project" -c "$compiler $name";
 }
 
