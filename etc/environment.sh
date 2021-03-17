@@ -64,13 +64,13 @@ createEnvironment() {
 }
 
 compile() {
-  workspace=$HOME/Workspace/uabc/src;
-  cp "$HOME"/Workspace/uabc/etc/docker/compiler/"$2"/Dockerfile $workspace;
+  workspace="$(pwd)/src";
+  cp "$(pwd)"/etc/docker/compiler/"$2"/Dockerfile "$workspace";
   name=$(ls -lt "$workspace" | grep "^d" | grep "$1" | awk  '{print $9}' | fzf);
   project="$workspace/$name";
+  compiler="$(pwd)"/etc/compiler.sh
   cd "$workspace";
-  "$HOME"/Workspace/uabc/etc/compiler.sh "$name"
-  when-changed -1 -r "$project" -c "$HOME/Workspace/uabc/etc/compiler.sh $name";
+  when-changed -1 -r "$project" -c "$compiler $name";
 }
 
 algorithm_prod() {
@@ -81,6 +81,10 @@ oop_test() {
   compile oop cpp;
 }
 
+shared() {
+  compile shared cpp;
+}
+
 params() {
   if [ $# -eq 0 ]; then
     usage
@@ -88,6 +92,10 @@ params() {
   fi
   for param in "$@"; do
     case "${param}" in
+    -sh | --shared)
+       shared
+       exit 0
+      ;;
     -ap | --algorithm_prod)
       algorithm_prod
       exit 0
