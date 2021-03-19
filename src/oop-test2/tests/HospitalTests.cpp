@@ -1,12 +1,12 @@
 #include <gtest/gtest.h>
 #include "../src/Hospital.h"
 
-TEST(Hospital, itShouldBeEmpty
+TEST(Hospital, itShouldCreateRooms
 ) {
 testing::internal::CaptureStdout();
 
-std::istringstream input("5");
-std::cin.
+istringstream input("5");
+cin.
 rdbuf(input
 .
 
@@ -17,6 +17,12 @@ Hospital hospital;
 string output = testing::internal::GetCapturedStdout();
 ASSERT_EQ(output,
 "How many rooms do you start hospital?");
+ASSERT_EQ(hospital
+.
+
+getSize(),
+
+5);
 }
 
 int main(int argc, char **argv) {

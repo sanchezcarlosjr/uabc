@@ -5,9 +5,13 @@
 #include "Hospital.h"
 
 Hospital::Hospital() {
-    int a = print<int>("How many rooms do you start hospital?");
+    this->size = print<int>("How many rooms do you start hospital?");
 }
 
 void Hospital::simulate() {
 
+}
+
+int Hospital::getSize() {
+    return this->size;
 }

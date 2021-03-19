@@ -8,10 +8,14 @@
 #define UABC_HOSPITAL_H
 
 class Hospital {
+private:
+    int size = 0;
 public:
     Hospital();
 
     void simulate();
+
+    int getSize();
 };
 
 
