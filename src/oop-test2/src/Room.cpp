@@ -5,7 +5,7 @@
 #include "Room.h"
 
 Room::Room() {
-    this->beds = new vector<Patient*>(Random::generateNumberBetween(1, 3));
+    this->beds = new vector<Patient *>(Random::generateNumberBetween(1, 3));
 }
 
 string Room::toString() {
@@ -17,8 +17,10 @@ string Room::toString() {
 
 string Room::getBedsState() {
     string state = "";
-    for (int i = 0; i< this->beds->size(); i++) {
-        state += " Available";
+    for (int i = 0; i < this->beds->size(); i++) {
+        if (this->beds->at(i) == nullptr) {
+            state += " Available";
+        }
     }
     return state;
 }

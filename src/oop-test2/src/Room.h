@@ -5,6 +5,7 @@
 #include <string>
 #include <vector>
 #include <sstream>
+#include <iostream>
 #include "Patient.h"
 #include "../Math/Random.h"
 using namespace std;
