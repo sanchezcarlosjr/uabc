@@ -3,7 +3,8 @@
 //
 
 #include <string>
-
+#include <sstream>
+#include "Math/Random.h"
 using namespace std;
 #ifndef UABC_ROOM_H
 #define UABC_ROOM_H

@@ -1,6 +1,7 @@
 #include <gtest/gtest.h>
 #include "../src/Hospital.h"
 #include "../src/Room.h"
+#include <regex>
 
 Hospital* createHospital(string str="5") {
     Hospital* hospital;
@@ -20,7 +21,7 @@ TEST(Hospital, itShouldCreateRooms) {
 
 TEST(Room, itShouldCreateBeds) {
     Room room;
-    ASSERT_EQ(room.toString(), "1 bed");
+    ASSERT_TRUE(regex_match (room.toString(), regex("[123] bed(s)?") ));
 }
 
 

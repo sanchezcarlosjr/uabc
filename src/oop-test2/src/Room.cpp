@@ -6,5 +6,9 @@
 
 
 string Room::toString() {
-    return "1 bed";
+    int beds = Random::generateNumberBetween(1,3);
+    stringstream message;
+    string bedsOrBed = (beds == 1) ? "bed" : "beds";
+    message << beds << " " <<bedsOrBed;
+    return message.str();
 }
