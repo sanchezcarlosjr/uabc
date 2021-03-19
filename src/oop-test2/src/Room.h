@@ -25,7 +25,7 @@ public:
     string isAvailableBed(int index);
     bool thereIsAvailableBed();
     void storePatient();
-    void outcomePatients();
+    int outcomePatients();
     static int getAvailableBeds();
 };
 

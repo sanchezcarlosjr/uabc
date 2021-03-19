@@ -25,6 +25,9 @@ public:
         patient << this->gender << "-" << this->age << "-" << this->days++;
         return patient.str();
     }
+    bool canExit() {
+        return  Random::generateNumberBetween(1,4) == 1;
+    }
 };
 
 

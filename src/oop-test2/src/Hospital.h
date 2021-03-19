@@ -19,7 +19,7 @@ public:
     void simulate();
     void showDistribution();
     int incomePatients();
-    void outcomePatients();
+    int outcomePatients();
     int getSize();
 };
 

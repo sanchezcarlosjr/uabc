@@ -17,10 +17,16 @@ Hospital::Hospital() {
 
 void Hospital::simulate() {
     int day = 1;
-    int availableBeds = Room::getAvailableBeds();
+    int outcomes = 0;
+    int availableBeds = 0;
+    int patients = 0;;
     cout << "Day\tIncome\t Outcome\tAvailable\n";
-    int patients = this->incomePatients();
-    cout << day << "\t  " << patients << "\t    " << "0" << "\t\t    " << availableBeds << "\n";
+    availableBeds = Room::getAvailableBeds();
+    patients = this->incomePatients();
+    if (day != 1) {
+        outcomes = this->outcomePatients();
+    }
+    cout << day << "\t  " << patients << "\t    " << outcomes << "\t\t    " << availableBeds << "\n";
     this->showDistribution();
     Console::pauseAndClear();
 }
@@ -38,10 +44,12 @@ int Hospital::incomePatients() {
     return patients;
 }
 
-void Hospital::outcomePatients() {
+int Hospital::outcomePatients() {
+    int acc = 0;
     for (auto &room : this->rooms) {
-        room->outcomePatients();
+        acc += room->outcomePatients();
     }
+    return acc;
 }
 
 void Hospital::showDistribution() {

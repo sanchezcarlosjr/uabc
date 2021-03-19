@@ -45,7 +45,19 @@ void Room::storePatient() {
     Room::TotalAvailableBeds--;
 }
 
-void Room::outcomePatients() {}
+int Room::outcomePatients() {
+    if (this->availableBeds == this->beds->size()) {
+        return 0;
+    }
+    int acc = 0;
+    for (int index = 0; index < this->beds->size(); index++) {
+        if (this->beds->at(index) != nullptr && this->beds->at(index)->canExit()) {
+            delete this->beds->at(index);
+            acc++;
+        }
+    }
+    return acc;
+}
 
 
 int Room::getAvailableBeds() {
