@@ -32,7 +32,7 @@ TEST(Hospital, itShouldCreateRooms) {
     ASSERT_EQ(vector[1], "His hospital shows next distribution:\n");
     ASSERT_TRUE(regex_match (vector[2], regex("Room \\[\\d\\].*\n")));
     ASSERT_TRUE(regex_match (vector[3], regex("Room \\[\\d\\].*\n")));
-    ASSERT_EQ(vector.back(), "Available beds: 1\n");
+    ASSERT_TRUE(regex_match (vector.back(), regex("Available beds: \\d\n")));
     ASSERT_EQ(hospital->getSize(),3);
 }
 
@@ -43,7 +43,6 @@ TEST(Room, itShouldCreateBeds) {
     string expected = "[123] bed(s)?:";
     expected += "( Available){"+vector[0]+"}";
     ASSERT_TRUE(regex_match (message, regex(expected)));
-    ASSERT_EQ(Room::getAvailableBeds(), stoi(vector[0]));
 }
 
 

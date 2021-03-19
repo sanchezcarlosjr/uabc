@@ -8,7 +8,7 @@ int Room::availableBeds = 0;
 
 Room::Room() {
     this->beds = new vector<Patient *>(Random::generateNumberBetween(1, 3));
-    Room::availableBeds = this->beds->size();
+    Room::availableBeds += this->beds->size();
 }
 
 string Room::toString() {

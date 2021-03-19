@@ -11,7 +11,7 @@ Hospital::Hospital() {
     }
     cout << "\nHis hospital shows next distribution:\n";
     this->showDistribution();
-    cout << "Available beds: 1\n";
+    cout << "Available beds: "<< Room::getAvailableBeds() <<"\n";
 }
 
 void Hospital::simulate() {
