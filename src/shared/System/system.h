@@ -32,4 +32,13 @@ T print(string tag, string error, function<bool(T value)> isValidInput) {
     return var;
 }
 
+class Console {
+public:
+    static void pause(string message = "Press any key to continue...\n") {
+        cin.clear();
+        cout << endl << message;
+        cin.ignore();
+    }
+};
+
 #endif //UABC_SYSTEM_H

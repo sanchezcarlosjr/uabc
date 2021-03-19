@@ -32,7 +32,9 @@ TEST(Hospital, itShouldCreateRooms) {
     ASSERT_EQ(vector[1], "His hospital shows next distribution:\n");
     ASSERT_TRUE(regex_match (vector[2], regex("Room \\[\\d\\].*\n")));
     ASSERT_TRUE(regex_match (vector[3], regex("Room \\[\\d\\].*\n")));
-    ASSERT_TRUE(regex_match (vector.back(), regex("Available beds: \\d\n")));
+    ASSERT_TRUE(regex_match (vector[4], regex("Room \\[\\d\\].*\n")));
+    ASSERT_TRUE(regex_match (vector[5], regex("Available beds: \\d\n")));
+    ASSERT_EQ(vector.back(), "Press any key to continue...\n");
     ASSERT_EQ(hospital->getSize(),3);
 }
 
