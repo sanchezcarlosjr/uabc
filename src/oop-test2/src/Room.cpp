@@ -6,6 +6,7 @@
 
 Room::Room() {
     this->beds = new vector<Patient *>(Random::generateNumberBetween(1, 3));
+    this->availableBeds = this->beds->size();
 }
 
 string Room::toString() {
@@ -28,4 +29,8 @@ string Room::isBedAvailable(int index) {
         return "Available";
     }
     return "";
+}
+
+int Room::getAvailableBeds() {
+    return this->availableBeds;
 }

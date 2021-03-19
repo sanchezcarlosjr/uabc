@@ -16,11 +16,13 @@ using namespace std;
 class Room {
 private:
     vector<Patient*>* beds;
+    int availableBeds;
     string getBedsState();
 public:
     Room();
     string toString();
     string isBedAvailable(int index);
+    int getAvailableBeds();
 };
 
 
