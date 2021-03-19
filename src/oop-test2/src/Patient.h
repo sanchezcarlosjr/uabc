@@ -3,7 +3,6 @@
 //
 #include <string>
 #include <sstream>
-#include <iostream>
 #include "../Math/Random.h"
 using namespace std;
 #ifndef UABC_PATIENT_H
