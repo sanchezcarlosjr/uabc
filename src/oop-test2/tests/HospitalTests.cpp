@@ -12,6 +12,18 @@ Hospital* createHospital(string str="5") {
     return hospital;
 }
 
+vector<string> matches(string s, string regularExpression) {
+    vector<string> vector;
+    smatch m;
+    regex e (regularExpression);
+    while (std::regex_search (s,m,e)) {
+        for (auto x:m) vector.push_back(x);
+        s = m.suffix().str();
+    }
+    return vector;
+}
+
+
 TEST(Hospital, itShouldCreateRooms) {
     Hospital* hospital = createHospital();
     string stdout = testing::internal::GetCapturedStdout();
@@ -21,7 +33,11 @@ TEST(Hospital, itShouldCreateRooms) {
 
 TEST(Room, itShouldCreateBeds) {
     Room room;
-    ASSERT_TRUE(regex_match (room.toString(), regex("[123] bed(s)?") ));
+    string message = room.toString();
+    vector<string> vector = matches(message, "[123]");
+    string expected = "[123] bed(s)?:";
+    expected += "( Available){"+vector[0]+"}";
+    ASSERT_TRUE(regex_match (message, regex(expected)));
 }
 
 
