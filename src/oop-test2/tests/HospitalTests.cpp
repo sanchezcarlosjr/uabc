@@ -23,6 +23,10 @@ vector<string> matches(string s, string regularExpression) {
     return vector;
 }
 
+vector<string> getCapturedStdout() {
+    string actual = testing::internal::GetCapturedStdout();
+    return matches(actual, ".*\n");
+}
 
 TEST(Hospital, itShouldCreateRooms) {
     Hospital* hospital = createHospital(3);
@@ -47,6 +51,16 @@ TEST(Room, itShouldCreateBeds) {
     ASSERT_TRUE(regex_match (message, regex(expected)));
 }
 
+TEST(Hospital, itShouldSimulate) {
+    Hospital* hospital = createHospital();
+    getCapturedStdout();
+    testing::internal::CaptureStdout();
+    hospital->simulate();
+    string actual = testing::internal::GetCapturedStdout();
+    vector<string> vector = matches(actual, ".*\n");
+    ASSERT_EQ(vector[0], "Day\tIncome\tOutcome\tAvailable\n");
+    ASSERT_EQ(vector.back(), "Press any key to continue...\n");
+}
 
 int main(int argc, char **argv) {
     testing::InitGoogleTest(&argc, argv);

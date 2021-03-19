@@ -42,6 +42,10 @@ public:
         // TODO: Linux, Windows and Apple
         system("clear");
     }
+    static void pauseAndClear() {
+        pause();
+        clear();
+    }
 };
 
 #endif //UABC_SYSTEM_H

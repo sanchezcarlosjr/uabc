@@ -12,12 +12,12 @@ Hospital::Hospital() {
     cout << "\nHis hospital shows next distribution:\n";
     this->showDistribution();
     cout << "Available beds: "<< Room::getAvailableBeds() <<"\n";
-    Console::pause();
-    Console::clear();
+    Console::pauseAndClear();
 }
 
 void Hospital::simulate() {
-
+    cout << "Day\tIncome\tOutcome\tAvailable\n";
+    Console::pauseAndClear();
 }
 
 void Hospital::showDistribution() {
