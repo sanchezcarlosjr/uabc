@@ -46,9 +46,6 @@ void Room::storePatient() {
 }
 
 int Room::outcomePatients() {
-    if (this->availableBeds == this->beds->size()) {
-        return 0;
-    }
     int acc = 0;
     for (int index = 0; index < this->beds->size(); index++) {
         if (this->beds->at(index) != nullptr && this->beds->at(index)->canExit()) {

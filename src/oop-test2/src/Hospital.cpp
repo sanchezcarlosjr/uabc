@@ -22,11 +22,11 @@ void Hospital::simulate() {
     int patients = 0;
     do {
         cout << "Day\tIncome\t Outcome\tAvailable\n";
-        availableBeds = Room::getAvailableBeds();
-        patients = this->incomePatients();
         if (day != 1) {
             outcomes = this->outcomePatients();
         }
+        patients = this->incomePatients();
+        availableBeds = Room::getAvailableBeds();
         cout << day << "\t  " << patients << "\t    " << outcomes << "\t\t    " << availableBeds << "\n";
         this->showDistribution();
         day++;
