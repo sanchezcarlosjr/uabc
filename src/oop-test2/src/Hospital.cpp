@@ -7,11 +7,11 @@
 Hospital::Hospital() {
     int size = print<int>("How many rooms do you start hospital?");
     for(int i=0; i<size; i++) {
-        this->database.push_back(new Room());
+        this->rooms.push_back(new Room());
     }
     cout << "\nHis hospital shows next distribution:\n";
     this->showDistribution();
-    cout << "Available beds: 1";
+    cout << "Available beds: 1\n";
 }
 
 void Hospital::simulate() {
@@ -19,9 +19,11 @@ void Hospital::simulate() {
 }
 
 void Hospital::showDistribution() {
-    cout << "Room [1]: 2 beds Available\n";
+    for (int i = 0; i < this->getSize(); i++) {
+        cout << "Room ["<< i+1 <<"] "<< this->rooms[i]->toString() <<"\n";
+    }
 }
 
 int Hospital::getSize() {
-    return this->database.size();
+    return this->rooms.size();
 }

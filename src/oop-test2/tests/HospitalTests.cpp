@@ -25,14 +25,15 @@ vector<string> matches(string s, string regularExpression) {
 
 
 TEST(Hospital, itShouldCreateRooms) {
-    Hospital* hospital = createHospital(1);
+    Hospital* hospital = createHospital(3);
     string stdout = testing::internal::GetCapturedStdout();
-    string expected= "How many rooms do you start hospital?\n"
-                     "His hospital shows next distribution:\n"
-                     "Room [1]: 2 beds Available\n"
-                     "Available beds: 1";
-    ASSERT_EQ(stdout, expected);
-    ASSERT_EQ(hospital->getSize(),1);
+    vector<string> vector = matches(stdout, ".*\n");
+    ASSERT_EQ(vector[0], "How many rooms do you start hospital?\n");
+    ASSERT_EQ(vector[1], "His hospital shows next distribution:\n");
+    ASSERT_TRUE(regex_match (vector[2], regex("Room \\[\\d\\].*\n")));
+    ASSERT_TRUE(regex_match (vector[3], regex("Room \\[\\d\\].*\n")));
+    ASSERT_EQ(vector.back(), "Available beds: 1\n");
+    ASSERT_EQ(hospital->getSize(),3);
 }
 
 TEST(Room, itShouldCreateBeds) {

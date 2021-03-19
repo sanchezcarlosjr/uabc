@@ -12,7 +12,7 @@ using namespace std;
 
 class Hospital {
 private:
-    vector <Room*> database;
+    vector <Room*> rooms;
 public:
     Hospital();
     void simulate();
