@@ -4,9 +4,11 @@
 
 #include "Room.h"
 
+int Room::availableBeds = 0;
+
 Room::Room() {
     this->beds = new vector<Patient *>(Random::generateNumberBetween(1, 3));
-    this->availableBeds = this->beds->size();
+    Room::availableBeds = this->beds->size();
 }
 
 string Room::toString() {
@@ -32,5 +34,5 @@ string Room::isBedAvailable(int index) {
 }
 
 int Room::getAvailableBeds() {
-    return this->availableBeds;
+    return Room::availableBeds;
 }

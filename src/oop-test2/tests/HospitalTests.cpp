@@ -43,7 +43,7 @@ TEST(Room, itShouldCreateBeds) {
     string expected = "[123] bed(s)?:";
     expected += "( Available){"+vector[0]+"}";
     ASSERT_TRUE(regex_match (message, regex(expected)));
-    ASSERT_EQ(room.getAvailableBeds(), stoi(vector[0]));
+    ASSERT_EQ(Room::getAvailableBeds(), stoi(vector[0]));
 }
 
 
