@@ -18,9 +18,14 @@ string Room::toString() {
 string Room::getBedsState() {
     string state = "";
     for (int i = 0; i < this->beds->size(); i++) {
-        if (this->beds->at(i) == nullptr) {
-            state += " Available";
-        }
+        state += " " + this->isBedAvailable(i);
     }
     return state;
+}
+
+string Room::isBedAvailable(int index) {
+    if (this->beds->at(index) == nullptr) {
+        return "Available";
+    }
+    return "";
 }

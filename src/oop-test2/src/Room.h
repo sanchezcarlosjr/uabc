@@ -20,6 +20,7 @@ private:
 public:
     Room();
     string toString();
+    string isBedAvailable(int index);
 };
 
 
