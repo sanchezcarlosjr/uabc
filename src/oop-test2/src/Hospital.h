@@ -3,13 +3,16 @@
 //
 
 #include "System/system.h"
+#include "Room.h"
+#include <vector>
+using namespace std;
 
 #ifndef UABC_HOSPITAL_H
 #define UABC_HOSPITAL_H
 
 class Hospital {
 private:
-    int size = 0;
+    vector <Room*> database;
 public:
     Hospital();
     void simulate();

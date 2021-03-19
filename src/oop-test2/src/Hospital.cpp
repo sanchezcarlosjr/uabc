@@ -5,7 +5,10 @@
 #include "Hospital.h"
 
 Hospital::Hospital() {
-    this->size = print<int>("How many rooms do you start hospital?");
+    int size = print<int>("How many rooms do you start hospital?");
+    for(int i=0; i<size; i++) {
+        this->database.push_back(new Room());
+    }
 }
 
 void Hospital::simulate() {
@@ -13,5 +16,5 @@ void Hospital::simulate() {
 }
 
 int Hospital::getSize() {
-    return this->size;
+    return this->database.size();
 }
