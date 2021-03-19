@@ -17,7 +17,7 @@ private:
     int days;
 public:
     Patient() {
-        this->gender = Random::generateNumberBetween(0,2) ? "Woman" : "Man";
+        this->gender = Random::generateBool() ? "Woman" : "Man";
         this->age = Random::generateNumberBetween(0,100);
         this->days = 0;
     }

@@ -15,6 +15,10 @@ public:
         srand(time(NULL) + rand());
         return (rand() % (b - a)) + a;
     }
+    static bool generateBool() {
+        srand(time(NULL));
+        return (bool)(rand() % 2);
+    }
 };
 
 #endif //UABC_RANDOM_H
