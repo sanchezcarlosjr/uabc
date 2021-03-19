@@ -58,7 +58,7 @@ TEST(Hospital, itShouldSimulate) {
     hospital->simulate();
     string actual = testing::internal::GetCapturedStdout();
     vector<string> vector = matches(actual, ".*\n");
-    ASSERT_EQ(vector[0], "Day\tIncome\tOutcome\tAvailable\n");
+    ASSERT_EQ(vector[0], "Day\tIncome\t Outcome\tAvailable\n");
     ASSERT_EQ(vector.back(), "Press any key to continue...\n");
 }
 
