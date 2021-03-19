@@ -3,7 +3,6 @@
 //
 #include <iostream>
 #include <functional>
-
 using namespace std;
 
 #ifndef UABC_SYSTEM_H
@@ -38,6 +37,10 @@ public:
         cin.clear();
         cout << endl << message;
         cin.ignore();
+    }
+    static void clear() {
+        // TODO: Linux, Windows and Apple
+        system("clear");
     }
 };
 
