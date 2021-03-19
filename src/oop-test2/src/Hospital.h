@@ -12,9 +12,7 @@ private:
     int size = 0;
 public:
     Hospital();
-
     void simulate();
-
     int getSize();
 };
 
