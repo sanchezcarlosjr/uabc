@@ -8,5 +8,6 @@
 
 int main() {
     Hospital hospital;
+    hospital.simulate();
     return 0;
 }

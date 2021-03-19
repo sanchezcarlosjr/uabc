@@ -3,3 +3,10 @@
 //
 
 #include "Hospital.h"
+
+Hospital::Hospital() {
+}
+
+void Hospital::simulate() {
+
+}

@@ -9,10 +9,9 @@
 
 class Hospital {
 public:
-    Hospital() {
-        int a = print<int>("A\n");
-        cout << a;
-    }
+    Hospital();
+
+    void simulate();
 };
 
 
