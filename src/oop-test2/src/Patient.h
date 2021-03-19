@@ -17,12 +17,13 @@ private:
 public:
     Patient() {
         this->gender = Random::generateBool() ? "Woman" : "Man";
-        this->age = Random::generateNumberBetween(0,100);
+        this->age = Random::generateNumberBetween(1,100);
         this->days = 0;
     }
     string toString() {
         stringstream patient;
-        patient << this->gender << "-" << this->age << "-" << this->days++;
+        patient << this->gender << "-" << this->age << "-" << this->days;
+        this->days++;
         return patient.str();
     }
     bool canExit() {
