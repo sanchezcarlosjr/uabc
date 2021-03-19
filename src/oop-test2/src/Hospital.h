@@ -14,13 +14,13 @@ using namespace std;
 class Hospital {
 private:
     vector <Room*> rooms;
-public:
-    Hospital();
-    void simulate();
     void showDistribution();
     int incomePatients();
     int outcomePatients();
     int getSize();
+public:
+    Hospital();
+    void simulate();
 };
 
 
