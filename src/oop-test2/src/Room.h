@@ -11,7 +11,10 @@ using namespace std;
 
 
 class Room {
+private:
+    int beds = 0;
 public:
+    Room();
     string toString();
 };
 
