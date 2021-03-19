@@ -3,6 +3,7 @@
 //
 #include <string>
 #include <sstream>
+#include <iostream>
 #include "../Math/Random.h"
 using namespace std;
 #ifndef UABC_PATIENT_H
@@ -16,7 +17,7 @@ private:
     int days;
 public:
     Patient() {
-        this->gender = Random::generateNumberBetween(0,1) == 1 ? "Woman" : "Man";
+        this->gender = Random::generateNumberBetween(0,2) ? "Woman" : "Man";
         this->age = Random::generateNumberBetween(0,100);
         this->days = 0;
     }
@@ -26,7 +27,7 @@ public:
         return patient.str();
     }
     bool canExit() {
-        return  Random::generateNumberBetween(1,4) == 1;
+        return  Random::generateNumberBetween(1,4) == 2;
     }
 };
 

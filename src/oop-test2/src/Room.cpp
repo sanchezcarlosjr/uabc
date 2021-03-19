@@ -52,8 +52,10 @@ int Room::outcomePatients() {
     int acc = 0;
     for (int index = 0; index < this->beds->size(); index++) {
         if (this->beds->at(index) != nullptr && this->beds->at(index)->canExit()) {
-            delete this->beds->at(index);
+            this->beds->at(index) = nullptr;
             acc++;
+            this->availableBeds++;
+            Room::TotalAvailableBeds++;
         }
     }
     return acc;

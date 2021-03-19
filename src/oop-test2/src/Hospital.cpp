@@ -5,7 +5,7 @@
 #include "Hospital.h"
 
 Hospital::Hospital() {
-    int size = print<int>("How many rooms do you start hospital?");
+    int size = print<int>("How many rooms do you start hospital? ");
     for (int i = 0; i < size; i++) {
         this->rooms.push_back(new Room());
     }
@@ -19,16 +19,19 @@ void Hospital::simulate() {
     int day = 1;
     int outcomes = 0;
     int availableBeds = 0;
-    int patients = 0;;
-    cout << "Day\tIncome\t Outcome\tAvailable\n";
-    availableBeds = Room::getAvailableBeds();
-    patients = this->incomePatients();
-    if (day != 1) {
-        outcomes = this->outcomePatients();
-    }
-    cout << day << "\t  " << patients << "\t    " << outcomes << "\t\t    " << availableBeds << "\n";
-    this->showDistribution();
-    Console::pauseAndClear();
+    int patients = 0;
+    do {
+        cout << "Day\tIncome\t Outcome\tAvailable\n";
+        availableBeds = Room::getAvailableBeds();
+        patients = this->incomePatients();
+        if (day != 1) {
+            outcomes = this->outcomePatients();
+        }
+        cout << day << "\t  " << patients << "\t    " << outcomes << "\t\t    " << availableBeds << "\n";
+        this->showDistribution();
+        day++;
+        Console::pauseAndClear();
+    }while(Room::getAvailableBeds() > 0);
 }
 
 int Hospital::incomePatients() {
