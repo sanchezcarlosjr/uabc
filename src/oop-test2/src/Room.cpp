@@ -5,19 +5,19 @@
 #include "Room.h"
 
 Room::Room() {
-    this->beds = Random::generateNumberBetween(1, 3);
+    this->beds = new vector<Patient*>(Random::generateNumberBetween(1, 3));
 }
 
 string Room::toString() {
     stringstream message;
-    string bedsOrBed = (this->beds == 1) ? "bed" : "beds";
-    message << this->beds << " " << bedsOrBed << ":" << this->getBedsState();
+    string bedsOrBed = (this->beds->size() == 1) ? "bed" : "beds";
+    message << this->beds->size() << " " << bedsOrBed << ":" << this->getBedsState();
     return message.str();
 }
 
 string Room::getBedsState() {
     string state = "";
-    for (int i = 0; i< this->beds; i++) {
+    for (int i = 0; i< this->beds->size(); i++) {
         state += " Available";
     }
     return state;

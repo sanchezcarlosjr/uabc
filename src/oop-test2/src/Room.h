@@ -3,7 +3,9 @@
 //
 
 #include <string>
+#include <vector>
 #include <sstream>
+#include "Patient.h"
 #include "../Math/Random.h"
 using namespace std;
 #ifndef UABC_ROOM_H
@@ -12,7 +14,7 @@ using namespace std;
 
 class Room {
 private:
-    int beds = 0;
+    vector<Patient*>* beds;
     string getBedsState();
 public:
     Room();
