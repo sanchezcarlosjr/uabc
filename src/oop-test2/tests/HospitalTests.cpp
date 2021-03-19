@@ -3,10 +3,10 @@
 #include "../src/Room.h"
 #include <regex>
 
-Hospital* createHospital(string str="5") {
+Hospital* createHospital(int size=5) {
     Hospital* hospital;
     testing::internal::CaptureStdout();
-    istringstream input(str);
+    istringstream input(to_string(size));
     cin.rdbuf(input.rdbuf());
     hospital = new Hospital();
     return hospital;
@@ -25,10 +25,14 @@ vector<string> matches(string s, string regularExpression) {
 
 
 TEST(Hospital, itShouldCreateRooms) {
-    Hospital* hospital = createHospital();
+    Hospital* hospital = createHospital(1);
     string stdout = testing::internal::GetCapturedStdout();
-    ASSERT_EQ(stdout, "How many rooms do you start hospital?");
-    ASSERT_EQ(hospital->getSize(),5);
+    string expected= "How many rooms do you start hospital?\n"
+                     "His hospital shows next distribution:\n"
+                     "Room [1]: 2 beds Available\n"
+                     "Available beds: 1";
+    ASSERT_EQ(stdout, expected);
+    ASSERT_EQ(hospital->getSize(),1);
 }
 
 TEST(Room, itShouldCreateBeds) {

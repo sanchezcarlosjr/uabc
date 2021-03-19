@@ -16,6 +16,7 @@ private:
 public:
     Hospital();
     void simulate();
+    void showDistribution();
     int getSize();
 };
 
