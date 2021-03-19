@@ -4,11 +4,12 @@
 
 #include "Room.h"
 
-int Room::availableBeds = 0;
+int Room::TotalAvailableBeds = 0;
 
 Room::Room() {
     this->beds = new vector<Patient *>(Random::generateNumberBetween(1, 3));
-    Room::availableBeds += this->beds->size();
+    this->availableBeds = this->beds->size();
+    Room::TotalAvailableBeds += this->availableBeds;
 }
 
 string Room::toString() {
@@ -21,18 +22,29 @@ string Room::toString() {
 string Room::getBedsState() {
     string state = "";
     for (int i = 0; i < this->beds->size(); i++) {
-        state += " " + this->isBedAvailable(i);
+        state += " " + this->isAvailableBed(i);
     }
     return state;
 }
 
-string Room::isBedAvailable(int index) {
+string Room::isAvailableBed(int index) {
     if (this->beds->at(index) == nullptr) {
         return "Available";
     }
-    return "";
+    return this->beds->at(index)->toString();
+}
+
+bool Room::thereIsAvailableBed() {
+    return this->availableBeds != 0;
+}
+
+void Room::storePatient() {
+    int wherePatientWillStore = this->beds->size() - this->availableBeds;
+    this->beds->at(wherePatientWillStore) = new Patient();
+    this->availableBeds--;
+    Room::TotalAvailableBeds--;
 }
 
 int Room::getAvailableBeds() {
-    return Room::availableBeds;
+    return Room::TotalAvailableBeds;
 }

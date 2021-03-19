@@ -62,6 +62,13 @@ TEST(Hospital, itShouldSimulate) {
     ASSERT_EQ(vector.back(), "Press any key to continue...\n");
 }
 
+TEST(Hospital, itShouldSimulate2) {
+    Hospital* hospital = createHospital();
+    getCapturedStdout();
+    hospital->incomePatients();
+    hospital->showDistribution();
+}
+
 int main(int argc, char **argv) {
     testing::InitGoogleTest(&argc, argv);
     return RUN_ALL_TESTS();

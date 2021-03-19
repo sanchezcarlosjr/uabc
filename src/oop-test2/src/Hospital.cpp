@@ -24,6 +24,18 @@ void Hospital::simulate() {
     Console::pauseAndClear();
 }
 
+void Hospital::incomePatients() {
+    int patients = Random::generateNumberBetween(1, 5);
+    for (int i = 0; i < patients; i++) {
+        for (auto &room : this->rooms) {
+            if (room->thereIsAvailableBed()) {
+                room->storePatient();
+                break;
+            }
+        }
+    }
+}
+
 void Hospital::showDistribution() {
     for (int i = 0; i < this->getSize(); i++) {
         cout << "Room [" << i + 1 << "] " << this->rooms[i]->toString() << "\n";

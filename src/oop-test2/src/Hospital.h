@@ -4,6 +4,7 @@
 
 #include "../System/system.h"
 #include "Room.h"
+#include "../Math/Random.h"
 #include <vector>
 using namespace std;
 
@@ -17,6 +18,7 @@ public:
     Hospital();
     void simulate();
     void showDistribution();
+    void incomePatients();
     int getSize();
 };
 
