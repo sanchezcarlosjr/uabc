@@ -1,5 +1,6 @@
 #include <gtest/gtest.h>
 #include "../src/Hospital.h"
+#include "../src/Room.h"
 
 Hospital* createHospital(string str="5") {
     Hospital* hospital;
@@ -15,6 +16,11 @@ TEST(Hospital, itShouldCreateRooms) {
     string stdout = testing::internal::GetCapturedStdout();
     ASSERT_EQ(stdout, "How many rooms do you start hospital?");
     ASSERT_EQ(hospital->getSize(),5);
+}
+
+TEST(Room, itShouldCreateBeds) {
+    Room room;
+    ASSERT_EQ(room.toString(), "1 bed");
 }
 
 

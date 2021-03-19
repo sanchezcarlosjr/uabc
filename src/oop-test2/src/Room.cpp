@@ -3,3 +3,8 @@
 //
 
 #include "Room.h"
+
+
+string Room::toString() {
+    return "1 bed";
+}
