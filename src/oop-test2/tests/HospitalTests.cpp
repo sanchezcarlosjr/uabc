@@ -65,8 +65,7 @@ TEST(Hospital, itShouldSimulate) {
 TEST(Hospital, itShouldSimulate2) {
     Hospital* hospital = createHospital();
     getCapturedStdout();
-    hospital->incomePatients();
-    hospital->showDistribution();
+    hospital->simulate();
 }
 
 int main(int argc, char **argv) {

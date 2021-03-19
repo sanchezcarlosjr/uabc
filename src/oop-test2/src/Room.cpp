@@ -45,6 +45,9 @@ void Room::storePatient() {
     Room::TotalAvailableBeds--;
 }
 
+void Room::outcomePatients() {}
+
+
 int Room::getAvailableBeds() {
     return Room::TotalAvailableBeds;
 }

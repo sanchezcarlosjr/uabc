@@ -19,12 +19,13 @@ void Hospital::simulate() {
     int day = 1;
     int availableBeds = Room::getAvailableBeds();
     cout << "Day\tIncome\t Outcome\tAvailable\n";
-    cout << day << "\t  " << "0" << "\t    " << "0" << "\t\t    " << availableBeds << "\n";
+    int patients = this->incomePatients();
+    cout << day << "\t  " << patients << "\t    " << "0" << "\t\t    " << availableBeds << "\n";
     this->showDistribution();
     Console::pauseAndClear();
 }
 
-void Hospital::incomePatients() {
+int Hospital::incomePatients() {
     int patients = Random::generateNumberBetween(1, 5);
     for (int i = 0; i < patients; i++) {
         for (auto &room : this->rooms) {
@@ -33,6 +34,13 @@ void Hospital::incomePatients() {
                 break;
             }
         }
+    }
+    return patients;
+}
+
+void Hospital::outcomePatients() {
+    for (auto &room : this->rooms) {
+        room->outcomePatients();
     }
 }
 

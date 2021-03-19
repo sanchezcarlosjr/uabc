@@ -18,7 +18,8 @@ public:
     Hospital();
     void simulate();
     void showDistribution();
-    void incomePatients();
+    int incomePatients();
+    void outcomePatients();
     int getSize();
 };
 

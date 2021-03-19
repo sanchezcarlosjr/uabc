@@ -22,7 +22,7 @@ public:
     }
     string toString() {
         stringstream patient;
-        patient << this->gender << "-" << this->age << "-" << this->days;
+        patient << this->gender << "-" << this->age << "-" << this->days++;
         return patient.str();
     }
 };
