@@ -56,6 +56,20 @@ debug() {
   fi
 }
 
+shareCodeByGit() {
+	code=$(ls -lt "src" | grep "^d" | awk  '{print $9}' | fzf);
+	repository="src/$code"
+	echo "git clone \
+  		--depth 1 \
+  		--filter=blob:none \
+  		--no-checkout \
+  		https://github.com/sanchezcarlosjr/uabc/ $repository\
+	;
+		cd 361075-CarlosEduardoSanchezTorres
+		git sparse-checkout set $repository"
+	echo "https://downgit.github.io/#/home?url=https://github.com/sanchezcarlosjr/uabc/tree/master/$repository"
+}
+
 createEnvironment() {
   mkdir images/tech
   mkdir compiler/tech
@@ -92,6 +106,10 @@ params() {
   fi
   for param in "$@"; do
     case "${param}" in
+    -share-code)
+	shareCodeByGit
+	exit 0
+       ;;
     -sh | --shared)
        shared
        exit 0
