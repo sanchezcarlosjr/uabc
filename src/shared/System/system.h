@@ -39,8 +39,18 @@ public:
         cin.ignore();
     }
     static void clear() {
-        // TODO: Linux, Windows and Apple
-        system("clear");
+        // TODO: From abstract factory and singleton
+        // Test about Windows https://github.com/rgl/windows-vagrant
+        // Test about Mac OS X https://app.vagrantup.com/AndrewDryga/boxes/vagrant-box-osx
+        #ifdef _WIN32
+             system("cls");
+        #elif _WIN64
+             system("cls");
+        #elif __APPLE__ || __MACH__
+              system("clear");
+        #elif __linux__
+             system("clear");
+        #endif
     }
     static void pauseAndClear() {
         pause();
