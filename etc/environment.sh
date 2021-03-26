@@ -18,6 +18,7 @@ usage() {
            UABC Environment. Please don't use sudo!
         OPTIONS
             -ap Datastructures environment
+            -lisp Lisp scripts. Please install Clisp to continue.
             -h     --help     Displays this usage message.
         RETURN CODES
             1 If error 1 occurs.
@@ -113,6 +114,11 @@ params() {
     -sh | --shared)
        shared
        exit 0
+      ;;
+    --lisp)
+      name=$(ls -lt "src/lisp" | grep ".lisp" | awk  '{print $9}' | fzf);
+      when-changed -1 -r "src/lisp/$name" -c clisp "src/lisp/$name";
+      exit 0
       ;;
     -ap | --algorithm_prod)
       algorithm_prod
