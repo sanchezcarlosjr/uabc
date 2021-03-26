@@ -11,6 +11,7 @@
 
 class Random {
 public:
+    // TODO: generate string random
     static int generateNumberBetween(int a, int b) {
         srand(time(NULL) + rand());
         return (rand() % (b - a)) + a;
