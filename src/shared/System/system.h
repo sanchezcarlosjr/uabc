@@ -41,7 +41,6 @@ public:
     static void clear() {
         // TODO: From abstract factory and singleton
         // Lazy loading lib by Operating system
-        // Test about Windows https://github.com/rgl/windows-vagrant
         // Test about Mac OS X https://app.vagrantup.com/AndrewDryga/boxes/vagrant-box-osx
         #ifdef _WIN32
              system("cls");

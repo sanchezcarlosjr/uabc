@@ -101,7 +101,7 @@ shared() {
 }
 
 windows() {
-  cd etc/vagrant
+  cd etc/windows
   vagrant up
 }
 

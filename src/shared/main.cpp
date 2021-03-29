@@ -9,6 +9,6 @@
 using namespace std;
 
 int main() {
-    Console::clear();
+    Console::pauseAndClear();
     return 0;
 }
