@@ -1,6 +1,7 @@
 # Prerequisites
 *.d
 
+
 # Compiled Object files
 *.slo
 **/CMakeFiles/**
@@ -33,3 +34,6 @@
 *.exe
 *.out
 *.app
+
+# Environment
+**/.vagrant/**
