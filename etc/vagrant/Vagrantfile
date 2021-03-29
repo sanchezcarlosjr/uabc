@@ -14,6 +14,7 @@ Vagrant.configure("2") do |config|
   # boxes at https://vagrantcloud.com/search.
   config.vm.box = "redscanlabs/windows-10"
   config.vm.box_version = "1.0.0"
+  config.vm.synced_folder "/home/cest/Workspace/uabc/src/", "/Workspace"
 
   # Disable automatic box update checking. If you disable this, then
   # boxes will only be checked for updates when the user runs
@@ -64,8 +65,15 @@ Vagrant.configure("2") do |config|
   # Enable provisioning with a shell script. Additional provisioners such as
   # Ansible, Chef, Docker, Puppet and Salt are also available. Please see the
   # documentation for more information about their specific syntax and use.
-  # config.vm.provision "shell", inline: <<-SHELL
-  #   apt-get update
-  #   apt-get install -y apache2
-  # SHELL
+  config.vm.provision "shell", inline: <<-SHELL
+     choco install -y orwelldevcpp
+     choco install -y python --pre
+     choco install -y clisp
+     choco install -y cmake
+     choco install -y docker-cli
+     choco install -y docker-compose
+     choco install -y vim
+     choco install -y golang
+     dism /online /Enable-Feature /FeatureName:TelnetClient
+  SHELL
 end

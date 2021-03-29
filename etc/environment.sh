@@ -100,6 +100,11 @@ shared() {
   compile shared cpp;
 }
 
+windows() {
+  cd etc/vagrant
+  vagrant up
+}
+
 params() {
   if [ $# -eq 0 ]; then
     usage
@@ -128,6 +133,10 @@ params() {
       oop_test
       exit 0
       ;;
+    -w | --windows)
+       windows
+       exit 0
+       ;;
     -h | --help)
       usage
       exit 0

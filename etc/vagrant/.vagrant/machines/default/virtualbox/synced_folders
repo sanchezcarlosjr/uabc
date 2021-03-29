@@ -1,1 +1,1 @@
-{"virtualbox":{"/vagrant":{"guestpath":"/vagrant","hostpath":"/home/cest/Workspace/uabc/etc/vagrant","disabled":false,"__vagrantfile":true}}}
+{"virtualbox":{"/Workspace":{"guestpath":"/Workspace","hostpath":"/home/cest/Workspace/uabc/src","disabled":false,"__vagrantfile":true},"/vagrant":{"guestpath":"/vagrant","hostpath":"/home/cest/Workspace/uabc/etc/vagrant","disabled":false,"__vagrantfile":true}}}
