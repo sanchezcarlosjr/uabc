@@ -2,6 +2,7 @@ import os
 import socket
 
 from pyngrok import ngrok
+
 host = ""
 port = int(os.environ.get("PORT"))
 
@@ -15,6 +16,9 @@ sock.listen(1)
 
 # Open a ngrok tunnel to the socket
 public_url = ngrok.connect(port, "tcp").public_url
+tunnel_url = socket.gethostbyname(public_url.strip("tcp://").split(":")[0])
+tunnel_port = public_url.strip("tcp://").split(":")[1]
+print(f" * ngrok tunnel available, access with `telnet {tunnel_url} {tunnel_port}`")
 print("ngrok tunnel \"{}\" -> \"tcp://127.0.0.1:{}\"".format(public_url, port))
 
 
