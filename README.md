@@ -20,6 +20,18 @@ etc/environment.sh
 
 ## Object-oriented programming
 
+## Sockets (Networking)
+### Localhost
+
+### Internet
+Using ngrok I've connected localhost with the World.
+**Server**. Install requeriments.txt and run server.py
+``PORT=12345 python server.py``
+**Client**
+``HOST=XXX PORT=XXX python client.py``
+``PORT AND HOST && gcc && ./client``
+``telnet HOST PORT``
+
 ## Probability
 
 ## Discrete math

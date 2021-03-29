@@ -11,7 +11,7 @@
 #include <sys/wait.h>
 #include <signal.h>
 
-#define PORT "8080"  // The port users will be connecting to
+#define PORT "5432"  // The port users will be connecting to
 
 #define BACKLOG 10   // How many pending connections queue will hold
 
