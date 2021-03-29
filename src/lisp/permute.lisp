@@ -1,10 +1,12 @@
 (require "test.lisp")
-(defun permute (lst)
+(defun permute (lst &key repeatedNumber)
+  "Permute a list."
+  ; Repetead number is nil by default.
   (if 
     (null lst) 
     '(()) 
      (mapcan #'(lambda (head)
-	           (loop for next in (permute (remove head lst))
+	           (loop for next in (permute (remove head lst :count repeatedNumber))
   		   	collect (cons head next)
 		   )
 	       ) 
@@ -12,4 +14,4 @@
      )
   )
 )
-(test #'permute  '(1 2 3) '((1 2 3) (1 3 2) (2 3 1) (2 1 3) (3 1 2) (3 2 1)))
+(print (permute '(1 2 3 3 3 4)))
