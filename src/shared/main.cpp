@@ -3,12 +3,11 @@
         Created by Carlos Sanchez
         Created at 26/02/21
 */
-
 #include <iostream>
-#include "System/system.h"
+#include "System/Console.h"
 using namespace std;
 
 int main() {
-    Console::pauseAndClear();
+    Console::clear();
     return 0;
 }

@@ -1,12 +1,12 @@
 //
-// Created by cest on 17/03/21.
+// Created by cest on 29/03/21.
 //
+#include "../OperatingSystem/OperatingSystemFactory.h"
 #include <iostream>
 #include <functional>
 using namespace std;
-
-#ifndef UABC_SYSTEM_H
-#define UABC_SYSTEM_H
+#ifndef UABC_CONSOLE_H
+#define UABC_CONSOLE_H
 
 template<class T>
 T print(string tag) {
@@ -39,18 +39,7 @@ public:
         cin.ignore();
     }
     static void clear() {
-        // TODO: From abstract factory and singleton
-        // Lazy loading lib by Operating system
-        // Test about Mac OS X https://app.vagrantup.com/AndrewDryga/boxes/vagrant-box-osx
-        #ifdef _WIN32
-             system("cls");
-        #elif _WIN64
-             system("cls");
-        #elif __APPLE__ || __MACH__
-              system("clear");
-        #elif __linux__
-             system("clear");
-        #endif
+        OperatingSystemFactory::getInstance()->getConsole()->clear();
     }
     static void pauseAndClear() {
         pause();
@@ -58,4 +47,4 @@ public:
     }
 };
 
-#endif //UABC_SYSTEM_H
+#endif //UABC_CONSOLE_H
