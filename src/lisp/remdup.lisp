@@ -1,7 +1,5 @@
-(defun test (a b c)
-  (print (funcall a b))
-  (assert (equal (funcall a b) c))
-)
+(require "test.lisp")
+
 (defun remdup (lst)
   (reduce
     	   #'(lambda (acc actual) 
@@ -12,4 +10,5 @@
 	  :initial-value '()
    )
 )
+
 (test #'remdup '(a a a b b c c c a a d d e e e e f) '(A B C A D E F))
