@@ -59,7 +59,7 @@ template<class T>
 Stack<T> *Stack<T>::Factory(int size) {
     Stack<T> *stack = new Stack<T>();
     for (int i = 0; i < size; i++) {
-        stack->push(Random::generateNumberBetween(10, 100));
+        stack->push(Random::Number());
     }
     return stack;
 }

@@ -40,7 +40,7 @@ template<class T>
 List<T> *List<T>::Factory(int size) {
     List<T> *list = new List<T>();
     for (int i = 0; i < size; i++) {
-        list->push(Random::generateNumberBetween(10, 100));
+        list->push(Random::Number());
     }
     return list;
 }

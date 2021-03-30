@@ -3,11 +3,11 @@
         Created by Carlos Sanchez
         Created at 26/02/21
 */
-#include "Math/Random.h"
+#include "DataStructure/DataStructure.h"
 #include <iostream>
 
 using namespace std;
 int main() {
-    cout << Random::Number();
+    List<int> list;
     return 0;
 }
