@@ -84,17 +84,6 @@ isEmpty()
 );
 }
 
-TEST(StackTest, itShouldForEach
-) {
-Stack<int> *stack = Stack<int>::Factory(10);
-stack->forEach([](
-int element,
-int index
-) {
-EXPECT_GE(element,
-10);
-});
-}
 
 int main(int argc, char **argv) {
     testing::InitGoogleTest(&argc, argv);

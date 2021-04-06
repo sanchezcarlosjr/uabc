@@ -2,6 +2,7 @@
 // Created by cest on 26/02/21.
 //
 #include <functional>
+#include <memory>
 #include "CollectionState.h"
 #include "NullState.h"
 #include "Iterator.h"
@@ -43,7 +44,7 @@ protected:
 public:
     void forEach(function<void(T element, int index)> callback) {
         Iterator<T> *it = this->createIterator();
-        int i = 1;
+        int i = 0;
         for (it->first(); !it->isDone(); it->next()) {
             callback(it->current(), i);
             i++;
