@@ -56,26 +56,29 @@ public:
         do {
             value = creator();
             if (!isTrue(value)) {
+                return this;
             }
             this->push(value);
         } while (isTrue(value));
         return this;
     }
 
-    void forEach(function<void(T element, int index)> callback) {
+    Collection<T,K>* forEach(function<void(T element, int index)> callback) {
         Iterator<T> *it = this->createIterator();
         int i = 0;
         for (it->first(); !it->isDone(); it->next()) {
             callback(it->current(), i);
             i++;
         }
+        return this;
     }
 
-    void forEach(function<void(T element)> callback) {
+    Collection<T,K>* forEach(function<void(T element)> callback) {
         Iterator<T> *it = this->createIterator();
         for (it->first(); !it->isDone(); it->next()) {
             callback(it->current());
         }
+        return this;
     }
 
     Collection<T,K>* map(function<T(T element, int index)> callback) {

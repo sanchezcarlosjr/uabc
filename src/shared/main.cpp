@@ -8,8 +8,7 @@
 
 using namespace std;
 int main() {
-    List<int> list;
-    list.factory(5)
+    List<int>::Factory(5)
     ->forEach([](int item) {
         cout << item << "\n";
     });

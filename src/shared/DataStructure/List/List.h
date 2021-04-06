@@ -28,6 +28,11 @@ public:
 
     Iterator<T> *createIterator();
 
+    static List<T>* Factory(int size) {
+        List<T>* list = new List();
+        return (List<T>*) list->factory(size);
+    }
+
 };
 
 #endif //UABC_LIST_H

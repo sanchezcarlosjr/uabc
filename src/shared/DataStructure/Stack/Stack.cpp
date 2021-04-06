@@ -59,12 +59,3 @@ template<class T>
 Collection<T, StackNode<T>> *Stack<T>::create() {
 	return new Stack<T>();
 }
-
-template<class T>
-Stack<T> *Stack<T>::Factory(int size) {
-    Stack<T> *stack = new Stack<T>();
-    for (int i = 0; i < size; i++) {
-        stack->push(Random::Number());
-    }
-    return stack;
-}

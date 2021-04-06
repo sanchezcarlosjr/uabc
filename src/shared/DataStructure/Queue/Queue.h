@@ -28,6 +28,11 @@ public:
     CollectionState<T, QueueNode<T>> *instanceNonNullState();
 
     Iterator<T> *createIterator();
+
+    static Queue<T>* Factory(int size) {
+        Queue<T>* queue = new Queue();
+        return (Queue<T>*) queue->factory(size);
+    }
 };
 
 

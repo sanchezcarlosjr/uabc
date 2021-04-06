@@ -35,8 +35,10 @@ public:
 
     Iterator<T> *createIterator();
 
-
-    static Stack *Factory(int size);
+    static Stack<T>* Factory(int size) {
+        Stack<T>* stack = new Stack();
+        return (Stack<T>*) stack->factory(size);
+    }
 };
 
 #endif //UABC_STACK_H
