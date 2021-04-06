@@ -2,10 +2,10 @@
 // Created by cest on 26/02/21.
 //
 #include <functional>
-#include <memory>
 #include "CollectionState.h"
 #include "NullState.h"
 #include "Iterator.h"
+#include "../Math/Random.h"
 using namespace std;
 
 #ifndef UABC_COLLECTION_H
@@ -18,7 +18,7 @@ protected:
     void setNext(K* node) {
         this->collectionState->setNext(this, node);
     }
-    virtual Collection<T,K>* factory() = 0;
+    virtual Collection<T,K>* create() = 0;
     virtual void push(T node) = 0;
 private:
     int length = 0;
@@ -44,12 +44,37 @@ protected:
     virtual CollectionState<T, K> *instanceNonNullState() = 0;
 
 public:
+    Collection<T,K>* factory(int size) {
+        for (int i = 0; i < size; i++) {
+            this->push(Random::Number());
+        }
+        return this;
+    }
+
+    Collection<T,K>* factory(function<bool(T value)> isTrue, function<T()> creator) {
+        T value;
+        do {
+            value = creator();
+            if (!isTrue(value)) {
+            }
+            this->push(value);
+        } while (isTrue(value));
+        return this;
+    }
+
     void forEach(function<void(T element, int index)> callback) {
         Iterator<T> *it = this->createIterator();
         int i = 0;
         for (it->first(); !it->isDone(); it->next()) {
             callback(it->current(), i);
             i++;
+        }
+    }
+
+    void forEach(function<void(T element)> callback) {
+        Iterator<T> *it = this->createIterator();
+        for (it->first(); !it->isDone(); it->next()) {
+            callback(it->current());
         }
     }
 

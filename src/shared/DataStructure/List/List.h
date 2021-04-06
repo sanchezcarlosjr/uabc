@@ -5,7 +5,6 @@
 #include <functional>
 #include "../Collection.h"
 #include "ListNode.h"
-#include "../../Math/Random.h"
 #include "ListNonNullState.h"
 #include "ListIterator.h"
 
@@ -16,11 +15,12 @@ using namespace std;
 
 template<class T>
 class List : public Collection<T, ListNode<T>> {
+protected:
+    Collection<T, ListNode<T>> *create();
 public:
     List() {}
 
     List(initializer_list <T> list);
-
 
     void push(T);
 
@@ -28,11 +28,6 @@ public:
 
     Iterator<T> *createIterator();
 
-    Collection<T, ListNode<T>> *factory();
-
-    static List<T> *Factory(int size);
-
-    static List<T> *Factory(function<bool(T value)>, function<T()>);
 };
 
 #endif //UABC_LIST_H

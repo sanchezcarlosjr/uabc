@@ -56,7 +56,7 @@ Iterator<T> *Stack<T>::createIterator() {
 }
 
 template<class T>
-Collection<T, StackNode<T>> *Stack<T>::factory() {
+Collection<T, StackNode<T>> *Stack<T>::create() {
 	return new Stack<T>();
 }
 

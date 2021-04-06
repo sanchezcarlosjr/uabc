@@ -13,7 +13,8 @@
 template<class T>
 class Queue : public Collection<T, QueueNode<T>> {
 protected:
-	void push(T element) {
+    Collection<T, QueueNode<T>>* create();
+    void push(T element) {
 		this->enqueue(element);
 	}
 private:
@@ -23,7 +24,6 @@ public:
 
     T dequeue();
 
-    Collection<T, QueueNode<T>>* factory();
 
     CollectionState<T, QueueNode<T>> *instanceNonNullState();
 

@@ -28,6 +28,6 @@ Iterator<T> *Queue<T>::createIterator() {
 }
 
 template<class T>
-Collection<T, QueueNode<T>> *Queue<T>::factory() {
+Collection<T, QueueNode<T>> *Queue<T>::create() {
 	return new Queue<T>();
 }

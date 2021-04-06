@@ -14,6 +14,9 @@ using namespace std;
 template<class T>
 class Stack : public Collection<T, StackNode<T>> {
     friend class StackIterator<T>;
+protected:
+    Collection<T, StackNode<T>>* create();
+
 public:
     Stack();
 
@@ -32,7 +35,6 @@ public:
 
     Iterator<T> *createIterator();
 
-    Collection<T, StackNode<T>>* factory();
 
     static Stack *Factory(int size);
 };

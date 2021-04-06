@@ -27,30 +27,8 @@ Iterator<T> *List<T>::createIterator() {
     return new ListIterator<T>(this);
 }
 
-template<class T>
-List<T> *List<T>::Factory(int size) {
-    List<T> *list = new List<T>();
-    for (int i = 0; i < size; i++) {
-        list->push(Random::Number());
-    }
-    return list;
-}
 
 template<class T>
-List<T> *List<T>::Factory(function<bool(T value)> isTrue, function<T()> creator) {
-    List<T> *list = new List<T>();
-    T value;
-    do {
-        value = creator();
-        if (!isTrue(value)) {
-            return list;
-        }
-        list->push(value);
-    } while (isTrue(value));
-    return list;
-}
-
-template<class T>
-Collection<T, ListNode<T>> *List<T>::factory() {
+Collection<T, ListNode<T>> *List<T>::create() {
 	return new List<T>();
 }
