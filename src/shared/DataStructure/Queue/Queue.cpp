@@ -26,3 +26,8 @@ template<class T>
 Iterator<T> *Queue<T>::createIterator() {
     return new QueueIterator<T>(this);
 }
+
+template<class T>
+Collection<T, QueueNode<T>> *Queue<T>::factory() {
+	return new Queue<T>();
+}

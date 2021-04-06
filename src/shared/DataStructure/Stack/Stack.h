@@ -32,6 +32,8 @@ public:
 
     Iterator<T> *createIterator();
 
+    Collection<T, StackNode<T>>* factory();
+
     static Stack *Factory(int size);
 };
 

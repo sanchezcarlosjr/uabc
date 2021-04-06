@@ -18,6 +18,8 @@ protected:
     void setNext(K* node) {
         this->collectionState->setNext(this, node);
     }
+    virtual Collection<T,K>* factory() = 0;
+    virtual void push(T node) = 0;
 private:
     int length = 0;
     CollectionState<T,K>* collectionState;
@@ -49,6 +51,14 @@ public:
             callback(it->current(), i);
             i++;
         }
+    }
+
+    Collection<T,K>* map(function<T(T element, int index)> callback) {
+        Collection<T,K>*  collection = this->factory();
+        this->forEach([collection, callback](T element, int index) {
+            collection->push(callback(element, index));
+        });
+        return collection;
     }
 
     bool isEmpty() {

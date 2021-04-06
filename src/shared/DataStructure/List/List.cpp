@@ -6,7 +6,7 @@
 
 template<class T>
 List<T>::List(initializer_list <T> list) {
-    for (int element : list) {
+    for (T element : list) {
         this->push(element);
     }
 }
@@ -15,15 +15,6 @@ template<class T>
 void List<T>::push(T element) {
     this->setNext(new ListNode<T>(element));
     this->increase();
-}
-
-template<class T>
-List<T> *List<T>::map(function<T(T element, int index)> callback) {
-    List<T> *list = new List<T>();
-    this->forEach([list, callback](int element, int index) {
-        list->push(callback(element, index));
-    });
-    return list;
 }
 
 template<class T>
@@ -57,4 +48,9 @@ List<T> *List<T>::Factory(function<bool(T value)> isTrue, function<T()> creator)
         list->push(value);
     } while (isTrue(value));
     return list;
+}
+
+template<class T>
+Collection<T, ListNode<T>> *List<T>::factory() {
+	return new List<T>();
 }

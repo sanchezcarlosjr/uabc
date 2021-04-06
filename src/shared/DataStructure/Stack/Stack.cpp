@@ -56,6 +56,11 @@ Iterator<T> *Stack<T>::createIterator() {
 }
 
 template<class T>
+Collection<T, StackNode<T>> *Stack<T>::factory() {
+	return new Stack<T>();
+}
+
+template<class T>
 Stack<T> *Stack<T>::Factory(int size) {
     Stack<T> *stack = new Stack<T>();
     for (int i = 0; i < size; i++) {

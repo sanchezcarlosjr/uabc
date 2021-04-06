@@ -28,7 +28,7 @@ public:
 
     Iterator<T> *createIterator();
 
-    List<T> *map(function<T(T element, int index)> callback);
+    Collection<T, ListNode<T>> *factory();
 
     static List<T> *Factory(int size);
 
