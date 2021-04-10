@@ -32,6 +32,10 @@ Using ngrok I've connected localhost with the World.
 ``PORT AND HOST && gcc && ./client``
 ``telnet HOST PORT``
 
+## Lisp
+https://medium.com/@shalandy/deploy-git-subdirectory-to-heroku-ea05e95fce1f
+https://bendersteed.gitlab.io/post/deploying-common-lisp-to-heroku/
+
 ## Probability
 
 ## Discrete math
