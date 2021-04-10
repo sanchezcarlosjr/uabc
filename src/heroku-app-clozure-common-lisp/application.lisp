@@ -5,7 +5,12 @@
   (cl-who:with-html-output-to-string (s nil :prologue t)
     (:html
       (:body
-        (:p "hello, world")
+        (loop for (link . title) in '(("https://x.sanchezcarlosjr.com/github" . "GitHub")
+                                ("https://sanchezcarlosjr.com/research" . "Projects")
+                                ("http://x.sanchezcarlosjr.com/youtube" . "YouTube"))
+        do (htm (:a :href link
+                  (:b (str title)))
+                :br))
         (:img :src "lisp-logo120x80.png")))))
 
 (defvar *acceptor* nil)
