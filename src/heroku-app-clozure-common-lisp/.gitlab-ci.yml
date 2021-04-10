@@ -1,0 +1,7 @@
+image: debian
+shellcheck:
+  script:
+    - ./bin/ci-shellcheck
+compile:
+  script:
+    - ./bin/ci-compile
