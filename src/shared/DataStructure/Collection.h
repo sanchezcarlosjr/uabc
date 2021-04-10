@@ -82,10 +82,16 @@ public:
     }
 
     Collection<T,K>* map(function<T(T element, int index)> callback) {
-        Collection<T,K>*  collection = this->factory();
+        Collection<T,K>*  collection = this->create();
         this->forEach([collection, callback](T element, int index) {
             collection->push(callback(element, index));
         });
+        return collection;
+    }
+
+    Collection<T,K>* sort() {
+        Iterator<T> *it = this->createIterator();
+        Collection<T,K>*  collection = this->create();
         return collection;
     }
 
