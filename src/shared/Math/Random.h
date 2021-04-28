@@ -6,6 +6,7 @@
 #include <stdlib.h>
 #include <time.h>
 #include <string>
+#include <vector>
 using namespace std;
 
 #ifndef UABC_RANDOM_H
@@ -37,6 +38,10 @@ public:
         }
         return s;
     };
+    static string stringOf(initializer_list<string> list) {
+        vector<string> values(list);
+        return values[Random::NumberBetween(0, values.size())];
+    }
     static string Name() {
         string names[] = {
                 "Adam Smith",

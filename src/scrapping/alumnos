@@ -1,0 +1,19 @@
+#!/usr/bin/env python3
+
+import requests
+from bs4 import BeautifulSoup    
+session = requests.Session()
+
+headers = {
+    'Host': 'fms.flexepos.com',
+    'User-Agent': 'Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.64 Safari/537.31',
+    'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+    'Accept-Language': 'en-US,en;q=0.5',
+    'Accept-Encoding': 'gzip, deflate, br',
+    'Content-Type': 'application/x-www-form-urlencoded',
+    'Origin': 'https://fms.flexepos.com',
+    'Referer': 'https://fms.flexepos.com/FlexeposWeb/login.seam',
+}
+
+# Add headers in session.
+session.headers.update(headers)

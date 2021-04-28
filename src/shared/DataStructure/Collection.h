@@ -46,7 +46,7 @@ protected:
 public:
     Collection<T,K>* factory(int size) {
         for (int i = 0; i < size; i++) {
-            this->push(Random::Number());
+            this->push(T::Factory());
         }
         return this;
     }

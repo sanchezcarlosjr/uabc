@@ -1,0 +1,19 @@
+fact(1,uno).
+fact(2,dos).
+fact(3,tres).
+fact(4,cuatro).
+fact(5,cinco).
+fact(6,seis).
+fact(7,siete).
+fact(8,ocho).
+fact(9,nueve).
+fact(10,diez).
+fact(11,once).
+fact(12,doce).
+fact(13,trece).
+fact(14,catorce).
+fact(15,quince).
+fact(16,dieciseis).
+fact(17,diecisiete).
+fact(18,dieciocho).
+password(Number, Answer) :- fact(Number, Word), atom_chars(Word, List), length(List, Answer).

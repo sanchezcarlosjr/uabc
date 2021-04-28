@@ -1,0 +1,17 @@
+#!/usr/bin/env python3
+import rpa as r
+
+r.init()
+r.url('https://alumnos.uabc.mx/web/alumnos/bienvenido?p_p_id=com_liferay_login_web_portlet_LoginPortlet&p_p_lifecycle=0&p_p_state=maximized&refererPlid=49&saveLastPath=false&_com_liferay_login_web_portlet_LoginPortlet_redirect=%2Fgroup%2Falumnos%2Fhorario')
+r.type('_com_liferay_login_web_portlet_LoginPortlet_login', 'a361075')
+r.type('_com_liferay_login_web_portlet_LoginPortlet_password', '7Kx86Q[enter]')
+matrix = []
+for day in range(1,6):
+    total = r.count('/html/body/div[1]/div/section/div/section[4]/div/div/div/div/div/section/div/div/div/div/div[1]/div/div/div[2]/ul/li['+str(day)+']/ul/li')
+    courses =[]
+    for course in range(1,total+1):
+        c = r.read('/html/body/div[1]/div/section/div/section[4]/div/div/div/div/div/section/div/div/div/div/div[1]/div/div/div[2]/ul/li['+str(day)+']/ul/li['+str(course)+']')
+        courses.append(c)
+    matrix.append(courses)
+
+print(matrix[0][0])

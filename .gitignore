@@ -13,7 +13,8 @@
 # Precompiled Headers
 *.gch
 *.pch
-
+.idea/**
+*.log
 # Compiled Dynamic libraries
 *.so
 *.dylib
