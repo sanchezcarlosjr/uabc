@@ -33,6 +33,8 @@ public:
         return (List<T>*) list->factory(size);
     }
 
+    T operator[](int index);
+
 };
 
 #endif //UABC_LIST_H

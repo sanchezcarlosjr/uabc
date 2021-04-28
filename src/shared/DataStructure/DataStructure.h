@@ -11,5 +11,5 @@
 #include "Stack/Stack.cpp"
 #include "List/List.h"
 #include "List/List.cpp"
-
+#include "Array/Array.h"
 #endif //UABC_DATASTRUCTURE_H

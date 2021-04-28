@@ -12,14 +12,14 @@ private:
     OperatingSystemConsole* console;
     OperatingSystemFactory() {
         #ifdef _WIN32
-            #include "Windows.h"
+            #include "Windows/Windows.h"
             this->operatingSystem = new Windows();
         #elif _WIN64
-            #include "Windows.h"
+            #include "Windows/Windows.h"
         #elif __APPLE__ || __MACH__
                 // TODO
         #elif __linux__
-            #include "Linux.h"
+            #include "Linux/Linux.h"
             this->operatingSystem = new Linux();
         #endif
             this->console = this->operatingSystem->createConsole();

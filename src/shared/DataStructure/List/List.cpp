@@ -32,3 +32,18 @@ template<class T>
 Collection<T, ListNode<T>> *List<T>::create() {
 	return new List<T>();
 }
+
+template<class T>
+T List<T>::operator[](int index) {
+    if (index > this->size()-1) {
+        throw "Index out of bounds";
+    }
+    Iterator<T> *it = this->createIterator();
+    int i = 0;
+    for (it->first(); !it->isDone(); it->next()) {
+        if (i == index) {
+            return it->current();
+        }
+        i++;
+    }
+}
