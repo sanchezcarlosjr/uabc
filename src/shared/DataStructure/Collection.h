@@ -89,6 +89,20 @@ public:
         return collection;
     }
 
+    T operator[](int index) {
+        if (index > this->size()-1) {
+            throw "Index out of bounds";
+        }
+        Iterator<T> *it = this->createIterator();
+        int i = 0;
+        for (it->first(); !it->isDone(); it->next()) {
+            if (i == index) {
+                return it->current();
+            }
+            i++;
+        }
+    }
+
     Collection<T,K>* sort() {
         Iterator<T> *it = this->createIterator();
         Collection<T,K>*  collection = this->create();

@@ -100,6 +100,4 @@ public:
         array[initialPosition] = array[finalPosition];
         array[finalPosition] = temp;
     }
-
-
 };
