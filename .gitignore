@@ -1,6 +1,6 @@
 # Prerequisites
 *.d
-
+venv/**
 
 # Compiled Object files
 *.slo
@@ -15,6 +15,8 @@
 *.pch
 .idea/**
 *.log
+
+
 # Compiled Dynamic libraries
 *.so
 *.dylib
