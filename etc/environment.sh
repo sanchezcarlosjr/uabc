@@ -108,7 +108,7 @@ windows() {
 
 makeDirectory() {
   cd $1
-  make && ./"bin/lib"
+  make && ./"bin/$2"
 }
 
 cpp() {
@@ -117,7 +117,7 @@ cpp() {
     name=$(ls -lt "$workspace" | grep "^d" | awk  '{print $9}' | fzf);
     cd "$workspace";
     project="$workspace/$name";
-    when-changed -1 -s -r "$project/Test" -c "makeDirectory $project $name";
+    when-changed -1 -s -r "$project/src" -c "makeDirectory $project $name";
 }
 
 params() {

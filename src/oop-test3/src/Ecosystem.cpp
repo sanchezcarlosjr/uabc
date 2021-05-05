@@ -5,5 +5,5 @@
 #include "Ecosystem.h"
 
 void Ecosystem::feedback() {
-    cout << "6 carnivores, 4 females, and 2 males\n 4 herbivorous, 2 females, and 2 males.";
+    cout << "6 carnivores, 4 females, and 2 males.\n4 herbivorous, 2 females, and 2 males.\n";
 }
