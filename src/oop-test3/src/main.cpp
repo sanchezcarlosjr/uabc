@@ -2,5 +2,5 @@
 #include "../../shared/System/Console.h"
 
 int main() {
-    std::cout << "ABD\n";
+    std::cout << "ABC\n";
 }

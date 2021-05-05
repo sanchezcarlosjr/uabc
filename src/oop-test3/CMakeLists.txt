@@ -11,5 +11,5 @@ find_package(GTest REQUIRED)
 include_directories(${GTEST_INCLUDE_DIRS})
 
 # Link runTests with what we want to test and the GTest and pthread library
-add_executable(oop-test3 src/main.cpp)
+add_executable(oop-test3 tests/tests.cpp src/Ecosystem.cpp src/Ecosystem.h)
 target_link_libraries(oop-test3 ${GTEST_LIBRARIES} pthread)
