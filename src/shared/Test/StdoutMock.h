@@ -15,14 +15,20 @@ using namespace std;
 
 
 class StdoutMock {
+private:
+    string capturedStdout;
+
+    string getCapturedStdout();
+
 public:
     StdoutMock();
 
-    void assert_eq(string expected);
+    void assert_eq(const string &expected);
 
     void assert_eq(initializer_list<string>);
 
-    vector<string> split(string splitter);
+    vector<string> split(const string &splitter);
+
 };
 
 
