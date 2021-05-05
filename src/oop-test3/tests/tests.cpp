@@ -1,9 +1,10 @@
 #include "../src/Ecosystem.h"
 #include <gtest/gtest.h>
 
-TEST(GenerateRandomNumberBetweenTest, positiveNumbers) {
+TEST(EcosystemTest, InitState) {
     Ecosystem ecosystem;
-    ASSERT_GE(ecosystem.show(), "");
+    ecosystem.feedback();
+    ASSERT_GE("", "6 carnivores, 4 females, and 2 males\n 4 herbivorous, 2 females, and 2 males.");
 }
 
 int main(int argc, char **argv) {
