@@ -19,9 +19,9 @@ Ecosystem::Ecosystem() {
 Animal *Ecosystem::factory() {
     int randomNumber = Random::NumberBetween(1, 2);
     switch (randomNumber) {
-        case CARNIVORE:
+        case 1:
             return Carnivore::factory();
-        case HERBIVORE:
+        case 2:
             return Herbivore::factory();
         default:
             return nullptr;
