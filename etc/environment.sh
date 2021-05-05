@@ -105,6 +105,21 @@ windows() {
   vagrant up
 }
 
+
+makeDirectory() {
+  cd $1
+  make && ./"bin/$2"
+}
+
+cpp() {
+    export -f makeDirectory
+    workspace="$(pwd)/src";
+    name=$(ls -lt "$workspace" | grep "^d" | awk  '{print $9}' | fzf);
+    cd "$workspace";
+    project="$workspace/$name";
+    when-changed -1 -s -r "$project/src" -c "makeDirectory $project $name";
+}
+
 params() {
   if [ $# -eq 0 ]; then
     usage
@@ -115,6 +130,10 @@ params() {
     -share-code)
 	shareCodeByGit
 	exit 0
+       ;;
+    -cpp)
+      cpp
+      exit 0
        ;;
     -sh | --shared)
        shared
