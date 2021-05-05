@@ -1,6 +1,6 @@
-#include <iostream>
-#include "../../shared/System/Console.h"
+#include "Ecosystem.h"
 
 int main() {
-    std::cout << "ABC\n";
+    Ecosystem ecosystem;
+    ecosystem.simulate(10);
 }

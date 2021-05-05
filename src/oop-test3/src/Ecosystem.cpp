@@ -11,6 +11,29 @@ void Ecosystem::feedback() {
          << Animal::getMaleTotalOf(HERBIVORE) << " males.\n";
 }
 
+void Ecosystem::simulate(int days) {
+    for (int i = 0; i < days; i++) {
+        cout << "Day "<< i+1 << "\n";
+        this->update();
+        this->feedback();
+        Console::pauseAndClear();
+    }
+}
+
+void Ecosystem::bornAnimal(Animal *animal) {
+    this->animals.push_back(animal);
+}
+
+void Ecosystem::dieAnimal(int id) {
+    cout << "\n" << "Die" << "\n";
+}
+
+void Ecosystem::update() {
+    for (auto animal : this->animals) {
+        cout << animal->update(this) << "\n";
+    }
+}
+
 Ecosystem::Ecosystem() {
     this->factory(10);
     cout << "Initial population\n";

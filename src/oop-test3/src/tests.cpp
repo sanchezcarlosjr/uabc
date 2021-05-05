@@ -25,6 +25,9 @@ TEST(EcosystemTest, InitState) {
     ASSERT_EQ(animals[0] + animals[3], 10);
 }
 
+TEST(AnimalTest, MaintanerTest) {
+}
+
 int main(int argc, char **argv) {
     testing::InitGoogleTest(&argc, argv);
     return RUN_ALL_TESTS();
