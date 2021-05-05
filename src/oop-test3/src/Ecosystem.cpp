@@ -5,5 +5,32 @@
 #include "Ecosystem.h"
 
 void Ecosystem::feedback() {
-    cout << "6 carnivores, 4 females, and 2 males.\n4 herbivorous, 2 females, and 2 males.\n";
+    cout << Carnivore::getTotal() << " carnivores, " << Animal::getFemaleTotalOf(CARNIVORE) << " females, and "
+         << Animal::getMaleTotalOf(CARNIVORE) << " males.\n";
+    cout << Herbivore::getTotal() << " herbivorous, " << Animal::getFemaleTotalOf(HERBIVORE) << " females, and "
+         << Animal::getMaleTotalOf(HERBIVORE) << " males.\n";
+}
+
+Ecosystem::Ecosystem() {
+    this->factory(10);
+    this->feedback();
+}
+
+Animal *Ecosystem::factory() {
+    int randomNumber = Random::NumberBetween(1, 2);
+    switch (randomNumber) {
+        case CARNIVORE:
+            return Carnivore::factory();
+        case HERBIVORE:
+            return Herbivore::factory();
+        default:
+            return nullptr;
+    }
+}
+
+void *Ecosystem::factory(int size) {
+    for (int i = 0; i < size; i++) {
+        this->animals.push_back(Ecosystem::factory());
+    }
+    return nullptr;
 }

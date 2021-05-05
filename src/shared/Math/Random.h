@@ -19,7 +19,7 @@ public:
     }
     static int NumberBetween(int a, int b) {
         srand(time(NULL) + rand());
-        return (rand() % (b - a)) + a;
+        return (rand() % (b+1 - a)) + a;
     }
 
     static bool Bool() {
@@ -40,7 +40,7 @@ public:
     };
     static string stringOf(initializer_list<string> list) {
         vector<string> values(list);
-        return values[Random::NumberBetween(0, values.size())];
+        return values[Random::NumberBetween(0, values.size()-1)];
     }
     static string Name() {
         string names[] = {

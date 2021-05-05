@@ -14,7 +14,6 @@ vector<int> stoi(const vector<string> &strings) {
 TEST(EcosystemTest, InitState) {
     StdoutMock stdoutMock;
     Ecosystem ecosystem;
-    ecosystem.feedback();
     vector<int> animals = stoi(stdoutMock.split("\\d"));
     stdoutMock.assert_eq({
                                  "\\d carnivores, \\d females, and \\d males.\n",
