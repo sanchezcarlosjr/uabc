@@ -8,6 +8,7 @@
 #include <vector>
 #include "../../shared/Math/Random.h"
 #include "AnimalType.h"
+#include "../../shared/System/Console.h"
 
 using namespace std;
 #ifndef OOP_TEST3_ECOSYSTEM_H

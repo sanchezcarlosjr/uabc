@@ -13,7 +13,9 @@ void Ecosystem::feedback() {
 
 Ecosystem::Ecosystem() {
     this->factory(10);
+    cout << "Initial population\n";
     this->feedback();
+    Console::pauseAndClear();
 }
 
 Animal *Ecosystem::factory() {

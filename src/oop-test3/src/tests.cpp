@@ -16,6 +16,7 @@ TEST(EcosystemTest, InitState) {
     Ecosystem ecosystem;
     vector<int> animals = stoi(stdoutMock.split("\\d"));
     stdoutMock.assert_eq({
+                                 "Initial population\n",
                                  "\\d carnivores, \\d females, and \\d males.\n",
                                  "\\d herbivorous, \\d females, and \\d males.\n"
                          });
