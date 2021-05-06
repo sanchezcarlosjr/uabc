@@ -25,7 +25,9 @@ TEST(EcosystemTest, InitState) {
     ASSERT_EQ(animals[0] + animals[3], 10);
 }
 
-TEST(AnimalTest, MaintanerTest) {
+TEST(AnimalTest, itShouldBeInSomeZoneInBetween0To4) {
+    Animal* carnivore = new Carnivore();
+    ASSERT_TRUE(carnivore->getZone() >= 1 && carnivore->getZone() <= 4);
 }
 
 int main(int argc, char **argv) {

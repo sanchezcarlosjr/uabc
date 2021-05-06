@@ -68,6 +68,10 @@ public:
         return animal.str();
     }
 
+    int getZone() {
+        return 1;
+    }
+
     static int getFemaleTotalOf(AnimalType animalType) {
         return Animal::totalBySex[FEMALE][animalType];
     }
