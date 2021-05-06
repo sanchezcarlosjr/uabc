@@ -44,6 +44,7 @@ public:
     };
 
     void update(AnimalObserver *animalObserver) {
+        this->move();
         int action = Random::NumberBetween(1, 3);
         switch (action) {
             case 1:
