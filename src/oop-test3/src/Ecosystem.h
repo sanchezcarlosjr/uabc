@@ -10,6 +10,7 @@
 #include "../../shared/Math/Random.h"
 #include "AnimalType.h"
 #include "../../shared/System/Console.h"
+#include "../../shared/DataStructure/Utils/ToString.h"
 
 using namespace std;
 #ifndef OOP_TEST3_ECOSYSTEM_H
@@ -23,12 +24,16 @@ private:
 
     void feedback();
 
+    void feedbackByZone();
+
     void update();
 
     static Animal *factory();
 
 public:
     Ecosystem();
+
+    ~Ecosystem();
 
     void *factory(int);
 

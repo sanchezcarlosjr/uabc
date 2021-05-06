@@ -1,5 +1,6 @@
 #include "Ecosystem.h"
 #include "../../shared/Test/StdoutMock.h"
+#include "../../shared/DataStructure/Utils/ToString.h"
 #include <gtest/gtest.h>
 
 vector<int> stoi(const vector<string> &strings) {
@@ -25,9 +26,37 @@ TEST(EcosystemTest, InitState) {
     ASSERT_EQ(animals[0] + animals[3], 10);
 }
 
-TEST(AnimalTest, itShouldBeInSomeZoneInBetween0To4) {
-    Animal* carnivore = new Carnivore();
-    ASSERT_TRUE(carnivore->move() >= 1 && carnivore->move() <= 4);
+TEST(AnimalTest, itShouldBeStartInZero) {
+    for (auto animal : Animal::byZone(CARNIVORE, FEMALE)) {
+        ASSERT_EQ(animal, 0);
+    }
+    for (auto animal : Animal::byZone(CARNIVORE, MALE)) {
+        ASSERT_EQ(animal, 0);
+    }
+    for (auto animal : Animal::byZone(HERBIVORE, FEMALE)) {
+        ASSERT_EQ(animal, 0);
+    }
+    for (auto animal : Animal::byZone(HERBIVORE, MALE)) {
+        ASSERT_EQ(animal, 0);
+    }
+}
+
+TEST(AnimalTest, itShouldMoveWhenItStarts) {
+    auto* carnivore = new Carnivore();
+    ASSERT_EQ(Animal::byZone(CARNIVORE, carnivore->getSex())[carnivore->getZone()], 1);
+    string actual = toString<int>(Animal::byZone(CARNIVORE, carnivore->getSex()));
+    ASSERT_TRUE(regex_match(actual, regex("\\d \\d \\d \\d")));
+    auto* herbivore = new Herbivore();
+    ASSERT_EQ(Animal::byZone(HERBIVORE, herbivore->getSex())[herbivore->getZone()], 1);
+    cout << toString<int>(Animal::byZone(HERBIVORE, herbivore->getSex())) << "\n";
+}
+
+TEST(AnimalTest, itShouldMoveAndChangeTotalByZone) {
+    auto* carnivore = new Carnivore();
+    int zone1 = carnivore->getZone();
+    carnivore->move();
+    ASSERT_EQ(Animal::byZone(CARNIVORE, carnivore->getSex())[zone1], 0);
+    ASSERT_EQ(Animal::byZone(CARNIVORE, carnivore->getSex())[carnivore->getZone()], 1);
 }
 
 int main(int argc, char **argv) {

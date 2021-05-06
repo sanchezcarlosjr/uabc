@@ -16,6 +16,7 @@ using namespace std;
 class Animal {
 private:
     static int totalBySex[2][2];
+    static vector<vector<vector<int>>> animalsByZone;
 
     static void increase(Sex sex, AnimalType type) {
         Animal::totalBySex[sex][type]++;
@@ -39,6 +40,7 @@ public:
 
     virtual ~Animal() {
         Animal::decrease(this->sex, this->type);
+        Animal::animalsByZone[this->type][this->sex][this->getZone()]--;
     };
 
     void update(AnimalObserver *animalObserver) {
@@ -70,9 +72,24 @@ public:
         return animal.str();
     }
 
-    int move() {
+    void move() {
+        if (Animal::animalsByZone[this->type][this->sex][this->getZone()] > 0) {
+            Animal::animalsByZone[this->type][this->sex][this->getZone()]--;
+        }
         this->zone = Random::NumberBetween(1,4);
-        return this->zone;
+        Animal::animalsByZone[this->type][this->sex][this->getZone()]++;
+    }
+
+    static vector<int> byZone(AnimalType animalType, Sex sex) {
+        return Animal::animalsByZone[animalType][sex];
+    }
+
+    Sex getSex() {
+        return this->sex;
+    }
+
+    int getZone() {
+        return this->zone-1;
     }
 
     static int getFemaleTotalOf(AnimalType animalType) {

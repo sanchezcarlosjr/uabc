@@ -13,20 +13,21 @@ void Ecosystem::feedback() {
 
 void Ecosystem::simulate(int days) {
     for (int i = 0; i < days; i++) {
-        cout << "Day "<< i+1 << "\n";
+        cout << "Day " << i + 1 << "\n";
         this->update();
         this->feedback();
+        this->feedbackByZone();
         Console::pauseAndClear();
     }
 }
 
 void Ecosystem::bornAnimal(Animal *animal) {
     this->animals.push_back(animal);
-    cout << animal->toString() << " was born"<< endl;
+    cout << animal->toString() << " was born" << endl;
 }
 
 void Ecosystem::dieAnimal() {
-    Animal* animal = (*this->actualAnimalIterator);
+    Animal *animal = (*this->actualAnimalIterator);
     cout << animal->toString() << " has died" << endl;
     this->actualAnimalIterator = this->animals.erase(this->actualAnimalIterator);
     delete animal;
@@ -34,10 +35,18 @@ void Ecosystem::dieAnimal() {
 
 void Ecosystem::update() {
     this->actualAnimalIterator = this->animals.begin();
-    while (this->actualAnimalIterator !=  this->animals.end()) {
+    while (this->actualAnimalIterator != this->animals.end()) {
         (*this->actualAnimalIterator)->update(this);
         this->actualAnimalIterator++;
     }
+}
+
+void Ecosystem::feedbackByZone() {
+    cout << "\t\t  Zone: 1 2 3 4" << endl;
+    cout << "Male Carnivores\t\t" << toString<int>(Animal::byZone(CARNIVORE, MALE)) << endl;
+    cout << "Female Carnivores\t" <<  toString<int>(Animal::byZone(CARNIVORE, FEMALE)) << endl;
+    cout << "Male Herbivorous\t" <<  toString<int>(Animal::byZone(HERBIVORE, MALE))  << endl;
+    cout << "Female Carnivores\t" <<  toString<int>(Animal::byZone(HERBIVORE, FEMALE)) << endl;
 }
 
 Ecosystem::Ecosystem() {
@@ -64,4 +73,10 @@ void *Ecosystem::factory(int size) {
         this->animals.push_back(Ecosystem::factory());
     }
     return nullptr;
+}
+
+Ecosystem::~Ecosystem() {
+    for (auto animal : this->animals) {
+        delete animal;
+    }
 }

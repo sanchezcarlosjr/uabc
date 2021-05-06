@@ -6,7 +6,7 @@
 
 int Carnivore::total = 0;
 
-Carnivore::Carnivore(): Animal(0) {
+Carnivore::Carnivore(): Animal(CARNIVORE) {
     Carnivore::total++;
     this->life = 3;
 }

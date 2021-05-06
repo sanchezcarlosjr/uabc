@@ -10,7 +10,7 @@ Herbivore *Herbivore::factory() {
     return new Herbivore();
 }
 
-Herbivore::Herbivore() : Animal(1) {
+Herbivore::Herbivore() : Animal(HERBIVORE) {
     Herbivore::total++;
     this->agility = static_cast<Agility>(Random::NumberBetween(1, 3));
 }
