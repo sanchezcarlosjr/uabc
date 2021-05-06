@@ -9,7 +9,7 @@ class Animal;
 class AnimalObserver {
 public:
     virtual void bornAnimal(Animal* animal)  = 0;
-    virtual void dieAnimal(int id) = 0;
+    virtual void dieAnimal() = 0;
 };
 
 

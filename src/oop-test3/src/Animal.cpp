@@ -5,3 +5,4 @@
 #include "Animal.h"
 
 int Animal::totalBySex[2][2] = {{0,0},{0,0}};
+

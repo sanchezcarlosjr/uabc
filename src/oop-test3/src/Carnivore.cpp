@@ -23,27 +23,21 @@ int Carnivore::getTotal() {
     return Carnivore::total;
 }
 
-string Carnivore::attack(AnimalObserver* animalObserver) {
+void Carnivore::attack(AnimalObserver* animalObserver) {
     this->life++;
-    return this->toString() + "==>" + "Attack event";
 }
 
-string Carnivore::reproduce(AnimalObserver* animalObserver) {
+void Carnivore::reproduce(AnimalObserver* animalObserver) {
     if (this->sex == FEMALE) {
         animalObserver->bornAnimal(Carnivore::factory());
-        return this->toString() + "==>" + "Reproduce event";
     }
-    return Animal::toString();
 }
 
-string Carnivore::hunt(AnimalObserver* animalObserver) {
+void Carnivore::hunt(AnimalObserver* animalObserver) {
     this->life--;
     if (this->life == 0) {
-        delete this;
-        animalObserver->dieAnimal(0);
-        return this->toString() + "==>" + "Hunt event";
+        animalObserver->dieAnimal();
     }
-    return this->toString();
 }
 
 string Carnivore::toString() {

@@ -19,6 +19,8 @@ class Ecosystem : public AnimalObserver {
 private:
     list<Animal *> animals;
 
+    _List_iterator<Animal *> actualAnimalIterator;
+
     void feedback();
 
     void update();
@@ -34,7 +36,7 @@ public:
 
     void bornAnimal(Animal *animal) override;
 
-    void dieAnimal(int id) override;
+    void dieAnimal() override;
 };
 
 

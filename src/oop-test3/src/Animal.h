@@ -16,9 +16,15 @@ using namespace std;
 class Animal {
 private:
     static int totalBySex[2][2];
+
     static void increase(Sex sex, AnimalType type) {
         Animal::totalBySex[sex][type]++;
     }
+
+    static void decrease(Sex sex, AnimalType type) {
+        Animal::totalBySex[sex][type]--;
+    }
+
 protected:
     AnimalType type;
     Sex sex;
@@ -28,25 +34,31 @@ public:
         this->sex = static_cast<Sex>(Random::NumberBetween(FEMALE, MALE));
         Animal::increase(this->sex, this->type);
     }
-    string update(AnimalObserver* animalObserver) {
-        int action = Random::NumberBetween(1,3);
+
+    virtual ~Animal() {
+        Animal::decrease(this->sex, this->type);
+    };
+
+    void update(AnimalObserver *animalObserver) {
+        int action = Random::NumberBetween(1, 3);
         switch (action) {
             case 1:
-                return this->attack(animalObserver);
+                this->attack(animalObserver);
+                break;
             case 2:
-                return this->reproduce(animalObserver);
+                this->reproduce(animalObserver);
+                break;
             case 3:
-                return this->hunt(animalObserver);
-            default:
-                return "";
+                this->hunt(animalObserver);
+                break;
         }
     }
 
-    virtual string reproduce(AnimalObserver* animalObserver) = 0;
+    virtual void reproduce(AnimalObserver *animalObserver) = 0;
 
-    virtual string attack(AnimalObserver* animalObserver) = 0;
+    virtual void attack(AnimalObserver *animalObserver) = 0;
 
-    virtual string hunt(AnimalObserver* animalObserver) = 0;
+    virtual void hunt(AnimalObserver *animalObserver) = 0;
 
     virtual string toString() {
         string animalType = this->type == CARNIVORE ? "Carnivore" : "Herbivore";
@@ -55,9 +67,11 @@ public:
         animal << animalType << "," << animalSex << ",";
         return animal.str();
     }
+
     static int getFemaleTotalOf(AnimalType animalType) {
         return Animal::totalBySex[FEMALE][animalType];
     }
+
     static int getMaleTotalOf(AnimalType animalType) {
         return Animal::totalBySex[MALE][animalType];
     }

@@ -22,15 +22,21 @@ void Ecosystem::simulate(int days) {
 
 void Ecosystem::bornAnimal(Animal *animal) {
     this->animals.push_back(animal);
+    cout << animal->toString() << " was born"<< endl;
 }
 
-void Ecosystem::dieAnimal(int id) {
-    cout << "\n" << "Die" << "\n";
+void Ecosystem::dieAnimal() {
+    Animal* animal = (*this->actualAnimalIterator);
+    cout << animal->toString() << " has died" << endl;
+    this->actualAnimalIterator = this->animals.erase(this->actualAnimalIterator);
+    delete animal;
 }
 
 void Ecosystem::update() {
-    for (auto animal : this->animals) {
-        cout << animal->update(this) << "\n";
+    this->actualAnimalIterator = this->animals.begin();
+    while (this->actualAnimalIterator !=  this->animals.end()) {
+        (*this->actualAnimalIterator)->update(this);
+        this->actualAnimalIterator++;
     }
 }
 

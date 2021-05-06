@@ -22,11 +22,11 @@ public:
     Herbivore();
     static Herbivore *factory();
     static int getTotal();
-    ~Herbivore();
+    ~Herbivore() override;
     string toString() override;
-    string attack(AnimalObserver* animalObserver) override;
-    string reproduce(AnimalObserver* animalObserver) override;
-    string hunt(AnimalObserver* animalObserver) override;
+    void attack(AnimalObserver* animalObserver) override;
+    void reproduce(AnimalObserver* animalObserver) override;
+    void hunt(AnimalObserver* animalObserver) override;
 };
 
 
