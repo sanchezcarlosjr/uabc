@@ -27,7 +27,7 @@ TEST(EcosystemTest, InitState) {
 
 TEST(AnimalTest, itShouldBeInSomeZoneInBetween0To4) {
     Animal* carnivore = new Carnivore();
-    ASSERT_TRUE(carnivore->getZone() >= 1 && carnivore->getZone() <= 4);
+    ASSERT_TRUE(carnivore->move() >= 1 && carnivore->move() <= 4);
 }
 
 int main(int argc, char **argv) {

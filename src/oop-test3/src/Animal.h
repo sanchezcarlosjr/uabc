@@ -28,11 +28,13 @@ private:
 protected:
     AnimalType type;
     Sex sex;
+    int zone;
 public:
     explicit Animal(int type) {
         this->type = static_cast<AnimalType>(type);
         this->sex = static_cast<Sex>(Random::NumberBetween(FEMALE, MALE));
         Animal::increase(this->sex, this->type);
+        this->move();
     }
 
     virtual ~Animal() {
@@ -68,8 +70,9 @@ public:
         return animal.str();
     }
 
-    int getZone() {
-        return 1;
+    int move() {
+        this->zone = Random::NumberBetween(1,4);
+        return this->zone;
     }
 
     static int getFemaleTotalOf(AnimalType animalType) {
