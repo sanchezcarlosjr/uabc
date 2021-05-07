@@ -114,8 +114,12 @@ TEST(AnimalTest, herbivoreShouldDiedIfChecksCondition) {
 }
 
 TEST(AnimalTest, carnivoreShouldAttackIfChecksCondition) {
-    auto* carnivore = new Carnivore();
+    auto* carnivore = new Carnivore(1);
     ASSERT_FALSE(carnivore->canFeed());
+    auto* herbivore = new Herbivore(1);
+    ASSERT_TRUE(carnivore->canFeed());
+    delete carnivore;
+    delete herbivore;
 }
 
 int main(int argc, char **argv) {

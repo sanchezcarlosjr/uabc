@@ -21,6 +21,7 @@ public:
     bool canFeed();
     string toString() override;
     static Carnivore *factory();
+    static Carnivore *factory(int);
     ~Carnivore() override;
 };
 

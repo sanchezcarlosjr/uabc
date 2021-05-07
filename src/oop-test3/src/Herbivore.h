@@ -22,6 +22,7 @@ public:
     Herbivore(int);
     Herbivore();
     static Herbivore *factory();
+    static Herbivore *factory(int);
     static int getTotal();
     ~Herbivore() override;
     string toString() override;

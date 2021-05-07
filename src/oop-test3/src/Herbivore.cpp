@@ -10,6 +10,10 @@ Herbivore *Herbivore::factory() {
     return new Herbivore();
 }
 
+Herbivore *Herbivore::factory(int zone) {
+    return new Herbivore(zone);
+}
+
 Herbivore::Herbivore(int zone) : Animal(HERBIVORE, zone) {
     Herbivore::total++;
     this->agility = static_cast<Agility>(Random::NumberBetween(RUN, ATTACK));
@@ -34,7 +38,7 @@ void Herbivore::attack(AnimalObserver *animalObserver) {
 
 void Herbivore::reproduce(AnimalObserver *animalObserver) {
     if (this->canReproduce()) {
-        animalObserver->bornAnimal(Herbivore::factory());
+        animalObserver->bornAnimal(Herbivore::factory(this->getZone()));
     }
 }
 

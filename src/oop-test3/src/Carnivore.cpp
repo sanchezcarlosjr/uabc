@@ -27,12 +27,14 @@ int Carnivore::getTotal() {
 }
 
 void Carnivore::attack(AnimalObserver* animalObserver) {
-    this->life++;
+    if (this->canFeed()) {
+        this->life++;
+    }
 }
 
 void Carnivore::reproduce(AnimalObserver* animalObserver) {
     if (this->canReproduce()) {
-        animalObserver->bornAnimal(Carnivore::factory());
+        animalObserver->bornAnimal(Carnivore::factory(this->getZone()));
     }
 }
 
@@ -50,5 +52,9 @@ string Carnivore::toString() {
 }
 
 bool Carnivore::canFeed() {
-    return false;
+    return Animal::byZone(HERBIVORE)[this->getZone()] > 0;
+}
+
+Carnivore *Carnivore::factory(int zone) {
+    return new Carnivore(zone);
 }
