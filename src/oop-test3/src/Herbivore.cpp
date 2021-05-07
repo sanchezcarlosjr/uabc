@@ -12,7 +12,7 @@ Herbivore *Herbivore::factory() {
 
 Herbivore::Herbivore(int zone) : Animal(HERBIVORE, zone) {
     Herbivore::total++;
-    this->agility = static_cast<Agility>(Random::NumberBetween(1, 3));
+    this->agility = static_cast<Agility>(Random::NumberBetween(RUN, DEFEND));
 }
 
 Herbivore::Herbivore() : Herbivore(-1) {
