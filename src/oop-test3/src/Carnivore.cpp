@@ -6,9 +6,12 @@
 
 int Carnivore::total = 0;
 
-Carnivore::Carnivore(): Animal(CARNIVORE) {
+Carnivore::Carnivore(int zone): Animal(CARNIVORE, zone) {
     Carnivore::total++;
     this->life = 3;
+}
+
+Carnivore::Carnivore(): Carnivore(-1) {
 }
 
 Carnivore * Carnivore::factory() {

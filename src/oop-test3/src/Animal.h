@@ -31,15 +31,12 @@ protected:
     Sex sex;
     int zone;
 public:
-    explicit Animal(int type): Animal(type, -1) {
-        this->move();
-    }
-
     Animal(int type, int zone) {
         this->type = static_cast<AnimalType>(type);
         this->sex = static_cast<Sex>(Random::NumberBetween(FEMALE, MALE));
         this->zone = zone;
         Animal::increase(this->sex, this->type);
+        this->zone < 0 || this->zone > 3 ? this->move() : this->move(this->zone);
     }
 
     virtual ~Animal() {

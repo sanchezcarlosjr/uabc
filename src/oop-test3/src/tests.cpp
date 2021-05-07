@@ -65,20 +65,18 @@ TEST(AnimalTest, itShouldMoveAndChangeTotalByZone) {
 }
 
 
-//class MockObserver: public AnimalObserver {
-//public:
-//    void dieAnimal() override {
-//    }
-//    void bornAnimal(Animal *animal) override {}
-//};
-//
-//TEST(AnimalTest, itShouldUpdateZone) {
-//    auto* carnivore = new Carnivore();
-//    int zone1 = carnivore->getZone();
-//    carnivore->update(new MockObserver());
-//    ASSERT_EQ(Animal::byZone(CARNIVORE, carnivore->getSex())[zone1], 0);
-//    ASSERT_EQ(Animal::byZone(CARNIVORE, carnivore->getSex())[carnivore->getZone()], 1);
-//}
+class MockObserver: public AnimalObserver {
+public:
+    void dieAnimal() override {
+    }
+    void bornAnimal(Animal *animal) override {}
+};
+
+TEST(AnimalTest, itShouldSetZoneWhenItIsConstructed) {
+    auto* carnivore = new Carnivore(1);
+    int actual = carnivore->getZone();
+    ASSERT_EQ(actual, carnivore->getZone());
+}
 
 int main(int argc, char **argv) {
     testing::InitGoogleTest(&argc, argv);

@@ -12,6 +12,7 @@ private:
     int life;
 
 public:
+    Carnivore(int);
     Carnivore();
     static int getTotal();
     void attack(AnimalObserver* animalObserver) override;

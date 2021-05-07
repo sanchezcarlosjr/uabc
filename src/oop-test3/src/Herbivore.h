@@ -19,6 +19,7 @@ private:
     static int total;
     Agility agility;
 public:
+    Herbivore(int);
     Herbivore();
     static Herbivore *factory();
     static int getTotal();
