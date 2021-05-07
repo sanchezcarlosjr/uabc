@@ -50,6 +50,8 @@ TEST(AnimalTest, itShouldMoveWhenItStarts) {
     auto *herbivore = new Herbivore();
     ASSERT_EQ(Animal::byZone(HERBIVORE, herbivore->getSex())[herbivore->getZone()], 1);
     ASSERT_TRUE(herbivore->getZone() >= 0 && herbivore->getZone() <= 3);
+    delete carnivore;
+    delete herbivore;
 }
 
 
@@ -59,6 +61,7 @@ TEST(AnimalTest, itShouldMoveAndChangeTotalByZone) {
     carnivore->move();
     ASSERT_TRUE(Animal::byZone(CARNIVORE, carnivore->getSex())[zone1] == 0 || zone1 == carnivore->getZone() );
     ASSERT_EQ(Animal::byZone(CARNIVORE, carnivore->getSex())[carnivore->getZone()], 1);
+    delete carnivore;
 }
 
 
