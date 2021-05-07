@@ -83,19 +83,32 @@ TEST(AnimalTest, carnivoreShouldReproduceIfChecksCondition) {
     ASSERT_EQ(father->getSex(), MALE);
     ASSERT_EQ(Animal::byZone(CARNIVORE, MALE)[1], 1);
     ASSERT_TRUE(mother->canReproduce());
+    delete mother;
+    delete father;
 }
 
 TEST(AnimalTest, herbivoreShouldReproduceIfChecksCondition) {
     auto* mother = new Herbivore(1);
     mother->setSex(FEMALE);
     ASSERT_EQ(mother->getSex(), FEMALE);
-    ASSERT_EQ(Animal::byZone(CARNIVORE, FEMALE)[1], 1);
+    ASSERT_EQ(Animal::byZone(HERBIVORE, FEMALE)[1], 1);
     ASSERT_FALSE(mother->canReproduce());
     auto* father = new Herbivore(1);
     father->setSex(MALE);
     ASSERT_EQ(father->getSex(), MALE);
-    ASSERT_EQ(Animal::byZone(CARNIVORE, MALE)[1], 1);
+    ASSERT_EQ(Animal::byZone(HERBIVORE, MALE)[1], 1);
     ASSERT_TRUE(mother->canReproduce());
+    delete mother;
+    delete father;
+}
+
+TEST(AnimalTest, herbivoreShouldDiedIfChecksCondition) {
+    auto* herbivore = new Herbivore(1);
+    ASSERT_FALSE(herbivore->canDied());
+    auto* carnivore = new Carnivore(1);
+    ASSERT_EQ(Animal::byZone(CARNIVORE)[1], 1);
+    herbivore->setAgility(ATTACK);
+    ASSERT_TRUE(herbivore->canDied());
 }
 
 int main(int argc, char **argv) {

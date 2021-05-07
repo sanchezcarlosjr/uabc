@@ -74,7 +74,7 @@ public:
     }
 
     void move() {
-        this->move(Random::NumberBetween(0,3));
+        this->move(Random::NumberBetween(0, 3));
     }
 
     void move(int newZone) {
@@ -97,6 +97,16 @@ public:
 
     static vector<int> byZone(AnimalType animalType, Sex sex) {
         return Animal::animalsByZone[animalType][sex];
+    }
+
+    static vector<int> byZone(AnimalType animalType) {
+        vector<int> total({0,0,0,0});
+        vector<int> males = Animal::byZone(animalType, MALE);
+        vector<int> females = Animal::byZone(animalType, FEMALE);
+        for (int i = 0; i < total.size(); i++) {
+            total[i] = males[i] + females[i];
+        }
+        return total;
     }
 
     Sex getSex() {

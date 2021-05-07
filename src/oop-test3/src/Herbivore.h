@@ -11,7 +11,7 @@
 enum Agility {
     RUN = 1,
     FLY = 2,
-    DEFEND = 3
+    ATTACK = 3
 };
 
 class Herbivore: public Animal {
@@ -27,6 +27,8 @@ public:
     string toString() override;
     void attack(AnimalObserver* animalObserver) override;
     void reproduce(AnimalObserver* animalObserver) override;
+    bool canDied();
+    void setAgility(Agility newAgility);
     void hunt(AnimalObserver* animalObserver) override;
 };
 

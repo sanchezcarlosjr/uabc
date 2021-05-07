@@ -12,7 +12,7 @@ Herbivore *Herbivore::factory() {
 
 Herbivore::Herbivore(int zone) : Animal(HERBIVORE, zone) {
     Herbivore::total++;
-    this->agility = static_cast<Agility>(Random::NumberBetween(RUN, DEFEND));
+    this->agility = static_cast<Agility>(Random::NumberBetween(RUN, ATTACK));
 }
 
 Herbivore::Herbivore() : Herbivore(-1) {
@@ -27,7 +27,7 @@ Herbivore::~Herbivore() {
 }
 
 void Herbivore::attack(AnimalObserver *animalObserver) {
-    if (this->agility == DEFEND) {
+    if (this->canDied()) {
         animalObserver->dieAnimal();
     }
 }
@@ -39,13 +39,21 @@ void Herbivore::reproduce(AnimalObserver *animalObserver) {
 }
 
 void Herbivore::hunt(AnimalObserver *animalObserver) {
-    if (this->agility == DEFEND) {
+    if (this->agility == ATTACK) {
         animalObserver->dieAnimal();
     }
+}
+
+void Herbivore::setAgility(Agility newAgility) {
+    this->agility = newAgility;
 }
 
 string Herbivore::toString() {
     stringstream herbivore;
     herbivore << Animal::toString() << this->agility << " agility";
     return herbivore.str();
+}
+
+bool Herbivore::canDied() {
+    return this->agility == ATTACK && Animal::byZone(CARNIVORE)[this->getZone()] > 0;
 }
