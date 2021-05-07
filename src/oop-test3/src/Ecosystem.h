@@ -39,6 +39,8 @@ public:
 
     void simulate(int);
 
+    void kill(AnimalType animalType, int zone) override;
+
     void bornAnimal(Animal *animal) override;
 
     void dieAnimal() override;

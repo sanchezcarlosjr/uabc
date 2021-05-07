@@ -113,11 +113,26 @@ TEST(AnimalTest, herbivoreShouldDiedIfChecksCondition) {
     delete carnivore;
 }
 
+class AnimalObserverMock: public AnimalObserver {
+private:
+    Animal* animal;
+public:
+    explicit AnimalObserverMock(Animal* animal) {
+        this->animal = animal;
+    }
+    void kill(AnimalType animalType, int zone) override {
+        cout << this->animal << "\n";
+    }
+    void bornAnimal(Animal* animal2) override {}
+    void dieAnimal() override {}
+};
+
 TEST(AnimalTest, carnivoreShouldAttackIfChecksCondition) {
     auto* carnivore = new Carnivore(1);
     ASSERT_FALSE(carnivore->canFeed());
     auto* herbivore = new Herbivore(1);
     ASSERT_TRUE(carnivore->canFeed());
+    carnivore->attack(new AnimalObserverMock(herbivore));
     delete carnivore;
     delete herbivore;
 }

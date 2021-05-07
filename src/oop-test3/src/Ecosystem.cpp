@@ -44,9 +44,9 @@ void Ecosystem::update() {
 void Ecosystem::feedbackByZone() {
     cout << "\t\t  Zone: 1 2 3 4" << endl;
     cout << "Male Carnivores\t\t" << toString<int>(Animal::byZone(CARNIVORE, MALE)) << endl;
-    cout << "Female Carnivores\t" <<  toString<int>(Animal::byZone(CARNIVORE, FEMALE)) << endl;
-    cout << "Male Herbivorous\t" <<  toString<int>(Animal::byZone(HERBIVORE, MALE))  << endl;
-    cout << "Female Carnivores\t" <<  toString<int>(Animal::byZone(HERBIVORE, FEMALE)) << endl;
+    cout << "Female Carnivores\t" << toString<int>(Animal::byZone(CARNIVORE, FEMALE)) << endl;
+    cout << "Male Herbivorous\t" << toString<int>(Animal::byZone(HERBIVORE, MALE)) << endl;
+    cout << "Female Carnivores\t" << toString<int>(Animal::byZone(HERBIVORE, FEMALE)) << endl;
 }
 
 Ecosystem::Ecosystem() {
@@ -78,5 +78,19 @@ void *Ecosystem::factory(int size) {
 Ecosystem::~Ecosystem() {
     for (auto animal : this->animals) {
         delete animal;
+    }
+}
+
+void Ecosystem::kill(AnimalType animalType, int zone) {
+    auto iterator = this->animals.begin();
+    while (iterator != this->animals.end()) {
+        if ((*iterator)->getType() == animalType && (*iterator)->getZone() == zone) {
+            Animal *animal = (*iterator);
+            cout << animal->toString() << " was murdered" << endl;
+            this->actualAnimalIterator = this->animals.erase(iterator);
+            delete animal;
+            return;
+        }
+        iterator++;
     }
 }

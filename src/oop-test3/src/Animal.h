@@ -77,6 +77,10 @@ public:
         this->move(Random::NumberBetween(0, 3));
     }
 
+    AnimalType getType() {
+        return this->type;
+    }
+
     void move(int newZone) {
         if (newZone >= 0 && newZone <= 3 && this->getZone() != -1) {
             Animal::animalsByZone[this->type][this->sex][this->getZone()]--;

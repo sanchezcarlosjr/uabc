@@ -29,6 +29,7 @@ int Carnivore::getTotal() {
 void Carnivore::attack(AnimalObserver* animalObserver) {
     if (this->canFeed()) {
         this->life++;
+        animalObserver->kill(HERBIVORE, this->zone);
     }
 }
 

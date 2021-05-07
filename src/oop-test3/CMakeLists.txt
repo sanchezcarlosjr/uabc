@@ -11,5 +11,5 @@ find_package(GTest REQUIRED)
 include_directories(${GTEST_INCLUDE_DIRS})
 
 # Link runTests with what we want to test and the GTest and pthread library
-add_executable(oop-test3 src/tests.cpp src/Ecosystem.cpp src/Ecosystem.h ../shared/Test/StdoutMock.cpp ../shared/RegexLib/RegexLib.cpp src/Animal.cpp src/Animal.h src/Carnivore.cpp src/Carnivore.h src/Herbivore.cpp src/Herbivore.h src/Sex.h src/AnimalType.h ../shared/System/Console.cpp src/AnimalObserver.h ../shared/DataStructure/Utils/ToString.cpp ../shared/DataStructure/Utils/ToString.h)
+add_executable(oop-test3 src/main.cpp src/Ecosystem.cpp src/Ecosystem.h ../shared/Test/StdoutMock.cpp ../shared/RegexLib/RegexLib.cpp src/Animal.cpp src/Animal.h src/Carnivore.cpp src/Carnivore.h src/Herbivore.cpp src/Herbivore.h src/Sex.h src/AnimalType.h ../shared/System/Console.cpp src/AnimalObserver.h ../shared/DataStructure/Utils/ToString.cpp ../shared/DataStructure/Utils/ToString.h)
 target_link_libraries(oop-test3 ${GTEST_LIBRARIES} pthread)
