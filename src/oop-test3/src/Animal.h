@@ -34,6 +34,7 @@ public:
     explicit Animal(int type) {
         this->type = static_cast<AnimalType>(type);
         this->sex = static_cast<Sex>(Random::NumberBetween(FEMALE, MALE));
+        this->zone = -1;
         Animal::increase(this->sex, this->type);
         this->move();
     }
@@ -74,10 +75,10 @@ public:
     }
 
     void move() {
-        if (Animal::animalsByZone[this->type][this->sex][this->getZone()] > 0) {
+        if (this->zone != -1) {
             Animal::animalsByZone[this->type][this->sex][this->getZone()]--;
         }
-        this->zone = Random::NumberBetween(1,4);
+        this->zone = Random::NumberBetween(1,4)-1;
         Animal::animalsByZone[this->type][this->sex][this->getZone()]++;
     }
 
@@ -90,7 +91,7 @@ public:
     }
 
     int getZone() {
-        return this->zone-1;
+        return this->zone;
     }
 
     static int getFemaleTotalOf(AnimalType animalType) {
