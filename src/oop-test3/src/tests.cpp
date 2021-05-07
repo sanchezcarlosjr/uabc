@@ -64,18 +64,38 @@ TEST(AnimalTest, itShouldMoveAndChangeTotalByZone) {
     delete carnivore;
 }
 
-
-class MockObserver: public AnimalObserver {
-public:
-    void dieAnimal() override {
-    }
-    void bornAnimal(Animal *animal) override {}
-};
-
 TEST(AnimalTest, itShouldSetZoneWhenItIsConstructed) {
     auto* carnivore = new Carnivore(1);
     int actual = carnivore->getZone();
     ASSERT_EQ(actual, carnivore->getZone());
+    ASSERT_EQ(Animal::byZone(CARNIVORE, carnivore->getSex())[carnivore->getZone()], 1);
+    delete carnivore;
+}
+
+TEST(AnimalTest, carnivoreShouldReproduceIfChecksCondition) {
+    auto* mother = new Carnivore(1);
+    mother->setSex(FEMALE);
+    ASSERT_EQ(mother->getSex(), FEMALE);
+    ASSERT_EQ(Animal::byZone(CARNIVORE, FEMALE)[1], 1);
+    ASSERT_FALSE(mother->canReproduce());
+    auto* father = new Carnivore(1);
+    father->setSex(MALE);
+    ASSERT_EQ(father->getSex(), MALE);
+    ASSERT_EQ(Animal::byZone(CARNIVORE, MALE)[1], 1);
+    ASSERT_TRUE(mother->canReproduce());
+}
+
+TEST(AnimalTest, herbivoreShouldReproduceIfChecksCondition) {
+    auto* mother = new Herbivore(1);
+    mother->setSex(FEMALE);
+    ASSERT_EQ(mother->getSex(), FEMALE);
+    ASSERT_EQ(Animal::byZone(CARNIVORE, FEMALE)[1], 1);
+    ASSERT_FALSE(mother->canReproduce());
+    auto* father = new Herbivore(1);
+    father->setSex(MALE);
+    ASSERT_EQ(father->getSex(), MALE);
+    ASSERT_EQ(Animal::byZone(CARNIVORE, MALE)[1], 1);
+    ASSERT_TRUE(mother->canReproduce());
 }
 
 int main(int argc, char **argv) {

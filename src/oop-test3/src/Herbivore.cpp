@@ -33,7 +33,7 @@ void Herbivore::attack(AnimalObserver *animalObserver) {
 }
 
 void Herbivore::reproduce(AnimalObserver *animalObserver) {
-    if (this->sex == FEMALE) {
+    if (this->canReproduce()) {
         animalObserver->bornAnimal(Herbivore::factory());
     }
 }

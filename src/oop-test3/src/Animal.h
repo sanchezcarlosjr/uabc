@@ -29,14 +29,13 @@ private:
 protected:
     AnimalType type;
     Sex sex;
-    int zone;
+    int zone = -1;
 public:
-    Animal(int type, int zone) {
+    Animal(int type, int newZone) {
         this->type = static_cast<AnimalType>(type);
         this->sex = static_cast<Sex>(Random::NumberBetween(FEMALE, MALE));
-        this->zone = zone;
         Animal::increase(this->sex, this->type);
-        this->zone < 0 || this->zone > 3 ? this->move() : this->move(this->zone);
+        newZone < 0 || newZone > 3 ? this->move() : this->move(newZone);
     }
 
     virtual ~Animal() {
@@ -75,15 +74,25 @@ public:
     }
 
     void move() {
-        this->move(Random::NumberBetween(1,4)-1);
+        this->move(Random::NumberBetween(0,3));
     }
 
     void move(int newZone) {
-        if (this->zone != -1) {
+        if (newZone >= 0 && newZone <= 3 && this->getZone() != -1) {
             Animal::animalsByZone[this->type][this->sex][this->getZone()]--;
         }
         this->zone = newZone;
         Animal::animalsByZone[this->type][this->sex][this->getZone()]++;
+    }
+
+    void setSex(Sex newSex) {
+        Animal::animalsByZone[this->type][this->sex][this->getZone()]--;
+        this->sex = newSex;
+        Animal::animalsByZone[this->type][this->sex][this->getZone()]++;
+    }
+
+    bool canReproduce() {
+        return this->sex == FEMALE && Animal::byZone(this->type, MALE)[this->getZone()] > 0;
     }
 
     static vector<int> byZone(AnimalType animalType, Sex sex) {
