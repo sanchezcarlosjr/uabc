@@ -18,6 +18,7 @@ public:
     void attack(AnimalObserver* animalObserver) override;
     void reproduce(AnimalObserver* animalObserver) override;
     void hunt(AnimalObserver* animalObserver) override;
+    bool canFeed();
     string toString() override;
     static Carnivore *factory();
     ~Carnivore() override;

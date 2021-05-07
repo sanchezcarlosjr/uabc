@@ -109,6 +109,13 @@ TEST(AnimalTest, herbivoreShouldDiedIfChecksCondition) {
     ASSERT_EQ(Animal::byZone(CARNIVORE)[1], 1);
     herbivore->setAgility(ATTACK);
     ASSERT_TRUE(herbivore->canDied());
+    delete herbivore;
+    delete carnivore;
+}
+
+TEST(AnimalTest, carnivoreShouldAttackIfChecksCondition) {
+    auto* carnivore = new Carnivore();
+    ASSERT_FALSE(carnivore->canFeed());
 }
 
 int main(int argc, char **argv) {

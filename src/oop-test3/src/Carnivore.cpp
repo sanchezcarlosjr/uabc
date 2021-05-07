@@ -48,3 +48,7 @@ string Carnivore::toString() {
     animal << Animal::toString() << this->life << " lives";
     return animal.str();
 }
+
+bool Carnivore::canFeed() {
+    return false;
+}
