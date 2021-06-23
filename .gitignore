@@ -54,3 +54,4 @@ _deps
 
 # Environment
 **/.vagrant/**
+**/pgdata/**
