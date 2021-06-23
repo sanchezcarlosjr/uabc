@@ -1,0 +1,21 @@
+version: '3.7'
+
+services:
+  pgsql:
+    image: postgres
+    container_name: learning
+    working_dir: /data/pgsql
+    volumes:
+    - ./postgresql-data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: pguser
+      POSTGRES_PASSWORD: pgpwd
+      POSTGRES_DB: pgdb
+    ports:
+      - 5432:5432
+    networks:
+      - backend
+
+networks:
+  backend:
+
