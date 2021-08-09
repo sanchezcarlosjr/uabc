@@ -1,0 +1,24 @@
+services:
+  postgres:
+    container_name: postgres_app
+    image: postgres
+    hostname: postgres_app
+    ports:
+      - 5432:5432
+    environment:
+       POSTGRES_USER: sanchezcarlosjr
+       POSTGRES_PASSWORD: 123456
+       POSTGRES_DB: app
+    volumes:
+      - ./postgres-data:/var/lib/postgresql/data
+
+  pgadmin:
+    container_name: pgadmin_app
+    image: dpage/pgadmin4
+    depends_on:
+      - postgres
+    ports:
+      - 5000:80
+    environment:
+      PGADMIN_DEFAULT_EMAIL: postgres@sanchezcarlosjr.com
+      PGADMIN_DEFAULT_PASSWORD: mysecretpassword
