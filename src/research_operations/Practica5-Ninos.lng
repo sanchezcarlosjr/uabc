@@ -1,0 +1,39 @@
+SETS:
+  POBLACION: NINAS, NINOS;
+  ESCUELA: CAPACIDAD;
+  TIPOS;
+  FORMULA(TIPOS, POBLACION, ESCUELA): KM, X;
+ENDSETS
+
+DATA:
+  ESCUELA = A B C;
+  CAPACIDAD = 170 80 100;
+  POBLACION = 1 2 3 4 5;
+  TIPOS =     NINOS NINAS;
+  NINOS =     35 25 90 10 15;
+  NINAS =     15 10 5 115 30;
+  KM    =     3 7 9
+              4 4 12
+              6 4 10
+              7 5 4
+              4 7 3
+              3 7 9
+              4 4 12
+              6 4 10
+              7 5 4
+              4 7 3;
+ENDDATA
+
+MIN = @SUM(FORMULA: KM*X);
+
+@FOR( POBLACION(i): @SUM(ESCUELA(j): X(1, i, j))  = NINOS(i));
+
+@FOR( POBLACION(i): @SUM(ESCUELA(j): X(2, i, j))  = NINAS(i));
+
+@FOR( TIPOS(i): @SUM(POBLACION(j): @SUM(ESCUELA(k): X(i, j, k)) ) = 175);
+
+@FOR( ESCUELA(i) : @SUM(POBLACION(j): X(1,j,i)+X(2,j,i)) <= CAPACIDAD(i));
+
+@FOR( ESCUELA(i) : @SUM(POBLACION(j): X(1,j,i)) <= CAPACIDAD(i)*0.6);
+
+@FOR( ESCUELA(i) : @SUM(POBLACION(j): X(1,j,i)) >= CAPACIDAD(i)*0.4);
