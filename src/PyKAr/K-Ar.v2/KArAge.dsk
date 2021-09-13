@@ -1,0 +1,162 @@
+[MainWindow]
+Create=1
+Visible=1
+State=2
+Left=0
+Top=0
+Width=800
+Height=106
+MaxLeft=0
+MaxTop=0
+MaxWidth=808
+MaxHeight=106
+
+[ProjectManager]
+Column0Width=85
+Column1Width=125
+Column2Width=125
+
+[PropertyInspector]
+Create=1
+Visible=1
+State=0
+Left=1
+Top=107
+Width=198
+Height=450
+SplitPos=78
+
+[History_16]
+Count=2
+H0=InFile
+H1=in
+
+[History_17]
+Count=3
+H0=i
+H1=in
+H2=OutFile
+
+[History_22]
+Count=6
+H0=inl
+H1=numero
+H2=x36
+H3=in
+H4=OutFile
+H5=InFile
+
+[History_26]
+Count=19
+H0=c:\proy\k-ar 2.0\k-ardatadlg.dfm
+H1=c:\proy\k-ar 2.0\edad-k-ar.cpp
+H2=c:\program files\borland\cbuilder\examples\internet\ftp\main.cpp
+H3=c:\proy\k-ar\karmdi.c
+H4=m:\spikes\ai\ai-92.dat
+H5=m:\spikes\ah-35b.res
+H6=c:\ms10\spikes\ah-96.dat
+H7=c:\ms10\spikes\ah-01.dat
+H8=c:\ms10\spk.dat
+H9=c:\ms10\tst2.dat
+H10=c:\ms10\tst.dat
+H11=c:\ms10\ad-90.dat
+H12=c:\proy\k-ar\karage.c
+H13=c:\proy\k-ar\nedad.c
+H14=c:\proy\k-ar 2.0\atm_spk.c
+H15=c:\proy\k-ar\atm_spk.c
+H16=c:\proy\k-ar 2.0\spikedlg.cpp
+H17=c:\proy\k-ar 2.0\karagedlg.cpp
+H18=c:\my documents\tst\kar_age.cpp
+
+[Closed Files]
+File_0=C:\Proy\K-Ar 2.0\Edad-K-Ar.h,1,33,5,41
+File_1=C:\Proy\K-Ar 2.0\kdata.cpp,1,1,78,38
+File_2=C:\Proy\K-Ar 2.0\FileOpenDataDlg.dfm,1,1,1,1
+
+[Modules]
+Module0=C:\Proy\K-Ar 2.0\FileOpenDataDlg.cpp
+Module1=C:\Proy\K-Ar 2.0\MDIFrame.cpp
+Module2=C:\Proy\K-Ar 2.0\KArAgeDlg.cpp
+Module3=C:\Proy\K-Ar 2.0\Edad-K-Ar.cpp
+Module4=C:\Proy\K-Ar 2.0\KArAge.cpp
+Module5=C:\Program Files\Borland\CBuilder\Examples\DOC\TEXTEDIT\TEXTEDIT.cpp
+Count=6
+EditWindowCount=1
+
+[Form0]
+FormState=0
+
+[Form1]
+FormState=0
+
+[Form2]
+FormState=0
+
+[Form3]
+FormState=0
+
+[Form4]
+FormState=0
+
+[Form5]
+FormState=0
+
+[EditWindow0]
+Create=1
+Visible=1
+State=0
+Left=210
+Top=127
+Width=584
+Height=440
+SplitPos=49
+MessagePane=0
+ViewCount=5
+CurrentView=0
+View0=0
+View1=1
+View2=2
+View3=3
+View4=4
+
+[View0]
+Module=0
+CursorX=60
+CursorY=16
+TopLine=3
+LeftCol=1
+
+[View1]
+Module=3
+CursorX=13
+CursorY=31
+TopLine=25
+LeftCol=1
+
+[View2]
+Module=1
+CursorX=1
+CursorY=10
+TopLine=1
+LeftCol=1
+
+[View3]
+Module=2
+CursorX=1
+CursorY=21
+TopLine=1
+LeftCol=1
+
+[View4]
+Module=2
+CursorX=1
+CursorY=1
+TopLine=20
+LeftCol=1
+
+[Watches]
+Count=1
+Watch0='InFile',256,0,11,1
+
+[Breakpoints]
+Count=0

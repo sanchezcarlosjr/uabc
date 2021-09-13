@@ -1,0 +1,146 @@
+[MainWindow]
+Create=1
+Visible=1
+State=2
+Left=0
+Top=0
+Width=800
+Height=106
+MaxLeft=0
+MaxTop=0
+MaxWidth=808
+MaxHeight=106
+
+[ProjectManager]
+Column0Width=85
+Column1Width=125
+Column2Width=125
+
+[PropertyInspector]
+Create=1
+Visible=1
+State=0
+Left=0
+Top=108
+Width=190
+Height=306
+SplitPos=84
+
+[History_16]
+Count=2
+H0=InFile
+H1=in
+
+[History_17]
+Count=8
+H0=dis36
+H1=atm4036
+H2=sgatm4036
+H3=ab36
+H4=buff
+H5=i
+H6=in
+H7=OutFile
+
+[History_22]
+Count=8
+H0=ar38
+H1=buff
+H2=inl
+H3=numero
+H4=x36
+H5=in
+H6=OutFile
+H7=InFile
+
+[History_26]
+Count=22
+H0=c:\proy\k-ar 2.0\ksample.h
+H1=c:\ms10\nwtst.res
+H2=c:\ms10\tst.dat
+H3=c:\ms10\tst.res
+H4=c:\proy\k-ar 2.0\karage.c
+H5=c:\proy\k-ar 2.0\spk.c
+H6=c:\program files\borland\cbuilder\examples\internet\ftp\main.cpp
+H7=c:\proy\k-ar\karmdi.c
+H8=m:\spikes\ai\ai-92.dat
+H9=m:\spikes\ah-35b.res
+H10=c:\ms10\spikes\ah-96.dat
+H11=c:\ms10\spikes\ah-01.dat
+H12=c:\ms10\spk.dat
+H13=c:\ms10\tst2.dat
+H14=c:\ms10\ad-90.dat
+H15=c:\proy\k-ar\karage.c
+H16=c:\proy\k-ar\nedad.c
+H17=c:\proy\k-ar 2.0\atm_spk.c
+H18=c:\proy\k-ar\atm_spk.c
+H19=c:\proy\k-ar 2.0\spikedlg.cpp
+H20=c:\proy\k-ar 2.0\karagedlg.cpp
+H21=c:\my documents\tst\kar_age.cpp
+
+[Closed Files]
+File_0=C:\MS10\nwtst.res,1,1,27,3
+File_1=C:\Proy\K-Ar 2.0\KSample.h,1,1,1,5
+File_2=C:\Proy\K-Ar 2.0\KSample.cpp,1,1,18,14
+File_3=C:\Proy\K-Ar 2.0\nwSpike.c,1,281,1,296
+File_4=C:\MS10\TST.RES,1,1,1,1
+
+[Modules]
+Module0=C:\Proy\K-Ar 2.0\Edad-K-Ar.cpp
+Module1=C:\Proy\K-Ar 2.0\kardos.cpp
+Module2=C:\MS10\tst.dat
+Count=3
+EditWindowCount=1
+
+[Form0]
+FormState=0
+
+[Form1]
+FormState=0
+
+[Form2]
+FormState=0
+
+[EditWindow0]
+Create=1
+Visible=1
+State=0
+Left=-2
+Top=109
+Width=798
+Height=456
+SplitPos=50
+MessagePane=0
+ViewCount=3
+CurrentView=2
+View0=0
+View1=1
+View2=2
+
+[View0]
+Module=1
+CursorX=1
+CursorY=13
+TopLine=6
+LeftCol=1
+
+[View1]
+Module=2
+CursorX=1
+CursorY=1
+TopLine=1
+LeftCol=1
+
+[View2]
+Module=0
+CursorX=58
+CursorY=5
+TopLine=1
+LeftCol=1
+
+[Watches]
+Count=1
+Watch0='InFile',256,0,11,1
+
+[Breakpoints]
+Count=0
