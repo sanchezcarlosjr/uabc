@@ -95,15 +95,15 @@ void InitStdAtm(void);
 void CalcSpike(char *InFile,char *OutFile);
 float sqr ( float a);
 
-/*
-#define INFILE  "c:\\ms10\\tst.dat"
-#define OUTFILE "c:\\ms10\\tst.res"
-int main(void)
-{
-	CalcSpike(INFILE,OUTFILE);
-	return 0;
-}
-/**/
+
+//#define INFILE  "c:\\ms10\\tst.dat"
+//#define OUTFILE "c:\\ms10\\tst.res"
+//int main(void)
+//{
+//	CalcSpike(INFILE,OUTFILE);
+//	return 0;
+//}
+
 
 void InitStdAtm(void)
 {

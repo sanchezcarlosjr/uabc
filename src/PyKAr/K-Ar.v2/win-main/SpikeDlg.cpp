@@ -3,7 +3,7 @@
 #pragma hdrstop
 
 #include "SpikeDlg.h"
-#include "../SPK.c"
+#include "SPK.c"
 //---------------------------------------------------------------------------
 #pragma resource "*.dfm"
 TSpikeForm *SpikeForm;
