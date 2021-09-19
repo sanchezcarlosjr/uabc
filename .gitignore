@@ -24,6 +24,8 @@ compile_commands.json
 CTestTestfile.cmake
 _deps
 
+**postgres-data**
+
 # Precompiled Headers
 *.gch
 *.pch
