@@ -3,7 +3,7 @@
 
 	# Start .text segment (program code)
 	.text
-	
+
 	.globl	main
 main:
 	# Print string msg1
@@ -13,7 +13,7 @@ main:
 
 	# Get input A from user and save
 	li	$v0,5		# read_int syscall code = 5
-	syscall	
+	syscall
 	move	$t0,$v0		# syscall results returned in $v0
 
 	# Print string msg2
@@ -23,7 +23,7 @@ main:
 
 	# Get input B from user and save
 	li	$v0,5		# read_int syscall code = 5
-	syscall	
+	syscall
 	move	$t1,$v0		# syscall results returned in $v0
 
 	# Math!

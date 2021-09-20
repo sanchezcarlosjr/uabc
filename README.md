@@ -36,8 +36,26 @@ Using ngrok I've connected localhost with the World.
 https://medium.com/@shalandy/deploy-git-subdirectory-to-heroku-ea05e95fce1f
 https://bendersteed.gitlab.io/post/deploying-common-lisp-to-heroku/
 
+## Computer Organization and Design (COD)
+### MIPS 32 RISC
+1. Open [Mars](http://courses.missouristate.edu/kenvollmar/mars/index.htm).
+
+`` java -jar Mars4.5.jar ``
+
+2. Load any practice you want to see.
+
+3. Execute.
+
+### NASM felf64 (Linux)
+``
+   nasm -felf64 practice1.asm && ld practice1.o && ./a.out
+``
+
+
 ## Probability
 
 ## Discrete math
 
 ## Clean architecture
+
+[Mars]: http://courses.missouristate.edu/kenvollmar/mars/index.htm
