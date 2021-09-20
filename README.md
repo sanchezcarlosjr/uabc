@@ -37,10 +37,19 @@ https://medium.com/@shalandy/deploy-git-subdirectory-to-heroku-ea05e95fce1f
 https://bendersteed.gitlab.io/post/deploying-common-lisp-to-heroku/
 
 ## Computer Organization and Design (COD)
-### MIPS 32 RISC
+### MIPS 32 RISC (GUI)
 1. Open [Mars](http://courses.missouristate.edu/kenvollmar/mars/index.htm).
 
 `` java -jar Mars4.5.jar ``
+
+2. Load any practice you want to see.
+
+3. Execute.
+
+### MIPS 32 RISC (CLI)
+1. Open [Mars](http://courses.missouristate.edu/kenvollmar/mars/index.htm).
+
+`` java -jar Mars4_5.jar nc runner.mips impl.mips``
 
 2. Load any practice you want to see.
 
