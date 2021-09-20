@@ -1,5 +1,5 @@
 #
-# Test is_leap_year with some examples
+# Test if with some examples
 #
 # s0 - num of tests left to run
 # s1 - address of input word
@@ -7,17 +7,17 @@
 # s3 - input word
 # s4 - output word
 #
-# is_leap_year must:
-# - be named is_leap_year and declared as global
+# if label must:
+# - be named if and declared as global
 # - read input integer from a0
 # - follow the convention of using the t0-9 registers for temporary storage
 # - (if it wants to use s0-7 then it is responsible for pushing existing values to the stack then popping them back off before returning)
 # - write boolean result to v0
 
 .data
-    n: .word 7                      # number of test cases
-    ins:  .word 1996, 1997, 1998, 1900, 1800, 2400, 2000  # input years
-    outs: .word    1,    0,    0,    0,    0,    1,    1  # expected result
+    n: .word 2                        # number of test cases
+    ins:  .word 1, 2                  # input
+    outs: .word 2, 1                  # expected
     failmsg: .asciiz "failed for test input: "
     okmsg: .asciiz "all tests passed"
 
@@ -31,7 +31,8 @@ runner:
 run_test:
         lw      $s3, 0($s1)             # read input from memory
         move    $a0, $s3                # move it to a0
-        jal     is_leap_year            # call subroutine under test
+        li      $a1, 1
+        jal     if            # call subroutine under test
         move    $v1, $v0                # move return value in v0 to v1 because we need v0 for syscall
         lw      $s4, 0($s2)             # read expected output from memory
         bne     $v1, $s4, exit_fail     # if expected doesn't match actual, jump to fail

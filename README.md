@@ -49,7 +49,7 @@ https://bendersteed.gitlab.io/post/deploying-common-lisp-to-heroku/
 ### MIPS 32 RISC (CLI)
 1. Open [Mars](http://courses.missouristate.edu/kenvollmar/mars/index.htm).
 
-`` java -jar Mars4_5.jar nc runner.mips impl.mips``
+`` java -jar Mars4_5.jar nc practice5/runner.asm practice5/impl.asm``
 
 2. Load any practice you want to see.
 
