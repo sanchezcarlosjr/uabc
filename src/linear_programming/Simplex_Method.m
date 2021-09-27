@@ -1,13 +1,13 @@
-% MS_alumnos
-% Aplica el M�todo Simplex para PPL's del tipo
-%         M�x  Z = CX
+% Simplex method
+% Aplica el Metodo Simplex para PPL's del tipo
+%         Max  Z = CX
 %         s.a: AX = b
 %               X >= 0
 %
 clc
 clear
+format long
 fprintf('METODO SIMPLEX\n\n')
-M = 10^2
 
 function simplex (A, M, MIN=false)
     m=size(A,1);
@@ -133,13 +133,13 @@ function simplex (A, M, MIN=false)
         
     %     A
         if MIN
-          fprintf('Zmin = %8.4f \n',-A(1,n))
+          fprintf('Zmin = %8.8f \n',-A(1,n))
          else
-         fprintf('Zmax = %8.4f \n',A(1,n))
+         fprintf('Zmax = %8.8f \n',A(1,n))
         endif
         
         for j=1:vo
-               fprintf('x(%1.0f) = %8.4f \n',R(j,1), R(j,2))
+               fprintf('x(%1.0f) = %8.8f \n',R(j,1), R(j,2))
         end
     end
     if (solnOpt == 0) && (sinSolucion == 0) 
@@ -150,79 +150,13 @@ function simplex (A, M, MIN=false)
     end
 end
 
-
-
-%Pract de Lab #7
-%A=[1 -5 -3 0 0 0 0;0 3 -1 1 0 0 5;0 2 3 0 1 0 18;0 1 1 0 0  1 20];
-%vo=2; % (N�mero de variables originales del problema)
-
-% Pract de Lab #6
-% A=[1 -3 -2 0 0 0 0 0;0 2 4 1 0 0 0 26;0 -1 4 0 1 0 0 12;...
-%    0 2 -1 0 0 1 0 6; 0 1 -3 0 0 0 1 2];
-% vo=2;  % (N�mero de variables originales del problema)
-
-% Pract de Lab #3 (compa��a de seguros, Riesgo Especial)
-% A=[1 -5 -2 0 0 0 0;0 3 2 1 0 0 2400;0 0 1 0 1 0 800;0 2 0 0 0 1 1200];
-% vo=2; % (N�mero de variables originales del problema)
-
-% Problema 1a de Pract #8
-% A=[1 -2 -1 0 0 0 0 0;0 0 -1 1 0 0 0 10;0 2 5 0 1 0 0 60;...
-%      0 1 1 0 0 1 0 18;0 2 1 0 0 0 1 44];
-% vo=2; % (N�mero de variables originales del problema)
-
-% Problema 1b de Pract #8
-%  A=[1 -3 -5 -6 0 0 0 0 0;0 1 1 1 1 0 0 0 14;0 1 2 1 0 1 0 0 4;...
-%     0 5 -3 7 0 0 1 0 23;0 3 4 2 0 0 0 1 17];
-%  vo=3; % (N�mero de variables originales del problema)
-
-% Problema 1c de Pract #8
- % A=[1 -5 -1 -3 -4 0 0 0 0;0 1 -2 4 3 1 0 0 20;0 -4 6 5 -4 0 1 0 20;...
- %    0 2 -3 3 8 0 0 1 50];
- % vo=3; % (N�mero de variables originales del problema)
-
-% Prob 3, pract. 8: Agricultor,acres, ma�z, trigo, etc.
-% A=[1 -30 -100 0 10^3 0 0 0;0 1 0 -1 1 0 0 3;0 1 1 0 0 1 0 7;0 2 5 0 0 0 1 20];
-% A(1,:)=A(1,:)-A(1,5)*A(2,:); %(Para obtener forma apropiada)
-% vo=2; % (N�mero de variables originales del problema)
-
-%Pract Lab #9, prob #1
-%A=[1 5 7 0 10^1 0 10^1 0;0 2 1 -1 1 0 0 3;0 1 3 0 0 -1 1 7];
-%A(1,:)=A(1,:)-A(1,5)*A(2,:); %(Para obtener forma apropiada)
-%A(1,:)=A(1,:)-A(1,7)*A(3,:);
-%vo=2; % (N�mero de variables originales del problema)
-
-% Pract #9, prob #2
-% A=[1 -4 -2 -3 -5 10^1 10^1 0;0 2 3 4 2 1 0 300;...
-%    0 8 1 1 5 0 1 300];
-% A(1,:)=A(1,:)-A(1,6)*A(2,:); %(Para obtener forma apropiada)
-% A(1,:)=A(1,:)-A(1,7)*lA(3,:);
-% vo=4; % (N�mero de variables originales del problema)
-
-
-% Pract #9, prob #3
-% A=[1 3 2 0 10^2 0 10^2 0;
-%    0 1 1 1 0 0 0 12;...
-%    0 2 3 0 1 0 0 12; 
-%    0 2 1 0 0 -1 1 8];
-% A(1,:)=A(1,:)-A(1,5)*A(3,:);
-% A(1,:)=A(1,:)-A(1,7)*A(4,:);
-% vo=2; 
+M = 10^1
+A = [    
+     1    -1     2    -1     0     M     0     M     0
+     0     3     1     2     1     0     0     0    11
+     0    -1     5    -2     0     1     0     0     0
+     0     7    -6     7     0     0    -1     1     8
+    ];
  
-% Pract #9, prob 4
-% A=[1 60 50 0 10^3 0 10^3 0 10^3 0
-%      0 5 3 -1 1 0 0 0 0 60
-%      0 2 2 0 0 -1 1 0 0 30
-%        0 7 9 0 0 0 0 -1 1 150]
-% A(1,:)=A(1,:)-A(1,5)*A(2,:);
-% A(1,:)=A(1,:)-A(1,7)*A(3,:);
-% A(1,:)=A(1,:)-A(1,9)*A(4,:);
-% vo=2; 
+simplex(A,M, true)
 
-% Pract #9, prob 5
-
-A=[1 -84 -72 -60  0  M  0 M  0 M 0
-   0  90  20  40 -1  1  0 0  0 0 200
-   0  30  80  60  0  0 -1 1  0 0 180
-   0  10  20  60  0  0  0 0 -1 1 150]
-
-simplex(A,M, MIN=true)
