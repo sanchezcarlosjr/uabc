@@ -55,6 +55,9 @@ https://bendersteed.gitlab.io/post/deploying-common-lisp-to-heroku/
 
 3. Execute.
 
+[Instructions set](https://uweb.engr.arizona.edu/~ece369/Resources/spim/MIPSReference.pdf)
+
+
 ### NASM felf64 (Linux)
 ``
    nasm -felf64 practice1.asm && ld practice1.o && ./a.out
