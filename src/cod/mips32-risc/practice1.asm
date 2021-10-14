@@ -1,7 +1,7 @@
 .globl main
 
 .text
-main:
-	li $t2, 25
-	li $v0, 10
+main:  addiu $10, $0, 25
+
+finish: addiu $2, $0, 10
 	syscall
