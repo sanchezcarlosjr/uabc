@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.10)
-project(roman-to-decimal)
+project(thread1)
 
 set(CMAKE_CXX_STANDARD 17)
 
@@ -8,5 +8,5 @@ find_package(GTest REQUIRED)
 include_directories(${GTEST_INCLUDE_DIRS})
 
 # Link runTests with what we want to test and the GTest and pthread library
-add_executable(roman-to-decimal tests.cpp roman-to-decimal.cpp ../threads-1/Timer.cpp ../threads-1/Timer.h)
-target_link_libraries(roman-to-decimal ${GTEST_LIBRARIES} pthread)
+add_executable(thread1 tests.cpp)
+target_link_libraries(thread1 ${GTEST_LIBRARIES} pthread)
