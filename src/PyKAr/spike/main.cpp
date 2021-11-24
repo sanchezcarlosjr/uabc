@@ -1,9 +1,8 @@
-#include <stdio.h>
-#include "KArAge.c"
+#include "KArAge.cpp"
 
 int main() {
-    char *input = "7A.dat";
-    char *output = "7ATest1.res";
+    char *input = "Result.dat";
+    char *output = "Result.res";
     nedad(input, output);
     return 0;
 }
