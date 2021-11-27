@@ -63,6 +63,15 @@ https://bendersteed.gitlab.io/post/deploying-common-lisp-to-heroku/
    nasm -felf64 practice1.asm && ld practice1.o && ./a.out
 ``
 
+### Database Assesment 
+Our database project uses docker.
+``
+  docker compose up
+``
+You can use ngrok.
+``
+
+``
 
 ## Probability
 
