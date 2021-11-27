@@ -3,7 +3,7 @@ version: "3"
 services:
   webserver:
     build: 
-      context: ./bin/${PHPVERSION}
+      context: ./bin2/${PHPVERSION}
     container_name: '${COMPOSE_PROJECT_NAME}-${PHPVERSION}'
     restart: 'always'
     ports:
@@ -12,7 +12,7 @@ services:
     links: 
       - database
     volumes: 
-      - ${DOCUMENT_ROOT-./public_html}:/var/www/html
+      - ${DOCUMENT_ROOT-./www}:/var/www/html
       - ${PHP_INI-./config/php/php.ini}:/usr/local/etc/php/php.ini
       - ${VHOSTS_DIR-./config/vhosts}:/etc/apache2/sites-enabled
       - ${LOG_DIR-./logs/apache2}:/var/log/apache2
@@ -22,7 +22,7 @@ services:
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
   database:
     build:
-      context: "./bin/${DATABASE}"
+      context: "./bin2/${DATABASE}"
     container_name: '${COMPOSE_PROJECT_NAME}-${DATABASE}'
     restart: 'always'
     ports:
