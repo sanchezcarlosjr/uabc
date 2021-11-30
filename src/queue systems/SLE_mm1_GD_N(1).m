@@ -46,7 +46,7 @@ fprintf('\nLamda efectiva = %4.8f  \n',lambdaEf)
 fprintf('Numero esperado de clientes Ls = %4.8f  \n',Ls)
 fprintf('Numero esperado en cola Lq = %4.8f  \n',Lq)
 fprintf('Tiempo esperado en el sistema Ws = %4.8f horas = %4.8f minutos = %4.8f segundos  \n',Ws,Ws*60,Ws*3600)
-fprintf('Tiempo esperado en cola o tiempo hasta que inicie el servicio Wq = %4.8f horas = %4.8f minutos = %4.8f segundos  \n',Wq, Ws*60, Ws*3600)
+fprintf('Tiempo esperado en cola o tiempo hasta que inicie el servicio Wq = %4.8f horas = %4.8f minutos = %4.8f segundos  \n',Wq, Wq*60, Wq*3600)
 fprintf('Promedio de ocupacion del servidor %4.8f  \n',cmedia)
 
 
