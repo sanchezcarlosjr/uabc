@@ -1,4 +1,4 @@
-% SLE_MMcGDInfInf
+%
 % Realiza los c�lculos del sistema 
 % 
 clear
@@ -15,7 +15,7 @@ end
 c=input('Digite el n�mero de servidores c: ');
 
 rho=lamda/miu;
-fprintf('\nEl minimo numero de servidores para que el sistema sea estable es %i. \n', );
+fprintf('\nEl minimo numero de servidores para que el sistema sea estable es %i. \n', floor(rho)+1);
 # cμ>λ
 if c <= rho
   fprintf('\nEl sistema no es estable, revise el numero de servidores. \n')
