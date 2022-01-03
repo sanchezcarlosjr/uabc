@@ -17,13 +17,13 @@ SET client_min_messages = warning;
 SET row_security = off;
 
 --
--- Name: books; Type: DATABASE; Schema: -; Owner: postgres
+-- Name: books; Type: DATABASE; Schema: -; Owner: sanchezcarlosjr
 --
 
 CREATE DATABASE books WITH TEMPLATE = template0 ENCODING = 'UTF8' LOCALE = 'en_US.utf8';
 
 
-ALTER DATABASE books OWNER TO postgres;
+ALTER DATABASE books OWNER TO sanchezcarlosjr;
 
 \connect books
 
@@ -43,7 +43,7 @@ SET default_tablespace = '';
 SET default_table_access_method = heap;
 
 --
--- Name: cities; Type: TABLE; Schema: public; Owner: postgres
+-- Name: cities; Type: TABLE; Schema: public; Owner: sanchezcarlosjr
 --
 
 CREATE TABLE public.cities (
@@ -54,10 +54,10 @@ CREATE TABLE public.cities (
 );
 
 
-ALTER TABLE public.cities OWNER TO postgres;
+ALTER TABLE public.cities OWNER TO sanchezcarlosjr;
 
 --
--- Name: countries; Type: TABLE; Schema: public; Owner: postgres
+-- Name: countries; Type: TABLE; Schema: public; Owner: sanchezcarlosjr
 --
 
 CREATE TABLE public.countries (
@@ -66,10 +66,10 @@ CREATE TABLE public.countries (
 );
 
 
-ALTER TABLE public.countries OWNER TO postgres;
+ALTER TABLE public.countries OWNER TO sanchezcarlosjr;
 
 --
--- Name: cities_with_country; Type: VIEW; Schema: public; Owner: postgres
+-- Name: cities_with_country; Type: VIEW; Schema: public; Owner: sanchezcarlosjr
 --
 
 CREATE VIEW public.cities_with_country AS
@@ -81,10 +81,10 @@ CREATE VIEW public.cities_with_country AS
      JOIN public.countries ON ((cities.country_code = countries.country_code)));
 
 
-ALTER TABLE public.cities_with_country OWNER TO postgres;
+ALTER TABLE public.cities_with_country OWNER TO sanchezcarlosjr;
 
 --
--- Name: events; Type: TABLE; Schema: public; Owner: postgres
+-- Name: events; Type: TABLE; Schema: public; Owner: sanchezcarlosjr
 --
 
 CREATE TABLE public.events (
@@ -98,10 +98,10 @@ CREATE TABLE public.events (
 );
 
 
-ALTER TABLE public.events OWNER TO postgres;
+ALTER TABLE public.events OWNER TO sanchezcarlosjr;
 
 --
--- Name: events_event_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+-- Name: events_event_id_seq; Type: SEQUENCE; Schema: public; Owner: sanchezcarlosjr
 --
 
 CREATE SEQUENCE public.events_event_id_seq
@@ -113,17 +113,17 @@ CREATE SEQUENCE public.events_event_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.events_event_id_seq OWNER TO postgres;
+ALTER TABLE public.events_event_id_seq OWNER TO sanchezcarlosjr;
 
 --
--- Name: events_event_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+-- Name: events_event_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: sanchezcarlosjr
 --
 
 ALTER SEQUENCE public.events_event_id_seq OWNED BY public.events.event_id;
 
 
 --
--- Name: venues; Type: TABLE; Schema: public; Owner: postgres
+-- Name: venues; Type: TABLE; Schema: public; Owner: sanchezcarlosjr
 --
 
 CREATE TABLE public.venues (
@@ -137,10 +137,10 @@ CREATE TABLE public.venues (
 );
 
 
-ALTER TABLE public.venues OWNER TO postgres;
+ALTER TABLE public.venues OWNER TO sanchezcarlosjr;
 
 --
--- Name: events_with_matched_venues; Type: VIEW; Schema: public; Owner: postgres
+-- Name: events_with_matched_venues; Type: VIEW; Schema: public; Owner: sanchezcarlosjr
 --
 
 CREATE VIEW public.events_with_matched_venues AS
@@ -150,10 +150,10 @@ CREATE VIEW public.events_with_matched_venues AS
      JOIN public.venues v ON ((e.venue_id = v.venue_id)));
 
 
-ALTER TABLE public.events_with_matched_venues OWNER TO postgres;
+ALTER TABLE public.events_with_matched_venues OWNER TO sanchezcarlosjr;
 
 --
--- Name: events_with_venues; Type: VIEW; Schema: public; Owner: postgres
+-- Name: events_with_venues; Type: VIEW; Schema: public; Owner: sanchezcarlosjr
 --
 
 CREATE VIEW public.events_with_venues AS
@@ -163,10 +163,10 @@ CREATE VIEW public.events_with_venues AS
      LEFT JOIN public.venues v ON ((e.venue_id = v.venue_id)));
 
 
-ALTER TABLE public.events_with_venues OWNER TO postgres;
+ALTER TABLE public.events_with_venues OWNER TO sanchezcarlosjr;
 
 --
--- Name: venues_venue_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+-- Name: venues_venue_id_seq; Type: SEQUENCE; Schema: public; Owner: sanchezcarlosjr
 --
 
 CREATE SEQUENCE public.venues_venue_id_seq
@@ -178,17 +178,17 @@ CREATE SEQUENCE public.venues_venue_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.venues_venue_id_seq OWNER TO postgres;
+ALTER TABLE public.venues_venue_id_seq OWNER TO sanchezcarlosjr;
 
 --
--- Name: venues_venue_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+-- Name: venues_venue_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: sanchezcarlosjr
 --
 
 ALTER SEQUENCE public.venues_venue_id_seq OWNED BY public.venues.venue_id;
 
 
 --
--- Name: venues_with_cities; Type: VIEW; Schema: public; Owner: postgres
+-- Name: venues_with_cities; Type: VIEW; Schema: public; Owner: sanchezcarlosjr
 --
 
 CREATE VIEW public.venues_with_cities AS
@@ -199,24 +199,24 @@ CREATE VIEW public.venues_with_cities AS
      JOIN public.cities c ON ((((v.postal_code)::text = (c.postal_code)::text) AND (v.country_code = c.country_code))));
 
 
-ALTER TABLE public.venues_with_cities OWNER TO postgres;
+ALTER TABLE public.venues_with_cities OWNER TO sanchezcarlosjr;
 
 --
--- Name: events event_id; Type: DEFAULT; Schema: public; Owner: postgres
+-- Name: events event_id; Type: DEFAULT; Schema: public; Owner: sanchezcarlosjr
 --
 
 ALTER TABLE ONLY public.events ALTER COLUMN event_id SET DEFAULT nextval('public.events_event_id_seq'::regclass);
 
 
 --
--- Name: venues venue_id; Type: DEFAULT; Schema: public; Owner: postgres
+-- Name: venues venue_id; Type: DEFAULT; Schema: public; Owner: sanchezcarlosjr
 --
 
 ALTER TABLE ONLY public.venues ALTER COLUMN venue_id SET DEFAULT nextval('public.venues_venue_id_seq'::regclass);
 
 
 --
--- Data for Name: cities; Type: TABLE DATA; Schema: public; Owner: postgres
+-- Data for Name: cities; Type: TABLE DATA; Schema: public; Owner: sanchezcarlosjr
 --
 
 COPY public.cities (name, postal_code, country_code) FROM stdin;
@@ -225,7 +225,7 @@ Portland	97205	us
 
 
 --
--- Data for Name: countries; Type: TABLE DATA; Schema: public; Owner: postgres
+-- Data for Name: countries; Type: TABLE DATA; Schema: public; Owner: sanchezcarlosjr
 --
 
 COPY public.countries (country_code, country_name) FROM stdin;
@@ -238,7 +238,7 @@ de	Germany
 
 
 --
--- Data for Name: events; Type: TABLE DATA; Schema: public; Owner: postgres
+-- Data for Name: events; Type: TABLE DATA; Schema: public; Owner: sanchezcarlosjr
 --
 
 COPY public.events (event_id, title, starts, ends, venue_id) FROM stdin;
@@ -249,7 +249,7 @@ COPY public.events (event_id, title, starts, ends, venue_id) FROM stdin;
 
 
 --
--- Data for Name: venues; Type: TABLE DATA; Schema: public; Owner: postgres
+-- Data for Name: venues; Type: TABLE DATA; Schema: public; Owner: sanchezcarlosjr
 --
 
 COPY public.venues (venue_id, name, street_address, type, postal_code, country_code) FROM stdin;
@@ -261,21 +261,21 @@ COPY public.venues (venue_id, name, street_address, type, postal_code, country_c
 
 
 --
--- Name: events_event_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+-- Name: events_event_id_seq; Type: SEQUENCE SET; Schema: public; Owner: sanchezcarlosjr
 --
 
 SELECT pg_catalog.setval('public.events_event_id_seq', 6, true);
 
 
 --
--- Name: venues_venue_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+-- Name: venues_venue_id_seq; Type: SEQUENCE SET; Schema: public; Owner: sanchezcarlosjr
 --
 
 SELECT pg_catalog.setval('public.venues_venue_id_seq', 4, true);
 
 
 --
--- Name: cities cities_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: cities cities_pkey; Type: CONSTRAINT; Schema: public; Owner: sanchezcarlosjr
 --
 
 ALTER TABLE ONLY public.cities
@@ -283,7 +283,7 @@ ALTER TABLE ONLY public.cities
 
 
 --
--- Name: countries countries_country_name_key; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: countries countries_country_name_key; Type: CONSTRAINT; Schema: public; Owner: sanchezcarlosjr
 --
 
 ALTER TABLE ONLY public.countries
@@ -291,7 +291,7 @@ ALTER TABLE ONLY public.countries
 
 
 --
--- Name: countries countries_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: countries countries_pkey; Type: CONSTRAINT; Schema: public; Owner: sanchezcarlosjr
 --
 
 ALTER TABLE ONLY public.countries
@@ -299,7 +299,7 @@ ALTER TABLE ONLY public.countries
 
 
 --
--- Name: events events_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: events events_pkey; Type: CONSTRAINT; Schema: public; Owner: sanchezcarlosjr
 --
 
 ALTER TABLE ONLY public.events
@@ -307,7 +307,7 @@ ALTER TABLE ONLY public.events
 
 
 --
--- Name: venues venues_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: venues venues_pkey; Type: CONSTRAINT; Schema: public; Owner: sanchezcarlosjr
 --
 
 ALTER TABLE ONLY public.venues
@@ -315,7 +315,7 @@ ALTER TABLE ONLY public.venues
 
 
 --
--- Name: cities cities_country_code_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- Name: cities cities_country_code_fkey; Type: FK CONSTRAINT; Schema: public; Owner: sanchezcarlosjr
 --
 
 ALTER TABLE ONLY public.cities
@@ -323,7 +323,7 @@ ALTER TABLE ONLY public.cities
 
 
 --
--- Name: events events_venue_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- Name: events events_venue_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: sanchezcarlosjr
 --
 
 ALTER TABLE ONLY public.events
@@ -331,7 +331,7 @@ ALTER TABLE ONLY public.events
 
 
 --
--- Name: venues venues_country_code_postal_code_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- Name: venues venues_country_code_postal_code_fkey; Type: FK CONSTRAINT; Schema: public; Owner: sanchezcarlosjr
 --
 
 ALTER TABLE ONLY public.venues
