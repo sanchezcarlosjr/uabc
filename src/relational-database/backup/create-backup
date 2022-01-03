@@ -1,2 +1,2 @@
 #! /usr/bin/env bash
-pg_dump --create -U postgres -d books > books.sql
+pg_dump --create -U sanchezcarlosjr -d books > books.sql
