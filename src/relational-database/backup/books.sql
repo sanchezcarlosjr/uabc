@@ -38,6 +38,20 @@ SET xmloption = content;
 SET client_min_messages = warning;
 SET row_security = off;
 
+--
+-- Name: all_of_my_tables; Type: VIEW; Schema: public; Owner: sanchezcarlosjr
+--
+
+CREATE VIEW public.all_of_my_tables AS
+ SELECT pg_class.relname,
+    pg_class.relkind
+   FROM (pg_class
+     JOIN pg_namespace ON ((pg_namespace.oid = pg_class.relnamespace)))
+  WHERE ((pg_namespace.nspname = 'public'::name) AND (pg_class.relkind = 'r'::"char"));
+
+
+ALTER TABLE public.all_of_my_tables OWNER TO sanchezcarlosjr;
+
 SET default_tablespace = '';
 
 SET default_table_access_method = heap;
@@ -101,6 +115,38 @@ CREATE TABLE public.events (
 ALTER TABLE public.events OWNER TO sanchezcarlosjr;
 
 --
+-- Name: venues; Type: TABLE; Schema: public; Owner: sanchezcarlosjr
+--
+
+CREATE TABLE public.venues (
+    venue_id integer NOT NULL,
+    name character varying(255),
+    street_address text,
+    type character(7) DEFAULT 'public'::bpchar,
+    postal_code character varying(9),
+    country_code character(2),
+    active boolean DEFAULT true NOT NULL,
+    CONSTRAINT venues_type_check CHECK ((type = ANY (ARRAY['public'::bpchar, 'private'::bpchar])))
+);
+
+
+ALTER TABLE public.venues OWNER TO sanchezcarlosjr;
+
+--
+-- Name: events_by_country; Type: VIEW; Schema: public; Owner: sanchezcarlosjr
+--
+
+CREATE VIEW public.events_by_country AS
+ SELECT events.title,
+    countries.country_name
+   FROM ((public.events
+     JOIN public.venues ON ((venues.venue_id = events.venue_id)))
+     JOIN public.countries ON ((countries.country_code = venues.country_code)));
+
+
+ALTER TABLE public.events_by_country OWNER TO sanchezcarlosjr;
+
+--
 -- Name: events_event_id_seq; Type: SEQUENCE; Schema: public; Owner: sanchezcarlosjr
 --
 
@@ -121,23 +167,6 @@ ALTER TABLE public.events_event_id_seq OWNER TO sanchezcarlosjr;
 
 ALTER SEQUENCE public.events_event_id_seq OWNED BY public.events.event_id;
 
-
---
--- Name: venues; Type: TABLE; Schema: public; Owner: sanchezcarlosjr
---
-
-CREATE TABLE public.venues (
-    venue_id integer NOT NULL,
-    name character varying(255),
-    street_address text,
-    type character(7) DEFAULT 'public'::bpchar,
-    postal_code character varying(9),
-    country_code character(2),
-    CONSTRAINT venues_type_check CHECK ((type = ANY (ARRAY['public'::bpchar, 'private'::bpchar])))
-);
-
-
-ALTER TABLE public.venues OWNER TO sanchezcarlosjr;
 
 --
 -- Name: events_with_matched_venues; Type: VIEW; Schema: public; Owner: sanchezcarlosjr
@@ -252,11 +281,11 @@ COPY public.events (event_id, title, starts, ends, venue_id) FROM stdin;
 -- Data for Name: venues; Type: TABLE DATA; Schema: public; Owner: sanchezcarlosjr
 --
 
-COPY public.venues (venue_id, name, street_address, type, postal_code, country_code) FROM stdin;
-1	Crystal Ballroom	\N	public 	97205	us
-10	Crystal Ballroom 2	\N	public 	97205	us
-2	Crystal Ballroom 3	\N	public 	97205	us
-3	Voodoo Donuts	\N	public 	97205	us
+COPY public.venues (venue_id, name, street_address, type, postal_code, country_code, active) FROM stdin;
+1	Crystal Ballroom	\N	public 	97205	us	t
+10	Crystal Ballroom 2	\N	public 	97205	us	t
+2	Crystal Ballroom 3	\N	public 	97205	us	t
+3	Voodoo Donuts	\N	public 	97205	us	t
 \.
 
 
@@ -312,6 +341,13 @@ ALTER TABLE ONLY public.events
 
 ALTER TABLE ONLY public.venues
     ADD CONSTRAINT venues_pkey PRIMARY KEY (venue_id);
+
+
+--
+-- Name: events_starts; Type: INDEX; Schema: public; Owner: sanchezcarlosjr
+--
+
+CREATE INDEX events_starts ON public.events USING btree (starts);
 
 
 --
