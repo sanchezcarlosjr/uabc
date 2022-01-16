@@ -1,0 +1,2 @@
+#! /usr/bin/env bash
+psql app -U sanchezcarlosjr -f backup/books.sql

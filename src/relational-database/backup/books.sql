@@ -17,15 +17,15 @@ SET client_min_messages = warning;
 SET row_security = off;
 
 --
--- Name: books; Type: DATABASE; Schema: -; Owner: sanchezcarlosjr
+-- Name: app; Type: DATABASE; Schema: -; Owner: sanchezcarlosjr
 --
 
-CREATE DATABASE books WITH TEMPLATE = template0 ENCODING = 'UTF8' LOCALE = 'en_US.utf8';
+CREATE DATABASE app WITH TEMPLATE = template0 ENCODING = 'UTF8' LOCALE = 'en_US.utf8';
 
 
-ALTER DATABASE books OWNER TO sanchezcarlosjr;
+ALTER DATABASE app OWNER TO sanchezcarlosjr;
 
-\connect books
+\connect app
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
