@@ -39,6 +39,42 @@ SET client_min_messages = warning;
 SET row_security = off;
 
 --
+-- Name: add_event(text, timestamp without time zone, timestamp without time zone, text, character varying, character); Type: FUNCTION; Schema: public; Owner: sanchezcarlosjr
+--
+
+CREATE FUNCTION public.add_event(title text, starts timestamp without time zone, ends timestamp without time zone, venue text, postal character varying, country character) RETURNS boolean
+    LANGUAGE plpgsql
+    AS $$
+DECLARE
+ did_insert boolean := false;
+ found_count integer;
+ the_venue_id integer;
+BEGIN
+ SELECT venue_id INTO the_venue_id 
+ FROM venues v
+ WHERE v.postal_code=postal AND v.country_code=country 
+ AND v.name ILIKE venue
+ LIMIT 1;
+ 
+ IF the_venue_id IS NULL THEN
+ 	INSERT INTO venues(name,postal_code,country_code)
+	VALUES(venue, postal,country)
+	RETURNING venue_id INTO the_venue_id;
+	did_insert := true;
+ END IF;
+ 
+ RAISE NOTICE 'Venue found %', the_venue_id;
+ 
+ INSERT INTO events(title, starts, ends, venue_id)
+ VALUES (title, starts, ends, the_venue_id);
+ RETURN did_insert;
+ END;
+ $$;
+
+
+ALTER FUNCTION public.add_event(title text, starts timestamp without time zone, ends timestamp without time zone, venue text, postal character varying, country character) OWNER TO sanchezcarlosjr;
+
+--
 -- Name: all_of_my_tables; Type: VIEW; Schema: public; Owner: sanchezcarlosjr
 --
 
@@ -195,6 +231,17 @@ CREATE VIEW public.events_with_venues AS
 ALTER TABLE public.events_with_venues OWNER TO sanchezcarlosjr;
 
 --
+-- Name: the_venue_id; Type: TABLE; Schema: public; Owner: sanchezcarlosjr
+--
+
+CREATE TABLE public.the_venue_id (
+    venue_id integer
+);
+
+
+ALTER TABLE public.the_venue_id OWNER TO sanchezcarlosjr;
+
+--
 -- Name: venues_venue_id_seq; Type: SEQUENCE; Schema: public; Owner: sanchezcarlosjr
 --
 
@@ -274,6 +321,18 @@ COPY public.events (event_id, title, starts, ends, venue_id) FROM stdin;
 1	LARP Club	2012-02-15 17:30:00	2012-02-15 19:30:00	2
 2	April Fools Day	2012-04-01 00:00:00	2012-04-01 23:59:00	\N
 3	Cristmas Day	2012-12-25 00:00:00	2012-12-25 23:59:00	\N
+\.
+
+
+--
+-- Data for Name: the_venue_id; Type: TABLE DATA; Schema: public; Owner: sanchezcarlosjr
+--
+
+COPY public.the_venue_id (venue_id) FROM stdin;
+1
+10
+2
+3
 \.
 
 
