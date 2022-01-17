@@ -75,6 +75,37 @@ BEGIN
 ALTER FUNCTION public.add_event(title text, starts timestamp without time zone, ends timestamp without time zone, venue text, postal character varying, country character) OWNER TO sanchezcarlosjr;
 
 --
+-- Name: log_event(); Type: FUNCTION; Schema: public; Owner: sanchezcarlosjr
+--
+
+CREATE FUNCTION public.log_event() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+DECLARE
+ did_insert boolean := false;
+ found_count integer;
+ the_venue_id integer;
+BEGIN
+ INSERT INTO logs(
+	 event_id, 
+	 old_title,
+	 old_starts,
+	 old_ends
+ ) VALUES (
+	 OLD.event_id, 
+	 OLD.title, 
+	 OLD.starts,
+	 OLD.ends
+ );
+ RAISE NOTICE 'Someone just changed event #%', OLD.event_id;
+ RETURN NEW;
+ END;
+ $$;
+
+
+ALTER FUNCTION public.log_event() OWNER TO sanchezcarlosjr;
+
+--
 -- Name: all_of_my_tables; Type: VIEW; Schema: public; Owner: sanchezcarlosjr
 --
 
@@ -231,6 +262,35 @@ CREATE VIEW public.events_with_venues AS
 ALTER TABLE public.events_with_venues OWNER TO sanchezcarlosjr;
 
 --
+-- Name: holidays; Type: VIEW; Schema: public; Owner: sanchezcarlosjr
+--
+
+CREATE VIEW public.holidays AS
+ SELECT events.event_id AS holiday_id,
+    events.title AS name,
+    events.starts AS date
+   FROM public.events
+  WHERE ((events.title ~~ '%Day%'::text) AND (events.venue_id IS NULL));
+
+
+ALTER TABLE public.holidays OWNER TO sanchezcarlosjr;
+
+--
+-- Name: logs; Type: TABLE; Schema: public; Owner: sanchezcarlosjr
+--
+
+CREATE TABLE public.logs (
+    event_id integer,
+    old_title character varying(255),
+    old_starts timestamp without time zone,
+    old_ends timestamp without time zone,
+    logged_at timestamp without time zone DEFAULT CURRENT_TIMESTAMP
+);
+
+
+ALTER TABLE public.logs OWNER TO sanchezcarlosjr;
+
+--
 -- Name: the_venue_id; Type: TABLE; Schema: public; Owner: sanchezcarlosjr
 --
 
@@ -321,6 +381,16 @@ COPY public.events (event_id, title, starts, ends, venue_id) FROM stdin;
 1	LARP Club	2012-02-15 17:30:00	2012-02-15 19:30:00	2
 2	April Fools Day	2012-04-01 00:00:00	2012-04-01 23:59:00	\N
 3	Cristmas Day	2012-12-25 00:00:00	2012-12-25 23:59:00	\N
+7	House Party	2012-05-03 23:00:00	2012-05-04 01:00:00	5
+\.
+
+
+--
+-- Data for Name: logs; Type: TABLE DATA; Schema: public; Owner: sanchezcarlosjr
+--
+
+COPY public.logs (event_id, old_title, old_starts, old_ends, logged_at) FROM stdin;
+7	House Party	2012-05-03 23:00:00	2012-05-04 02:00:00	2022-01-17 19:56:12.136027
 \.
 
 
@@ -345,6 +415,7 @@ COPY public.venues (venue_id, name, street_address, type, postal_code, country_c
 10	Crystal Ballroom 2	\N	public 	97205	us	t
 2	Crystal Ballroom 3	\N	public 	97205	us	t
 3	Voodoo Donuts	\N	public 	97205	us	t
+5	Run' s House 	\N	public 	97205	us	t
 \.
 
 
@@ -352,14 +423,14 @@ COPY public.venues (venue_id, name, street_address, type, postal_code, country_c
 -- Name: events_event_id_seq; Type: SEQUENCE SET; Schema: public; Owner: sanchezcarlosjr
 --
 
-SELECT pg_catalog.setval('public.events_event_id_seq', 6, true);
+SELECT pg_catalog.setval('public.events_event_id_seq', 7, true);
 
 
 --
 -- Name: venues_venue_id_seq; Type: SEQUENCE SET; Schema: public; Owner: sanchezcarlosjr
 --
 
-SELECT pg_catalog.setval('public.venues_venue_id_seq', 4, true);
+SELECT pg_catalog.setval('public.venues_venue_id_seq', 5, true);
 
 
 --
@@ -407,6 +478,13 @@ ALTER TABLE ONLY public.venues
 --
 
 CREATE INDEX events_starts ON public.events USING btree (starts);
+
+
+--
+-- Name: events log_events; Type: TRIGGER; Schema: public; Owner: sanchezcarlosjr
+--
+
+CREATE TRIGGER log_events AFTER UPDATE ON public.events FOR EACH ROW EXECUTE FUNCTION public.log_event();
 
 
 --
