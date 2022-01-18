@@ -381,7 +381,6 @@ de	Germany
 
 COPY public.events (event_id, title, starts, ends, venue_id, colors) FROM stdin;
 1	LARP Club	2012-02-15 17:30:00	2012-02-15 19:30:00	2	\N
-2	April Fools Day	2012-04-01 00:00:00	2012-04-01 23:59:00	\N	\N
 7	House Party	2012-05-03 23:00:00	2012-05-04 01:00:00	5	\N
 3	Cristmas Day	2012-12-25 00:00:00	2012-12-25 23:59:00	\N	{green,red}
 8	Halloween	2012-12-25 00:00:00	2012-12-26 00:00:00	\N	{}
@@ -489,6 +488,15 @@ ALTER TABLE ONLY public.venues
 --
 
 CREATE INDEX events_starts ON public.events USING btree (starts);
+
+
+--
+-- Name: holidays delete_holidays; Type: RULE; Schema: public; Owner: sanchezcarlosjr
+--
+
+CREATE RULE delete_holidays AS
+    ON DELETE TO public.holidays DO INSTEAD  DELETE FROM public.events
+  WHERE (events.event_id = old.holiday_id);
 
 
 --
