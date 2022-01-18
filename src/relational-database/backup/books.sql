@@ -39,6 +39,20 @@ SET client_min_messages = warning;
 SET row_security = off;
 
 --
+-- Name: tablefunc; Type: EXTENSION; Schema: -; Owner: -
+--
+
+CREATE EXTENSION IF NOT EXISTS tablefunc WITH SCHEMA public;
+
+
+--
+-- Name: EXTENSION tablefunc; Type: COMMENT; Schema: -; Owner: 
+--
+
+COMMENT ON EXTENSION tablefunc IS 'functions that manipulate whole tables, including crosstab';
+
+
+--
 -- Name: add_event(text, timestamp without time zone, timestamp without time zone, text, character varying, character); Type: FUNCTION; Schema: public; Owner: sanchezcarlosjr
 --
 
@@ -215,6 +229,32 @@ CREATE VIEW public.events_by_country AS
 ALTER TABLE public.events_by_country OWNER TO sanchezcarlosjr;
 
 --
+-- Name: events_by_month; Type: VIEW; Schema: public; Owner: sanchezcarlosjr
+--
+
+CREATE VIEW public.events_by_month AS
+ SELECT crosstab.year,
+    crosstab.jan,
+    crosstab.feb,
+    crosstab.mar,
+    crosstab.apr,
+    crosstab.may,
+    crosstab.jun,
+    crosstab.jul,
+    crosstab.aug,
+    crosstab.sep,
+    crosstab.oct,
+    crosstab.nov,
+    crosstab."dec"
+   FROM public.crosstab('SELECT EXTRACT(year from starts) as year,
+	 EXTRACT(month from starts) as month, count(*)
+	 FROM events
+	 GROUP BY year, month'::text, 'select m from generate_series(1,12) m'::text) crosstab(year integer, jan integer, feb integer, mar integer, apr integer, may integer, jun integer, jul integer, aug integer, sep integer, oct integer, nov integer, "dec" integer);
+
+
+ALTER TABLE public.events_by_month OWNER TO sanchezcarlosjr;
+
+--
 -- Name: events_event_id_seq; Type: SEQUENCE; Schema: public; Owner: sanchezcarlosjr
 --
 
@@ -291,6 +331,19 @@ CREATE TABLE public.logs (
 
 
 ALTER TABLE public.logs OWNER TO sanchezcarlosjr;
+
+--
+-- Name: sales; Type: TABLE; Schema: public; Owner: sanchezcarlosjr
+--
+
+CREATE TABLE public.sales (
+    year integer,
+    month integer,
+    qty integer
+);
+
+
+ALTER TABLE public.sales OWNER TO sanchezcarlosjr;
 
 --
 -- Name: the_venue_id; Type: TABLE; Schema: public; Owner: sanchezcarlosjr
@@ -401,6 +454,50 @@ COPY public.logs (event_id, old_title, old_starts, old_ends, logged_at) FROM std
 3	Cristmas Day	2012-12-25 00:00:00	2012-12-25 23:59:00	2022-01-18 18:32:08.848926
 3	Cristmas Day	2012-12-25 00:00:00	2012-12-25 23:59:00	2022-01-18 18:32:32.059686
 3	Cristmas Day	2012-12-25 00:00:00	2012-12-25 23:59:00	2022-01-18 18:32:52.405728
+\.
+
+
+--
+-- Data for Name: sales; Type: TABLE DATA; Schema: public; Owner: sanchezcarlosjr
+--
+
+COPY public.sales (year, month, qty) FROM stdin;
+2007	1	1000
+2007	2	1500
+2007	7	500
+2007	11	1500
+2007	12	2000
+2008	1	1000
+2007	1	1000
+2007	2	1500
+2007	7	500
+2007	11	1500
+2007	12	2000
+2008	1	1000
+2007	1	1000
+2007	2	1500
+2007	7	500
+2007	11	1500
+2007	12	2000
+2008	1	1000
+2007	1	1000
+2007	2	1500
+2007	7	500
+2007	11	1500
+2007	12	2000
+2008	1	1000
+2007	1	1000
+2007	2	1500
+2007	7	500
+2007	11	1500
+2007	12	2000
+2008	1	1000
+2007	1	1000
+2007	2	1500
+2007	7	500
+2007	11	1500
+2007	12	2000
+2008	1	1000
 \.
 
 
