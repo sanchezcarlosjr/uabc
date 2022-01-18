@@ -174,6 +174,7 @@ CREATE TABLE public.events (
     starts timestamp without time zone DEFAULT (now())::timestamp without time zone NOT NULL,
     ends timestamp without time zone NOT NULL,
     venue_id integer,
+    colors text[],
     CONSTRAINT events_check CHECK ((ends > starts)),
     CONSTRAINT events_title_check CHECK ((title <> ''::text))
 );
@@ -377,11 +378,11 @@ de	Germany
 -- Data for Name: events; Type: TABLE DATA; Schema: public; Owner: sanchezcarlosjr
 --
 
-COPY public.events (event_id, title, starts, ends, venue_id) FROM stdin;
-1	LARP Club	2012-02-15 17:30:00	2012-02-15 19:30:00	2
-2	April Fools Day	2012-04-01 00:00:00	2012-04-01 23:59:00	\N
-3	Cristmas Day	2012-12-25 00:00:00	2012-12-25 23:59:00	\N
-7	House Party	2012-05-03 23:00:00	2012-05-04 01:00:00	5
+COPY public.events (event_id, title, starts, ends, venue_id, colors) FROM stdin;
+1	LARP Club	2012-02-15 17:30:00	2012-02-15 19:30:00	2	\N
+2	April Fools Day	2012-04-01 00:00:00	2012-04-01 23:59:00	\N	\N
+3	Cristmas Day	2012-12-25 00:00:00	2012-12-25 23:59:00	\N	\N
+7	House Party	2012-05-03 23:00:00	2012-05-04 01:00:00	5	\N
 \.
 
 
