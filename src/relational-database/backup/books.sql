@@ -269,7 +269,8 @@ ALTER TABLE public.events_with_venues OWNER TO sanchezcarlosjr;
 CREATE VIEW public.holidays AS
  SELECT events.event_id AS holiday_id,
     events.title AS name,
-    events.starts AS date
+    events.starts AS date,
+    events.colors
    FROM public.events
   WHERE ((events.title ~~ '%Day%'::text) AND (events.venue_id IS NULL));
 
@@ -381,8 +382,10 @@ de	Germany
 COPY public.events (event_id, title, starts, ends, venue_id, colors) FROM stdin;
 1	LARP Club	2012-02-15 17:30:00	2012-02-15 19:30:00	2	\N
 2	April Fools Day	2012-04-01 00:00:00	2012-04-01 23:59:00	\N	\N
-3	Cristmas Day	2012-12-25 00:00:00	2012-12-25 23:59:00	\N	\N
 7	House Party	2012-05-03 23:00:00	2012-05-04 01:00:00	5	\N
+3	Cristmas Day	2012-12-25 00:00:00	2012-12-25 23:59:00	\N	{green,red}
+8	Halloween	2012-12-25 00:00:00	2012-12-26 00:00:00	\N	{}
+9	Halloween Day	2012-12-25 00:00:00	2012-12-26 00:00:00	\N	{orange}
 \.
 
 
@@ -392,6 +395,13 @@ COPY public.events (event_id, title, starts, ends, venue_id, colors) FROM stdin;
 
 COPY public.logs (event_id, old_title, old_starts, old_ends, logged_at) FROM stdin;
 7	House Party	2012-05-03 23:00:00	2012-05-04 02:00:00	2022-01-17 19:56:12.136027
+3	Cristmas Day	2012-12-25 00:00:00	2012-12-25 23:59:00	2022-01-18 18:31:37.901222
+3	Cristmas Day	2012-12-25 00:00:00	2012-12-25 23:59:00	2022-01-18 18:31:58.472012
+3	Cristmas Day	2012-12-25 00:00:00	2012-12-25 23:59:00	2022-01-18 18:32:00.088477
+3	Cristmas Day	2012-12-25 00:00:00	2012-12-25 23:59:00	2022-01-18 18:32:01.088413
+3	Cristmas Day	2012-12-25 00:00:00	2012-12-25 23:59:00	2022-01-18 18:32:08.848926
+3	Cristmas Day	2012-12-25 00:00:00	2012-12-25 23:59:00	2022-01-18 18:32:32.059686
+3	Cristmas Day	2012-12-25 00:00:00	2012-12-25 23:59:00	2022-01-18 18:32:52.405728
 \.
 
 
@@ -424,7 +434,7 @@ COPY public.venues (venue_id, name, street_address, type, postal_code, country_c
 -- Name: events_event_id_seq; Type: SEQUENCE SET; Schema: public; Owner: sanchezcarlosjr
 --
 
-SELECT pg_catalog.setval('public.events_event_id_seq', 7, true);
+SELECT pg_catalog.setval('public.events_event_id_seq', 9, true);
 
 
 --
@@ -479,6 +489,24 @@ ALTER TABLE ONLY public.venues
 --
 
 CREATE INDEX events_starts ON public.events USING btree (starts);
+
+
+--
+-- Name: holidays insert_holidays; Type: RULE; Schema: public; Owner: sanchezcarlosjr
+--
+
+CREATE RULE insert_holidays AS
+    ON INSERT TO public.holidays DO INSTEAD  INSERT INTO public.events (title, starts, ends, colors)
+  VALUES (new.name, new.date, (new.date + '1 day'::interval), new.colors);
+
+
+--
+-- Name: holidays update_holidays; Type: RULE; Schema: public; Owner: sanchezcarlosjr
+--
+
+CREATE RULE update_holidays AS
+    ON UPDATE TO public.holidays DO INSTEAD  UPDATE public.events SET title = new.name, starts = new.date, colors = new.colors
+  WHERE (events.title = old.name);
 
 
 --
