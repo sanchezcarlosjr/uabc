@@ -179,6 +179,42 @@ CREATE VIEW public.cities_with_country AS
 ALTER TABLE public.cities_with_country OWNER TO sanchezcarlosjr;
 
 --
+-- Name: ct; Type: TABLE; Schema: public; Owner: sanchezcarlosjr
+--
+
+CREATE TABLE public.ct (
+    id integer NOT NULL,
+    rowid text,
+    attribute text,
+    value text
+);
+
+
+ALTER TABLE public.ct OWNER TO sanchezcarlosjr;
+
+--
+-- Name: ct_id_seq; Type: SEQUENCE; Schema: public; Owner: sanchezcarlosjr
+--
+
+CREATE SEQUENCE public.ct_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.ct_id_seq OWNER TO sanchezcarlosjr;
+
+--
+-- Name: ct_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: sanchezcarlosjr
+--
+
+ALTER SEQUENCE public.ct_id_seq OWNED BY public.ct.id;
+
+
+--
 -- Name: events; Type: TABLE; Schema: public; Owner: sanchezcarlosjr
 --
 
@@ -346,6 +382,29 @@ CREATE TABLE public.sales (
 ALTER TABLE public.sales OWNER TO sanchezcarlosjr;
 
 --
+-- Name: sales_by_month; Type: VIEW; Schema: public; Owner: sanchezcarlosjr
+--
+
+CREATE VIEW public.sales_by_month AS
+ SELECT crosstab.year,
+    crosstab."Jan",
+    crosstab."Feb",
+    crosstab."Mar",
+    crosstab."Apr",
+    crosstab."May",
+    crosstab."Jun",
+    crosstab."Jul",
+    crosstab."Aug",
+    crosstab."Sep",
+    crosstab."Oct",
+    crosstab."Nov",
+    crosstab."Dec"
+   FROM public.crosstab('select year, month, qty from sales order by 1'::text, 'select m from generate_series(1,12) m'::text) crosstab(year integer, "Jan" integer, "Feb" integer, "Mar" integer, "Apr" integer, "May" integer, "Jun" integer, "Jul" integer, "Aug" integer, "Sep" integer, "Oct" integer, "Nov" integer, "Dec" integer);
+
+
+ALTER TABLE public.sales_by_month OWNER TO sanchezcarlosjr;
+
+--
 -- Name: the_venue_id; Type: TABLE; Schema: public; Owner: sanchezcarlosjr
 --
 
@@ -393,6 +452,13 @@ CREATE VIEW public.venues_with_cities AS
 ALTER TABLE public.venues_with_cities OWNER TO sanchezcarlosjr;
 
 --
+-- Name: ct id; Type: DEFAULT; Schema: public; Owner: sanchezcarlosjr
+--
+
+ALTER TABLE ONLY public.ct ALTER COLUMN id SET DEFAULT nextval('public.ct_id_seq'::regclass);
+
+
+--
 -- Name: events event_id; Type: DEFAULT; Schema: public; Owner: sanchezcarlosjr
 --
 
@@ -425,6 +491,22 @@ mx	Mexico
 au	Australia
 gb	United Kingdom
 de	Germany
+\.
+
+
+--
+-- Data for Name: ct; Type: TABLE DATA; Schema: public; Owner: sanchezcarlosjr
+--
+
+COPY public.ct (id, rowid, attribute, value) FROM stdin;
+1	test1	att1	val1
+2	test1	att2	val2
+3	test1	att3	val3
+4	test1	att4	val4
+5	test2	att1	val5
+6	test2	att2	val6
+7	test2	att3	val7
+8	test2	att4	val8
 \.
 
 
@@ -524,6 +606,13 @@ COPY public.venues (venue_id, name, street_address, type, postal_code, country_c
 3	Voodoo Donuts	\N	public 	97205	us	t
 5	Run' s House 	\N	public 	97205	us	t
 \.
+
+
+--
+-- Name: ct_id_seq; Type: SEQUENCE SET; Schema: public; Owner: sanchezcarlosjr
+--
+
+SELECT pg_catalog.setval('public.ct_id_seq', 8, true);
 
 
 --
