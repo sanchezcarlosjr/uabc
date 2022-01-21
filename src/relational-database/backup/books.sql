@@ -291,6 +291,24 @@ CREATE VIEW public.events_by_month AS
 ALTER TABLE public.events_by_month OWNER TO sanchezcarlosjr;
 
 --
+-- Name: events_by_week; Type: VIEW; Schema: public; Owner: sanchezcarlosjr
+--
+
+CREATE VIEW public.events_by_week AS
+ SELECT crosstab.week,
+    crosstab.sun,
+    crosstab.monday,
+    crosstab.tuesday,
+    crosstab.wednesday,
+    crosstab.thursday,
+    crosstab.friday,
+    crosstab.saturday
+   FROM public.crosstab('SELECT TO_CHAR(starts::date,''W'')::integer as week,EXTRACT(DOW FROM starts::date) as dow,count(starts::date) as total FROM events WHERE EXTRACT(year from starts) = 2012 AND EXTRACT(month from starts) = 2 GROUP BY starts::date'::text, 'select m from generate_series(1,7) m'::text) crosstab(week integer, sun integer, monday integer, tuesday integer, wednesday integer, thursday integer, friday integer, saturday integer);
+
+
+ALTER TABLE public.events_by_week OWNER TO sanchezcarlosjr;
+
+--
 -- Name: events_event_id_seq; Type: SEQUENCE; Schema: public; Owner: sanchezcarlosjr
 --
 
@@ -387,19 +405,18 @@ ALTER TABLE public.sales OWNER TO sanchezcarlosjr;
 
 CREATE VIEW public.sales_by_month AS
  SELECT crosstab.year,
-    crosstab."Jan",
-    crosstab."Feb",
-    crosstab."Mar",
-    crosstab."Apr",
-    crosstab."May",
-    crosstab."Jun",
-    crosstab."Jul",
-    crosstab."Aug",
-    crosstab."Sep",
-    crosstab."Oct",
-    crosstab."Nov",
-    crosstab."Dec"
-   FROM public.crosstab('select year, month, qty from sales order by 1'::text, 'select m from generate_series(1,12) m'::text) crosstab(year integer, "Jan" integer, "Feb" integer, "Mar" integer, "Apr" integer, "May" integer, "Jun" integer, "Jul" integer, "Aug" integer, "Sep" integer, "Oct" integer, "Nov" integer, "Dec" integer);
+    COALESCE(crosstab."Jan", 0) AS "Jan",
+    COALESCE(crosstab."Feb", 0) AS "Feb",
+    COALESCE(crosstab."Mar", 0) AS "Mar",
+    COALESCE(crosstab."Apr", 0) AS "Apr",
+    COALESCE(crosstab."Jun", 0) AS "Jun",
+    COALESCE(crosstab."Jul", 0) AS "Jul",
+    COALESCE(crosstab."Aug", 0) AS "Aug",
+    COALESCE(crosstab."Sep", 0) AS "Sep",
+    COALESCE(crosstab."Oct", 0) AS "Oct",
+    COALESCE(crosstab."Nov", 0) AS "Nov",
+    COALESCE(crosstab."Dec", 0) AS "Dec"
+   FROM public.crosstab('SELECT year, month,sum(qty) FROM sales GROUP BY year,month'::text, 'select m from generate_series(1,12) m'::text) crosstab(year integer, "Jan" integer, "Feb" integer, "Mar" integer, "Apr" integer, "May" integer, "Jun" integer, "Jul" integer, "Aug" integer, "Sep" integer, "Oct" integer, "Nov" integer, "Dec" integer);
 
 
 ALTER TABLE public.sales_by_month OWNER TO sanchezcarlosjr;
@@ -520,6 +537,10 @@ COPY public.events (event_id, title, starts, ends, venue_id, colors) FROM stdin;
 3	Cristmas Day	2012-12-25 00:00:00	2012-12-25 23:59:00	\N	{green,red}
 8	Halloween	2012-12-25 00:00:00	2012-12-26 00:00:00	\N	{}
 9	Halloween Day	2012-12-25 00:00:00	2012-12-26 00:00:00	\N	{orange}
+11	ABC	2012-02-15 12:30:00	2012-02-15 15:30:00	1	\N
+12	ABC	2012-02-15 12:30:00	2012-02-15 15:30:00	1	\N
+13	ABC Day	2012-02-15 12:30:00	2012-02-15 15:30:00	1	\N
+15	D Day	2012-02-16 12:35:00	2012-02-16 15:30:00	1	\N
 \.
 
 
@@ -580,6 +601,9 @@ COPY public.sales (year, month, qty) FROM stdin;
 2007	11	1500
 2007	12	2000
 2008	1	1000
+2007	1	500
+2007	1	500
+2007	1	550
 \.
 
 
@@ -619,7 +643,7 @@ SELECT pg_catalog.setval('public.ct_id_seq', 8, true);
 -- Name: events_event_id_seq; Type: SEQUENCE SET; Schema: public; Owner: sanchezcarlosjr
 --
 
-SELECT pg_catalog.setval('public.events_event_id_seq', 9, true);
+SELECT pg_catalog.setval('public.events_event_id_seq', 15, true);
 
 
 --
@@ -683,6 +707,15 @@ CREATE INDEX events_starts ON public.events USING btree (starts);
 CREATE RULE delete_holidays AS
     ON DELETE TO public.holidays DO INSTEAD  DELETE FROM public.events
   WHERE (events.event_id = old.holiday_id);
+
+
+--
+-- Name: venues delete_venues_logically; Type: RULE; Schema: public; Owner: sanchezcarlosjr
+--
+
+CREATE RULE delete_venues_logically AS
+    ON DELETE TO public.venues DO INSTEAD  UPDATE public.venues SET active = false
+  WHERE (venues.venue_id = old.venue_id);
 
 
 --
