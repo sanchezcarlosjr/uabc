@@ -1,3 +1,4 @@
 [submodule "src/computer-graphics"]
 	path = src/computer-graphics
 	url = https://github.com/sanchezcarlosjr/computer-graphics
+	branch = main
